@@ -1,0 +1,6 @@
+
+Name: butler
+Description: Smart Nest Box Data user interface helper
+Binding: butler
+
+Interactive: true

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=run-SNB-butler
+Icon=/usr/share/icons/ubuntu-mono-dark/categories/24/preferences-desktop-personal-directory.svg
+Exec=~/github/SNB2/inst/scripts/run_butler.sh

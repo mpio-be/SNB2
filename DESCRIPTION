@@ -1,0 +1,36 @@
+Package: SNB2
+Type: Package
+Title: Smart Nest-box Data Management
+Version: 2018.1
+Author: Lotte Schlicht, Mihai Valcu
+Maintainer: Lotte Schlicht <lschlicht@orn.mpg.de>, Mihai Valcu <valcu@orn.mpg.de>
+Depends:
+    R (>= 3.0.0),
+    utils,
+    tools,
+    methods,
+    stringr,
+    foreach,
+    data.table,
+    magrittr,
+    fasttime
+Suggests:
+    doParallel,
+    fasttime,
+    shiny,
+    rhandsontable,
+    shinydashboard,
+    shinytoastr,
+    shinyBS,
+    ggplot2,
+    openxlsx,
+    knitr,
+    rmarkdown,
+    zoo,
+    jsonlite,
+    maptools
+VignetteBuilder: knitr
+Description: Westerholz Smart Nest-box Data Management
+License: MPIO
+LazyData: TRUE
+RoxygenNote: 6.0.1
