@@ -1,32 +1,30 @@
 
-tetr <- function(con ) {
-  dbq(con, 'select author, transponder from (
-    select max(start) date_, initials author, transponder from FIELD_BTatWESTERHOLZ.AUTHORS where transponder is not NULL group by initials, transponder
-    UNION
-    select max(start) date_, initials author, transponder from BTatWESTERHOLZ.AUTHORS where transponder is not NULL group by initials, transponder ) x
-    group by author, transponder')
-}
+#' @title     test transponders
+#' @description the latest test transponder and their holders (authors)
+#' @param     condb a db connection
+#' @return    a data.table
+#' @export
+#' @author    MV
+#' @examples  con = dbcon('mihai', host = 'scidb.mpio.orn.mpg.de')
+#' tetr(con)
 
-
-
-
-#' @title        read file status
-#' @description  read a subset of the the file status  given a date
-#' @param        con a db connection
-#' @return       a data.table; authors tests transponders are returned as well
-#' @author       MV
-#' @examples     con = dbcon('mihai', host = 'scidb.mpio.orn.mpg.de')
-#' read.fstatus(con, "2016.02.17")
-
-read.fstatus <- function(con, date) {
-
-  x = dbq(con, paste("select * from SNBatWESTERHOLZ.file_status where date(datetime_) = date(", shQuote(date), ")") )
-  tt = tetr(con)
-
-  o = merge(x, tt, by = 'author')
-  o
+tetr <- function(condb ) {
+  
+  dbq(con = condb, 'SELECT author, transponder from (
+    SELECT max(start) date_, initials author, transponder from FIELD_BTatWESTERHOLZ.AUTHORS 
+      WHERE  transponder is not NULL 
+        GROUP BY initials, transponder
+          UNION
+    SELECT max(start) date_, initials author, transponder from BTatWESTERHOLZ.AUTHORS 
+      WHERE transponder is not NULL 
+        GROUP BY initials, transponder ) x
+  GROUP BY author, transponder')
+  
 
   }
+
+
+
 
 #' query raw data, all b_ tables at once
 #' @param   username       username
@@ -35,52 +33,55 @@ read.fstatus <- function(con, date) {
 #' @param   testtr_remove  default to TRUE
 #' @export
 #' @examples
-#' # Simple select
+#' # Simple SELECT
 #' dbqSNB('mihai', host = "scidb.mpio.orn.mpg.de", 'SELECT * FROM boxtables limit 1')
 #'
 #' # Last entry
 #' dbqSNB('mihai', host = "scidb.mpio.orn.mpg.de", 'SELECT * FROM boxtables ORDER BY r_pk desc limit 1')
 #'
-#' # Select last n days
+#' # SELECT last n days
 #' x = dbqSNB('mihai', host = "scidb.mpio.orn.mpg.de",
 #' 'SELECT datetime_, LB, transp FROM  boxtables
-#'    WHERE datetime_ >= DATE_ADD( (select max(datetime_) from  boxtables) , INTERVAL -3 DAY) AND
+#'    WHERE datetime_ >= DATE_ADD( (SELECT max(datetime_) from  boxtables) , INTERVAL -3 DAY) AND
 #'    YEAR(datetime_) = YEAR(CURDATE() )
 #' ')
 #'
-dbqSNB <- function(username, host, q = 'SELECT * FROM boxtables limit 1', db = getOption('snbDB'), testtr_remove = TRUE, ncores = 4) {
+dbqSNB <- function(username, host, 
+    q = 'SELECT * FROM boxtables limit 1', 
+    db = getOption('snbDB_v2'), 
+    .boxes = 1:277,
+    ncores = 4) {
+
     pb = tempfile(fileext = '.txt')
     message('to follow progress open', sQuote(pb), 'in a text editor')
 
     require(doParallel)
     cl = makePSOCKcluster(ncores); registerDoParallel(cl); on.exit(stopCluster(cl))
 
-    x =  boxes()
+    x =  boxes()[box %in% int2b(.boxes)]
+
+
     x[, q:= str_replace_all(q, 'boxtables', box) ]
 
-   O = foreach(i = 1: nrow(x),.packages = c('sdb', 'SNB') )  %dopar% {
-       cat(i,',', sep = '', file = pb, append = TRUE)
-       con = dbcon(username, host = host); on.exit(dbDisconnect(con))
-       dbq(con, paste('USE', db ) )
-       o = dbq(con, x[i, q] )
-       if(is.null(o) ) message(x[i, box] , 'returns no data for the given query.') else
-       o[, box := x[i, box] ]
-       o
-    } %>% rbindlist
+    O = foreach(i = 1: nrow(x),.packages = c('sdb', 'SNB') )  %dopar% {
+      cat(i,',', sep = '', file = pb, append = TRUE)
+      con = dbcon(username, host = host); on.exit(dbDisconnect(con))
+      dbq(con, paste('USE', db ) )
+      o = dbq(con, x[i, q] )
+      if(is.null(o) ) message(x[i, box] , 'returns no data for the given query.') else
+      o[, box := x[i, box] ]
+      o
+      } %>% rbindlist
 
 
-   if(nrow(O) == 0)  stop('Empty dataset.')
+    if(nrow(O) == 0)  warning('Your query returns an empty dataset.')
 
+    if(nrow(O) > 0)   
     O[, box := str_replace(box, 'b', '') %>% as.integer]
 
-    if(testtr_remove) {
-      ttr = dbq(user = username, host = host, q = 'select * from SNBatWESTERHOLZ.test_transponders')
-      O = O[!transp%in%ttr$transponder]
-
-    }
 
     O
-}
+  }
 
 
 #' overnight
@@ -88,29 +89,25 @@ dbqSNB <- function(username, host, q = 'SELECT * FROM boxtables limit 1', db = g
 #' @param   host     host
 #' @param   date     date, default to last date in file_status table
 #' @param   buffer  (hours)   sunrise + buffer
+#' @param   ...  goes to dbqSNB
 #' @examples
 #' overnight(buffer = 2)
 #'
-overnight <- function(username = getOption('DB_user') , host = getOption('host'),buffer = 1, date = Sys.Date()-1 ) {
+overnight <- function(buffer = 1, date = Sys.Date()-1, ...) {
 
   if(missing(date))
-    date = dbq(user = username, host = host, q = 'select max(datetime_) x from SNBatWESTERHOLZ.file_status')$x %>%
+    date = dbq(user = getOption('DB_user') , host = getOption('host'), db = getOption('snbDB_v2')
+      , q = 'SELECT max(datetime_) x from file_status')$x %>%
           as.Date
 
-  # version 1
-  x = dbqSNB(username, host = host,paste('
-    SELECT DISTINCT datetime_, transp FROM  boxtables
-      WHERE  LB <> "00" AND datetime_ BETWEEN', shQuote(date-1), 'AND', shQuote(date + 1) ) )
 
-  # version 2
-  x2 = dbqSNB(username, host,paste('
+  x = dbqSNB( getOption('DB_user') , getOption('host') ,
+    q = paste('
     SELECT DISTINCT datetime_, sensor_value transp FROM  boxtables
-      WHERE  datetime_ BETWEEN', shQuote(date-1), 'AND', shQuote(date + 1) ),  db = getOption('snbDB_v2') )
-  x2[transp %in% c('OFF', 'ON'), transp := NA]
-
-  x = rbind(x, x2)
+      WHERE  datetime_ BETWEEN', shQuote(date-1), 'AND', shQuote(date + 1) ),  db = getOption('snbDB_v2'), ... )
+  
+  x[transp %in% c('OFF', 'ON'), transp := NA]
   enhanceOutput(x)
-
   x[, hour := hour(datetime_)  ]
   x[, day  := yday(datetime_)   %>% factor %>% as.numeric]
 

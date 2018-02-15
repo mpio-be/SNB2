@@ -1,34 +1,36 @@
 
-
+#' @export
 fetch_data_v2 = function (con, box = NA, from = NA, to = NA) {
-  
+
   if (is.na(box) | is.na(from) | is.na(to)) 
-    print("Please provide values for \"box\", \"from\" and \"to\"")
+  print("Please provide values for \"box\", \"from\" and \"to\"")
   #dbq(con, paste("USE", getOption("snbDB")))
   dbq(con, "USE SNBatWESTERHOLZ_v2")
   box = sprintf("%03d", as.numeric(box))
   if (is.numeric(from) & is.numeric(to)) {
-    x = dbq(con, paste0("SELECT ", box, " as box, UNIX_TIMESTAMP(datetime_) as datetime_, sensor_value, sensor, r_pk, id FROM ", 
-                        paste0("b", box), " WHERE r_pk >= ", from, " AND r_pk <= ", 
-                        to))
-  
+  x = dbq(con, paste0("SELECT ", box, " as box, UNIX_TIMESTAMP(datetime_) as datetime_, sensor_value, sensor, r_pk, id FROM ", 
+                      paste0("b", box), " WHERE r_pk >= ", from, " AND r_pk <= ", 
+                      to))
+
   }
   else {
-    x = dbq(con, paste0("SELECT ", box, " as box, UNIX_TIMESTAMP(datetime_) as datetime_, sensor_value, sensor, r_pk, id FROM ", 
-                        paste0("b", box), " WHERE datetime_ >= ", from, " AND datetime_ <= ", 
-                        to))
+  x = dbq(con, paste0("SELECT ", box, " as box, UNIX_TIMESTAMP(datetime_) as datetime_, sensor_value, sensor, r_pk, id FROM ", 
+                      paste0("b", box), " WHERE datetime_ >= ", from, " AND datetime_ <= ", 
+                      to))
   }
   x = subset(x, !is.na(datetime_))
   return(x)
-}
+  }
 
+
+#' @export
 fetch_ins_outs_v2 = function (x, tr_threshold = 5, safety_threshold = 600) {
   #if one light barrier is on for more than safety_threshold seconds, mark new event after at time difference larger than safety_threshold seconds; this is a cutoff designed to make sure that a dirty light barrier does not lead to a loss of events.
   x[sensor != "tra", lb_time := shift(datetime_, 1, last(datetime_), type = 'lead') - datetime_, by = sensor]
   x[lb_time > safety_threshold & sensor_value == "ON", sensor_value := "OFF"]
   x[, lb_time := NULL] 
   
-   #define new events by light barriers: in the line after all were turned off a new event starts.
+  # define new events by light barriers: in the line after all were turned off a new event starts.
   #ignore cases where a light barrier is turned ON or off twice
   #a transponder belongs to the upcoming event (defined by hardware), unless the time difference to the event after is tr_threshold seconds larger than to the row before; if it is more than 2*tr_threshold away from any LB, don't assign to LB activity.
   x[, lbo := 0]
@@ -75,9 +77,10 @@ fetch_ins_outs_v2 = function (x, tr_threshold = 5, safety_threshold = 600) {
   x[multiple_tr > 1 & sensor == 'tra', transp := as.character(paste0(unique(sensor_value[which(sensor == "tra")]), collapse = '___')), by = event]
   
  
-return(x)
-}
+  return(x)
+  }
 
+#' @export
 assign_direction_v2 = function(x, hardware_threshold = 0.05) {
   #fetch time differences; takes long to calculate 
   x[, delta_ON := first(datetime_[which(sensor == 'lbo' & sensor_value == 'ON')]) - first(datetime_[which(sensor == 'lbi' & sensor_value == 'ON')]), by = event]
@@ -126,8 +129,9 @@ assign_direction_v2 = function(x, hardware_threshold = 0.05) {
   x[multiple_tr > 1, transp := strsplit(unique(transp), "___"), by = r_pk]
   
   return(x)
-}
-  
+  }
+
+#' @export  
 concat_events_v2 = function(x) {
   
   #combine events that belong together to new events
@@ -171,8 +175,9 @@ concat_events_v2 = function(x) {
   setkey(x, box, in_, out_, transp)
   return(x)
 
-}
+  }
 
+#' @export
 combine_front_v2 = function(x, threshold = 1.5){
   #NA transp to ''
   x[is.na(transp), transp := '']
@@ -199,4 +204,4 @@ combine_front_v2 = function(x, threshold = 1.5){
   x[, `:=`(out_, as.POSIXct(out_, origin = "1970-01-01"))]
   x[transp == '', transp := NA]
   
-}
+  }

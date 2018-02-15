@@ -10,7 +10,7 @@ path2box(x)
 extract box from a file path string
 }
 \examples{
- path2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA/2016/2016.01.26/011/BOX001.TXT")
+ path2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB_v2/RAWDATA/2016/2016.01.26/011/BOX001.TXT")
 }
 \author{
 MV

@@ -1,40 +1,37 @@
 
-#' @title        Extract transponder
-#' @description  regexp a transponder
-#' @param        x character vector
-#' @return       extracted character vector
-#' @author       MV
+
+#' Plot raw data in the field
+#'
+#' @param path The path to the BOX001.TXT file. Defaults to the desktop (/home/bt/Desktop/)
+#' @param box A box number (defaults to 999)
+#' @return An actogram (.pdf) that is located at the specified path and a data table with the underlying data.
+#' @export 
 #' @examples
-#' transp_extract(x = c('280196A801AF0001', '28A0000000008001', 'A1422A8758200001')   )
-#' d = dbq(q = 'select * from COMMON.TRANSPONDERS_LIST', user = 'mihai')
-#' d[, check := transp_extract(transponder)]
-#' d[transponder != check]
-transp_extract <-  function(x) {
- str_extract(x, "\\w{11}F0001|A1\\w{9}00001|\\w{3}0000000008001")
- }
+#' #copy a BOX001.TXT to the desktop if the blue tit user and run
+#' x = plot_from_raw()
+#' x
+#' #have a look at your desktop. A file called box_999.pdf should have appeared.
+plot_from_raw = function(path = "/home/bt/Desktop/", box = 999) {
+  h = data.table(box = box, path = paste0(path, "BOX001.TXT"), id = 0)
+  x = load_clean_txt(h)[[1]]
+  x[, datetime_ := as.numeric(as.POSIXct(datetime_))]
+  x[, box := box]
+  x = events(x)
+  x[, ID := transp]
+  
+  (actogramPlot(x))
+  ggsave(paste0(gsub("BOX001.TXT", '', path), "box_", box, ".pdf"), device = 'pdf')
 
+  return(x)
+}
 
-
-#' @title 		fast_POSIXct
-#' @description Quickly converts local timestamps to a POSIXct vector
-#' @param		x	timestamps (YYYY-mm-dd HH:MM:SS)
-#' @param		tz	local timezone
-#' @return		POSIXct vector
-fast_POSIXct <- function(x, tz = 'CEST') {
-	stopifnot(is.character(x))
-	GMT <- fasttime::fastPOSIXct(x, tz='GMT')
-	epoch <- as.numeric(GMT)
-	t0 <- '1970-01-01'
-	z <- as.POSIXct(epoch, tz=tz, origin=t0)
-	adjusted <- z - as.POSIXlt(z)$isdst * 3600
-	return(adjusted)
-	}
 
 #' @title 		integer to box name
 #' @description convert an integer as b00x
 #' @param 		x box names (numeric)
 #' @return 		character vector
 #' @author  	MV
+#' @export
 #' @examples	int2b(1)
 int2b <- function(x) {
 	paste0('b',str_pad(x, 3, 'left', pad = '0') )
@@ -45,14 +42,12 @@ int2b <- function(x) {
 #' @param 		  x box names (numeric)
 #' @return 		  \code{data.table} with column box as character eg. 'b001'
 #' @author  	  MV
+#' @export
 #' @examples	  boxes()
 boxes <- function(x = 1:277) {
-
 	o = data.table(box = paste0('b',str_pad(x, 3, 'left', pad = '0') ) )
 	setkey(o, box)
 	o
-
-
 	}
 
 
@@ -61,6 +56,7 @@ boxes <- function(x = 1:277) {
 #' @param 		x character vector(s)
 #' @return 		\code{Date} object
 #' @author  	MV
+#' @export
 #' @examples	char2date(x = '2015/2015.01.26/001/box001.txt')
 char2date <- function(x) {
 
@@ -70,76 +66,31 @@ char2date <- function(x) {
 	}
 
 
-# helper function to replace NAs in a data.table
+#' @title     replace NAs
+#' @description # helper function to replace NAs in a data.table
+#' @export
 na.replace <- function(x, replace_value = ''){
   x <- as.matrix(x)
   x[is.na(x)] <- replace_value
   data.table(x)
   }
 
-#' @title     Read raw
-#' @description Read raw box txt file without conversion and string splitting
-#' @param     filePath  file path to the box file
-#' @return    a \code{data.table} with two columns: V (the data string )  and bout_length (N time the string is repeated)
-#' @author    MV
-#' @examples
-#' readRaw('/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA/2016/2016.01.26/004/BOX001.TXT')
-#' # without embedded null string
-#' readRaw("/ds/raw_data_kemp/FIELD/Westerholz/SF/RAWDATA/2014/2014.11.20/014/BOX001.TXT")
-
-
-readRaw <- function(filePath)  {
-  x = try(fread(filePath, header = FALSE, colClasses = 'character'), silent = TRUE)
-
-  if(inherits(x, 'try-error') ) { # expect embeded nul
-    rm(x)
-    tt =tempfile()
-    system(paste0("tr < ", filePath, " -d '\\000' >", tt))
-    x =  fread(tt, header = FALSE, colClasses = 'character')
-  }
-
-  x = rle(x[, V1])
-  x = data.table(V = x$values, bout_length = x$lengths)
-  x
-
-  }
-
-#' @title     snb string to datetime_
-#' @description convert an SNB string to a datetime object
-#' @param     x  a character vector
-#' @return    a character vector yyyy-dd-mm hh:mm:ss
-#' @author    MV
-#' @examples  rawstring2datetime('0212151805550010') # old format
-
-rawstring2datetime <- function(x) {
-
-    str_c(
-      str_c(
-        str_c(20,str_sub(x, 5, 6) ) ,  # year (YYYY)
-        str_sub(x, 3, 4),               # month
-        str_sub(x, 1, 2), sep = '-'),  # day
-      str_c(
-        str_sub(x, 7, 8),               # hour
-        str_sub(x, 9, 10),               # min
-        str_sub(x, 11, 12), sep = ':'),sep = " ") # sec
-
-  }
 
 #' @title     year from file path
 #' @description extract year from a file path string
 #' @author    MV
-#' @examples  path2year("/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA/2016/2016.01.26/004/BOX001.TXT")
+#' @export
+#' @examples  path2year("/ds/raw_data_kemp/FIELD/Westerholz/SNB_v2/RAWDATA/2016/2016.01.26/004/BOX001.TXT")
 
 path2year <- function(x) {
-
    str_extract(x, "\\b(20)\\d{2}\\b") %>% as.integer
-
   }
 
 #' @title     box from file path (v1)
 #' @description extract box from a file path string
+#' @export
 #' @author    MV
-#' @examples  path2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA/2016/2016.01.26/011/BOX001.TXT")
+#' @examples  path2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB_v2/RAWDATA/2016/2016.01.26/011/BOX001.TXT")
 
 path2box <- function(x) {
    # str_extract(x, "\\b\\d{3}\\b")
@@ -149,20 +100,15 @@ path2box <- function(x) {
 
   }
 
-#' @title     test transponders
-#' @description the latest test transponder and their holders (authors)
-#' @param     con a db connection
-#' @return    a data.table
-#' @author    MV
-#' @examples  con = dbcon('mihai', host = 'scidb.mpio.orn.mpg.de')
-#' tetr(con)
 
 
 #' @title       basename to box
 #' @description extract box from a file path (basename) string
 #' @author    MV
-#' @examples  basename2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA/2016/2016.01.26/011/BOX001.TXT")
-#' basename2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA/2016/2016.01.26/011/BOX0080.TXT")
+#' @export
+#' @examples  
+#' basename2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA/2016/2016.01.26/011/BOX001.TXT")
+#' basename2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB_v2/RAWDATA/2016/2016.01.26/011/BOX0080.TXT")
 
 basename2box <- function(ff) {
 
@@ -172,85 +118,13 @@ basename2box <- function(ff) {
 
 
 
-
-
-abbrPath <- function(x) {
-  paste(dirname(x) %>% dirname %>% dirname %>% dirname, basename(x), sep = ' .../')
-  }
-
-#' @title Find if an external software is installed
-#' @param nam package name
-#' @return logical vector
-#' @author MV
-#' @examples
-#' find_installed('secure delete')
-find_installed <- function(nam) {
-
-  o = suppressWarnings( system(paste('which', nam), intern = TRUE) )
-  length(o) > 0
-  }
-
-#' @title Installs a demo system on 127.0.0.1
-#' @description Installs a demo system on 127.0.0.1, prepares a temp RAWDATA folder and changes the options
-#' @examples
-#'\dontrun{
-#'install_demo_system('mihai', '127.0.0.1')
-#' }
-#'
-install_demo_system <- function(user, host = '127.0.0.1', rawdata_root = paste(tempdir(), 'snb_demo_RAWDATA', sep = '/'),
-                    db = 'demo' ) {
-
-    # set db-s
-    dbq(user = user, host = host, q = paste('drop database if exists', db))
-    dbq(user = user, host = host, q = paste('drop database if exists', paste0(db, '_v2') ))
-    mysqlrestore(system.file('demo', 'db.sql', package = 'SNB'),db, user, host)
-    mysqlrestore(system.file('demo_v2', 'db.sql', package = 'SNB'),paste0(db, '_v2'), user, host)
-
-  # raw txt files v1
-    rdr = paste0(rawdata_root, '/')
-    if(dir.exists(rdr) ) unlink(rdr, TRUE)
-    dir.create(rdr)
-    yyyy = paste0(rdr, year(Sys.Date()) )
-    yyyy.mm.dd = paste(yyyy, format(Sys.Date(), "%Y.%m.%d"), sep = '/')
-
-    dir.create(yyyy.mm.dd, recursive = TRUE)
-    sapply(list.files( system.file('demo', 'txt', package = 'SNB'), full.names = TRUE),
-        function(x) file.copy(x, yyyy.mm.dd ,  recursive = TRUE) )
-
-
-  # raw txt files v2
-    rdr = paste0(rawdata_root, '_v2/')
-    if(dir.exists(rdr) ) unlink(rdr, TRUE)
-    dir.create(rdr)
-    yyyy = paste0(rdr, year(Sys.Date()) )
-    yyyy.mm.dd = paste(yyyy, format(Sys.Date(), "%Y.%m.%d"), sep = '/')
-
-    dir.create(yyyy.mm.dd, recursive = TRUE)
-    sapply(list.files( system.file('demo_v2', 'txt', package = 'SNB'), full.names = TRUE),
-        function(x) file.copy(x, yyyy.mm.dd ,  recursive = TRUE) )
-
-  #change options
-    options(DB_user         = user)
-    options(host            = host)
-    options(path.to.raw     = paste0(rawdata_root, '/') )
-    options(path.to.raw_v2  = paste0(rawdata_root, '_v2/') )
-    options(snbDB           = db)
-    options(snbDB_v2        = paste0(db, '_v2'))
-
-  }
-
-
-empty2NA <- function(x) {
-  if(length(x) == 0) NA else x
-}
-
-
 #' @title       List all data directories
 #' @param p     path to raw data, default to getOption("path.to.raw")
 #' @return      a data.table
+#' @export
 #' @author      MV
 #'
-data_dirs <- function(p = getOption("path.to.raw") ) {
+data_dirs <- function(p = getOption("path.to.raw_v2") ) {
   x = list.dirs(p, recursive = FALSE ) %>% sapply(., list.dirs, recursive = FALSE)
   x = data.table(path = unlist(x))
   x[, dir := basename(path)]
@@ -260,3 +134,125 @@ data_dirs <- function(p = getOption("path.to.raw") ) {
 
 
 
+
+#' @title       Read raw
+#' @description Read raw box txt file without any conversion and string splitting
+#' @param       filePath  file path to the box file
+#' @return      a \code{data.table}
+#' @author      MV
+#' @export
+#' @examples
+#' a = readRaw_v2(filePath = "/ds/raw_data_kemp/FIELD/Westerholz/breeding_2016_snb_heaven/07062016/122/BOX0122.TXT")
+readRaw_v2 <- function(filePath)  {
+    data.table(V = readLines(filePath, skipNul = TRUE) )
+    }
+
+#' @title       Extract date
+#' @description Extract date from raw data string
+#' @param       x character vector(s)
+#' @return      \code{POSIXct} object
+#' @author      MV
+#' @export
+#' @examples    
+#' snbstring2date_v2(x = '20170418-171742.202 Transponder: 4B76C4B43A6F0001')
+#' snbstring2date_v2(x = '20170418-171742 Transponder: 4B76C4B43A6F0001')
+snbstring2date_v2 <- function(x) {
+
+  o = str_extract(x, '(^20\\d{2})(\\d{2})(\\d{2})-(\\d{6})\\.(\\d{3})') # ms
+  if(  any(is.na(o) ) )
+    o = str_extract(x, '(^20\\d{2})(\\d{2})(\\d{2})-(\\d{6})') # s
+
+  strptime(o, "%Y%m%d-%H%M%OS") %>% as.POSIXct
+
+  }
+
+
+#' @title         read SNB data
+#' @description   read an SNB file as data.table-s (only transponder and Light barrier data are parsed).
+#' @param         f path to the snb file
+#' @return        a  \code{data.table} .
+#' @author        MV
+#' @export
+#' @examples
+#' x = read_snb_txt_v2(f = "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2016/2016.06.07/267/BOX0267.TXT")
+#' x = read_snb_txt_v2(f = "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2017/2017.04.24/30/BOX0030.TXT")
+#'
+read_snb_txt_v2 <- function(f) {
+  d = readRaw_v2(f = f)
+  d = d[ str_detect(V, 'Transponder:|LBO:|LBI:')  ]
+
+  d[, datetime_ := snbstring2date_v2(V) ]
+  d[,   sensor_value := str_extract(V, 'Transponder:[ \\t]*([^\\n\\r]*)') ]
+  d[is.na(sensor_value), sensor_value := str_extract(V, 'LB[IO]:[ \\t]*([^\\n\\r]*)') %>% toupper ]
+  d[, sensor := str_extract(sensor_value, 'LB[IO]|Transponder') %>% tolower]
+  d[, sensor_value := str_replace(sensor_value, 'LB[IO]:|Transponder:', '')]
+  d[, sensor_value := str_trim(sensor_value)]
+
+  d[, .(datetime_, sensor_value, sensor)]
+  }
+
+
+#' @title         Extract hardware ID.
+#' @description   Extract hardware ID from a TXT raw data file.
+#' @param         p path to the snb file
+#' @return        a  character string (length 1).
+#' @author        MV
+#' @export
+#' @examples
+#' hwid(p =  "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2016/2016.06.07/267/BOX0267.TXT")
+#'
+hwid <- function(p, n = 300) {
+
+  if(length(p) > 1) stop('Something wicked is happening. Stop and check the card!')
+
+  x = readLines(p, n = n)
+    if( length(x) > 0) {
+      # tt = snbstring2date_v2(x[grep('Initial Time Synchronisation', x)] )[1]
+
+      o = data.table( x[grep('HW-ID:', x)] )
+
+      if(nrow(o) > 0) {
+        o[, hwid := str_split(V1, 'HW-ID: ', simplify = TRUE)[2] , by = 1:nrow(o)]
+        o = o[!duplicated(hwid), .(hwid)]
+        # o[, datetime_ := tt ]
+        } else
+        o = data.table(hwid = NA, datetime_ = NA )
+   } else
+   o = data.table(hwid = NA, datetime_ = NA )
+
+  o[, hwid   := as.character(hwid)]
+  #o[, datetime_:= as.POSIXct(datetime_)]
+  o
+
+  }
+
+
+#' @title Find if an external software is installed
+#' @param nam package name
+#' @return logical vector
+#' @author MV
+#' @export
+#' @examples
+#' find_installed('secure delete')
+find_installed <- function(nam) {
+
+  o = suppressWarnings( system(paste('which', nam), intern = TRUE) )
+  length(o) > 0
+  }
+
+
+
+# ==========================================================================
+#  UNEXPORTED
+# ==========================================================================
+
+  abbrPath <- function(x) {
+    paste(dirname(x) %>% dirname %>% dirname %>% dirname, basename(x), sep = ' .../')
+    }
+
+
+
+
+  empty2NA <- function(x) {
+    if(length(x) == 0) NA else x
+    }

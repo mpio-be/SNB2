@@ -6,16 +6,17 @@
 #4. author: LS
 #5. not uploading function available yet
 
+#' @export
 events_v2 = function(x) {
-    x = fetch_ins_outs_v2(x, threshold)
-    if (nrow(x) == 0) 
-      return()
-    x = assign_direction_v2(x)
-    if (nrow(x) == 0) 
-      return()
-    x = concat_events_v2(x)
-    if(nrow(x) == 0) 
-      return()
-    x = combine_front_v2(x)
-    return(x)
-}
+  x = fetch_ins_outs_v2(x, threshold)
+  if (nrow(x) == 0) 
+    return()
+  x = assign_direction_v2(x)
+  if (nrow(x) == 0) 
+    return()
+  x = concat_events_v2(x)
+  if(nrow(x) == 0) 
+    return()
+  x = combine_front_v2(x)
+  return(x)
+  }

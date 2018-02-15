@@ -1,6 +1,6 @@
 {
 	"folders":[{
-		"name": "R package: SNBs",
+		"name": "R package: SNB2",
 		"path":".",
 		"folder_exclude_patterns": ["*_cache", "cache", "figure", "*_files", ".Rproj.user"]
 		}]

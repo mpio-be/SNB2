@@ -7,13 +7,13 @@ Maintainer: Lotte Schlicht <lschlicht@orn.mpg.de>, Mihai Valcu <valcu@orn.mpg.de
 Depends:
     R (>= 3.0.0),
     utils,
+    methods, 
     tools,
-    methods,
     stringr,
-    foreach,
-    data.table,
     magrittr,
-    fasttime
+    data.table,
+    foreach,
+    anytime
 Suggests:
     doParallel,
     fasttime,
@@ -30,6 +30,7 @@ Suggests:
     jsonlite,
     maptools
 VignetteBuilder: knitr
+Encoding: UTF-8
 Description: Westerholz Smart Nest-box Data Management
 License: MPIO
 LazyData: TRUE

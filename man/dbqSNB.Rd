@@ -5,7 +5,7 @@
 \title{query raw data, all b_ tables at once}
 \usage{
 dbqSNB(username, host, q = "SELECT * FROM boxtables limit 1",
-  db = getOption("snbDB"), testtr_remove = TRUE, ncores = 4)
+  db = getOption("snbDB_v2"), .boxes = 1:277, ncores = 4)
 }
 \arguments{
 \item{username}{username}
@@ -20,16 +20,16 @@ dbqSNB(username, host, q = "SELECT * FROM boxtables limit 1",
 query raw data, all b_ tables at once
 }
 \examples{
-# Simple select
+# Simple SELECT
 dbqSNB('mihai', host = "scidb.mpio.orn.mpg.de", 'SELECT * FROM boxtables limit 1')
 
 # Last entry
 dbqSNB('mihai', host = "scidb.mpio.orn.mpg.de", 'SELECT * FROM boxtables ORDER BY r_pk desc limit 1')
 
-# Select last n days
+# SELECT last n days
 x = dbqSNB('mihai', host = "scidb.mpio.orn.mpg.de",
 'SELECT datetime_, LB, transp FROM  boxtables
-   WHERE datetime_ >= DATE_ADD( (select max(datetime_) from  boxtables) , INTERVAL -3 DAY) AND
+   WHERE datetime_ >= DATE_ADD( (SELECT max(datetime_) from  boxtables) , INTERVAL -3 DAY) AND
    YEAR(datetime_) = YEAR(CURDATE() )
 ')
 

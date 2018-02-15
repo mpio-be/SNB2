@@ -70,8 +70,6 @@ CREATE TABLE IF NOT EXISTS file_status (
   filesize mediumint(10) unsigned NOT NULL COMMENT 'in KB',
   author varchar(4) DEFAULT NULL COMMENT 'who downloaded the SD card (Updated through SNB interface)',
   datetime_ datetime DEFAULT NULL COMMENT 'datetime when the SDcard got pulled',
-  bat_status tinyint(1) DEFAULT NULL COMMENT 'kept for back-compatibility',
-  firmware_status tinyint(2) DEFAULT NULL COMMENT 'kept for back-compatibility',
   upload_status tinyint(2) DEFAULT NULL COMMENT '0 = not uploaded, 1 = clean load, -1 = load unsuccesful',
   dt_loaded datetime DEFAULT NULL COMMENT 'when the data got transferred to the database',
   remarks varchar(255) DEFAULT NULL,

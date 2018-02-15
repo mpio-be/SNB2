@@ -1,23 +1,21 @@
 
 #' SNB butler
 #' @description      SNB User Interfaces
-#' @param user       local system and db user (passed to install_demo_system) .
-#' @param demo       default to FALSE; if TRUE runs  `install_demo_system()` first.
+#' @param user       local system and db user (passed to install_demo_SNB) .
+#' @param demo       default to FALSE; if TRUE runs  `install_demo_SNB()` first.
 #' @param in.browser default to FALSE. If true open the local interface in the default browser.
 #' @author           MV
 #' @return           nothing
 #' @examples         butler(demo = TRUE, user = 'mihai')
-butler <- function(demo = FALSE, user, in.browser = FALSE){
+butler <- function(demo = FALSE, user = 'testuser', in.browser = FALSE) {
 
    # INIT ----------------------------------------------
       sapply(c('sdb', 'SNB', 'shiny', 'shinydashboard', 'doParallel', 'data.table', 'magrittr', 'shinytoastr'),
         function(x) require(x , character.only = TRUE, quietly = TRUE) )
 
-
       cat("", file = cclog() )
 
-      if(demo) install_demo_system(user, '127.0.0.1')
-
+      if(demo) install_demo_SNB(user, '127.0.0.1')
 
       con = dbcon(user =getOption('DB_user'), host = getOption('host'),   db = getOption('snbDB_v2') )
       on.exit(dbDisconnect(con))

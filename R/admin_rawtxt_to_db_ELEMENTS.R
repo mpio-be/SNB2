@@ -5,25 +5,26 @@
 #' @param 			 id the \code{id}-s in file status and the associated box tables.
 #' @param 			 con a connection object
 #' @author  		 MV
+#' @export
 drop_by_id <- function( con, id , db = getOption("snbDB_v2") ) {
 
 	dbq(con, paste('USE', db  ))
 
 	k = dbq(con,  paste('select id, path, box from file_status WHERE id in (', paste(id, collapse = ','), ')')    )
 
-	dbq(con, paste('DELETE FROM file_status WHERE id in (', paste(id, collapse = ','), ')') )
-	dbq(con, paste('DELETE FROM DATA_QUALITY WHERE id in (', paste(id, collapse = ','), ')') )
+	N_dropped_from_file_status = dbExecute(con, paste('DELETE FROM file_status WHERE id in (', paste(id, collapse = ','), ')') )
 
-	k[, sql := paste('DELETE FROM', int2b(box),  'WHERE id =', id)]
+	k[, N_removed_from_box_tables := dbExecute(con, paste('DELETE FROM', int2b(box),  'WHERE id =', id) )  ,  by = id   ]
 
-		o= if(nrow(k) > 0) nrow(k[, lapply(sql, FUN = dbq, con = con)]) else 0
+    message(paste(
+    	nrow(k) , 'box tables were updated ( N = ', sum(k$N_removed_from_box_tables), 'rows deleted)' , 
+    	"&", N_dropped_from_file_status, 'lines removed from file_status') )
 
-	message(o , ' box tables were touched.')
 
-	k[, ':=' (id = NULL, sql = NULL)]
+	k[, ':=' (id = NULL, N_removed_from_box_tables = NULL)]
 	k[, path := paste0(getOption('path.to.raw_v2'), path)]
 
-	return(k)
+	k
 
 	}
 
@@ -33,12 +34,14 @@ drop_by_id <- function( con, id , db = getOption("snbDB_v2") ) {
 #' @param       p 	   path to raw data, default to getOption("path.to.raw")
 #' @return 			   logical
 #' @author  		   MV
+#' @export
 #' @examples
 #' well_formated_directory(getOption("path.to.raw_v2"))
 #' 
 well_formated_directory <- function(p = getOption("path.to.raw_v2") , y = year(Sys.Date()) ) {
 
 	x = data.table( dirs = list.files( paste0(p, y), full.name = TRUE) )
+
 	x[, dirnam := basename(dirs) ]
 
 	isNotDate = x[ ! grepl('^[0-9]{4}\\.[0-9]{1,2}\\.[0-9]{1,2}$', dirnam )   ]
@@ -60,6 +63,7 @@ well_formated_directory <- function(p = getOption("path.to.raw_v2") , y = year(S
 #' @param con 	  a connection object
 #' @return 		  a data.table if there are new directories or otherwise NULL
 #' @author  	  MV
+#' @export
 #' @examples
 #' require(sdb)
 #' con = dbcon('valcu')
@@ -103,6 +107,7 @@ incoming_files <- function( con, p = getOption("path.to.raw_v2") , y =year(Sys.D
 #' @param update    default to TRUE
 #' @return 			TRUE or the update content when update = FALSE
 #' @author  	   	MV
+#' @export
 #' @examples
 #' require(sdb)
 #' con = dbcon('valcu')
@@ -117,22 +122,22 @@ file_status_update1 <- function(con, x, update = TRUE) {
 
 	snbDB        = comment(x)[2]
 	path.to.raw  = comment(x)[1]
-	ver          = if (grepl('_v2$', snbDB) ) 2 else 1
+	comment(x) <- NULL
+
+	x = data.table(x)
 
 	dbq(con, paste('USE', snbDB  )  )
-	cn = dbq(con, 'SHOW COLUMNS FROM file_status')$Field
+	cn = dbq(con, 'SELECT * FROM file_status where FALSE') %>% names
 
-	x[, filesize    := file.info(path)$size/1024 ]
+	x[, filesize    :=  file.size(x$path)/1024  ]
 	x[, path        := str_replace(path, path.to.raw, "") ]
 	x[, datetime_	  := char2date(path) ]
 
-	# write default values for columns
-	x[, ':=' (firmware_status = if(ver == 2) NA else 1 , bat_status = if(ver == 2) NA else 1 )]
 
 	# add missing column names
-	lapply( setdiff(cn, names(x)), function(n) x[, c(n) := NA] )
+	for(nam in setdiff(cn, names(x)) ) set(x, j = nam, value = NA)
 
-	setcolorder(x, cn)
+    setcolorder(x, cn)
 
 	# add box
 	x[, box := as.integer(str_replace(box, 'b', ''))]
@@ -151,6 +156,7 @@ file_status_update1 <- function(con, x, update = TRUE) {
 #' @param con 		A connection object
 #' @return 			\code{data.table}
 #' @author  		MV
+#' @export
 hot_files <- function(con, p = getOption("path.to.raw_v2"), db = getOption("snbDB_v2") ) {
 
 	dbq(con, paste('USE', db  )  )
@@ -172,19 +178,19 @@ hot_files <- function(con, p = getOption("path.to.raw_v2"), db = getOption("snbD
 #' 						    \code{box}, \code{id} (corresponding with the file_status id) and \code{upload_status} = 1 (clean load).
 #' @return 			a list of \code{data.table} with attributes named 'snb'.
 #' @author  		MV
+#' @export
 load_clean_txt_v2 <- function(h,parralel = FALSE, ncores = 4) {
 	if(parralel) {
 		library(doParallel)
 		cl = makePSOCKcluster(ncores)
 		registerDoParallel(cl)
 		on.exit(stopCluster(cl))
-    on.exit(registerDoSEQ())
+    	on.exit(registerDoSEQ())
 		}
 
 		o = foreach(i=1:nrow(h), .packages = c('stringr', 'data.table'), .errorhandling = 'pass') %dopar% {
 
-		x = read_snb_txt_v2(h[i,]$path)
-
+			x = read_snb_txt_v2(h[i,]$path)
 
 			# set attributes
 			aa = h[i, .(id, box)]
@@ -193,7 +199,7 @@ load_clean_txt_v2 <- function(h,parralel = FALSE, ncores = 4) {
 
 			x
 
-			}
+		}
 
 
 	 o[sapply(o, FUN = inherits, what = 'data.table')]
@@ -207,6 +213,7 @@ load_clean_txt_v2 <- function(h,parralel = FALSE, ncores = 4) {
 #' @param dat 		a list of \code{data.table}-s with attributes see \code{\link{load_clean_txt}}.
 #' @return 			the number of uploaded files
 #' @author  		MV
+#' @export
 update_bTables <- function(con, dat, ui = FALSE, demo = FALSE, db = getOption("snbDB_v2") ) {
 	dbq(con, paste('USE', db  ))
 

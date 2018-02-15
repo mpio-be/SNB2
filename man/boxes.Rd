@@ -16,7 +16,7 @@ boxes(x = 1:277)
 A list of boxes in westerholz formated as b00x
 }
 \examples{
-boxes()
+  boxes()
 }
 \author{
 MV

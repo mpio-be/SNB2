@@ -2,29 +2,18 @@
 % Please edit documentation in R/utils.R
 \name{basename2box}
 \alias{basename2box}
-\title{test transponders}
+\title{basename to box}
 \usage{
 basename2box(ff)
 }
-\arguments{
-\item{con}{a db connection}
-}
-\value{
-a data.table
-}
 \description{
-the latest test transponder and their holders (authors)
-
 extract box from a file path (basename) string
 }
 \examples{
- con = dbcon('mihai', host = 'scidb.mpio.orn.mpg.de')
-tetr(con)
- basename2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA/2016/2016.01.26/011/BOX001.TXT")
-basename2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA/2016/2016.01.26/011/BOX0080.TXT")
+ 
+basename2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA/2016/2016.01.26/011/BOX001.TXT")
+basename2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB_v2/RAWDATA/2016/2016.01.26/011/BOX0080.TXT")
 }
 \author{
-MV
-
 MV
 }

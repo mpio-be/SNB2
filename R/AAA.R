@@ -1,18 +1,24 @@
 
 
+#' @import  tools
+#' @import  data.table
+
+
 #' @title 			  Smart Box Data management
 #' @description 	An all-in-one package for data management, user-level functions and hardware feedback.
 #' @docType 		  package
 #' @name 			    SNB2
+#' @export
 #' @usage
 #' Overview help files can be found at http://scidb.mpio.orn.mpg.de
 #'
 
 .onLoad <- function(libname, pkgname){
+
+
 	dcf <- read.dcf(file=system.file("DESCRIPTION", package=pkgname) )
 
-  packageStartupMessage(paste('This is', pkgname, dcf[, "Version"] ))
-  packageStartupMessage('WARNING: date-times in SNBatWESTERHOLZ_v2 are both winter and summer time')
+  packageStartupMessage(paste(pkgname, dcf[, "Version"], 'WARNING: SNB-v2 datetime is CET in winter and CEST in summer.' ))
 
 	options(host 		          = 'scidb.mpio.orn.mpg.de')
   options(DB_user           = 'snbAdmin')

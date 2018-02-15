@@ -1,0 +1,20 @@
+
+Continuous:
+  - add tests on the way
+
+Update after v1 freeze:
+  - align package
+  - update scidbadmin
+  - test overnight with real data
+
+
+
+Framework updates:
+  - DB table to show box usage through time + scidbadmin interface
+    # bat volt is checked twice a day
+    # time sync happens at 2 in the night
+    
+  - remove DB duplicates 
+  - save all v1 raw data as an apache feather (or DT? )
+
+

@@ -5,6 +5,7 @@
 #' @param ui      only relevant in an UI interface (e.g. butler() )
 #' @param demo	  only relevant when using a demo system (see install_demo_system() )
 #' @author  		  MV
+#' @export
 #' @examples
 #' \donotrun{
 #'  install_demo_system('mihai', '127.0.0.1')
@@ -16,8 +17,6 @@
 scidb_snbUpdater <- function(con, p = getOption("path.to.raw_v2"), y = year(Sys.Date()) ,
   db = getOption("snbDB_v2") , ui = FALSE, demo = FALSE) {
 
-  ver = if( grepl('_v2$', db )) 2 else 1
-  lct = if (ver == 1) load_clean_txt else load_clean_txt_v2
 
   # well_formated_directory
     if(ui) bar <- shiny::Progress$new(min = 1, max = 5)
@@ -69,7 +68,7 @@ scidb_snbUpdater <- function(con, p = getOption("path.to.raw_v2"), y = year(Sys.
     if(ui) bar$set(2, message = "Preparing DB upload", detail = m5)
   	cat(m5, '\n')
 
-  	dat = lct(h)
+  	dat = load_clean_txt_v2(h)
 
     if(ui) bar$close()
 
@@ -81,29 +80,20 @@ scidb_snbUpdater <- function(con, p = getOption("path.to.raw_v2"), y = year(Sys.
 
  }
 
+
 #' @title        Unload and reload files
 #' @description  Unload and reload files by ID
 #' @param con    a connection object
 #' @param id     id
-drop_and_reload = function(con, id) {
+#' @param ...    goes to  scidb_snbUpdater
+#' @export
+#' 
+drop_and_reload = function(con, id, ...) {
   dropped_files = drop_by_id( con, id )
-  cat('Updating file_status table ...')
-
-  file_status_update1(con, x)
-  cat('DONE!\n')
-
-  cat('Getting the list of new txt files from the file_status table ...')
-  h = hot_files(con)
-  cat('DONE!\n')
+  
+  scidb_snbUpdater(con, ...)
 
 
-  cat('Fetching and preparing new files. Please wait!')
-  dat = load_clean_txt(h)
-  cat('DONE!\n')
-
-  cat('Updating individual box tables')
-  update_bTables(con, dat)
-  cat('DONE!\n')
  }
 
 

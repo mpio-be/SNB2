@@ -4,17 +4,18 @@
 \alias{overnight}
 \title{overnight}
 \usage{
-overnight(username = getOption("DB_user"), host = getOption("host"),
-  buffer = 1, date = Sys.Date() - 1)
+overnight(buffer = 1, date = Sys.Date() - 1, ...)
 }
 \arguments{
-\item{username}{username}
-
-\item{host}{host}
-
 \item{buffer}{(hours)   sunrise + buffer}
 
 \item{date}{date, default to last date in file_status table}
+
+\item{...}{goes to dbqSNB}
+
+\item{username}{username}
+
+\item{host}{host}
 }
 \description{
 overnight

@@ -4,7 +4,7 @@
 \alias{data_dirs}
 \title{List all data directories}
 \usage{
-data_dirs(p = getOption("path.to.raw"))
+data_dirs(p = getOption("path.to.raw_v2"))
 }
 \arguments{
 \item{p}{path to raw data, default to getOption("path.to.raw")}
