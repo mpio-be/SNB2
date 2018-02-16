@@ -293,3 +293,18 @@ check_sys_pwd <- function(password) {
   suppressWarnings( system(paste('echo' ,shQuote(password) ,  '| sudo -S echo 1'),
                 intern = TRUE, ignore.stderr = TRUE) ) %>% length == 1
 }
+
+
+
+#' @export
+
+install_dektop <- function() {
+
+ system('mkdir -p ~/butler/')
+
+ cmd = paste('cp' , paste0(system.file('os_install', package = 'SNB2'), '/*') , '~/butler/')
+ system(cmd)
+
+
+
+}

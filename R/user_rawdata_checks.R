@@ -72,7 +72,7 @@ diagnose_pull_v2 <- function(date, outDirLocation = getOption('path.to.raw_v2'),
 	require(data.table)
 	require(SNB)
 	require(shinytoastr)
-  require(doParallel)
+    require(doParallel)
 
 	if(shiny) msg = toastr_success else msg = function(x, ...) message(x, ...)
 	path = paste0(outDirLocation, paste(year(char2date(date)), date, sep = '/') )

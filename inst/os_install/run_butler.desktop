@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=run-SNB-butler
+Icon=~/butler/butler.svg
+Exec=~/butler/run_butler.sh
