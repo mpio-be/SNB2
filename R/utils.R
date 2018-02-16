@@ -298,12 +298,18 @@ check_sys_pwd <- function(password) {
 
 #' @export
 
-install_dektop <- function() {
+install_desktop <- function() {
 
  system('mkdir -p ~/butler/')
 
  cmd = paste('cp' , paste0(system.file('os_install', package = 'SNB2'), '/*') , '~/butler/')
  system(cmd)
+
+ ff = list.files('~/butler/', full.names = TRUE)
+
+ lapply(ff, Sys.chmod)
+
+
 
 
 
