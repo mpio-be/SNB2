@@ -243,16 +243,53 @@ find_installed <- function(nam) {
 
 
 # ==========================================================================
-#  UNEXPORTED
+#  Undocumented
 # ==========================================================================
 
+#' @export
   abbrPath <- function(x) {
     paste(dirname(x) %>% dirname %>% dirname %>% dirname, basename(x), sep = ' .../')
     }
 
-
-
-
+#' @export
   empty2NA <- function(x) {
     if(length(x) == 0) NA else x
     }
+
+#' @export
+cclog <- function() {
+  paste0(tempdir(), '/cclog.txt')
+ }
+
+#' @export
+Span <- function(x, label = 'primary', glyphicon = 'open-file', div = TRUE, h = 2) {
+  o = paste0('<span class="label label-',label,'"><i class="glyphicon glyphicon-',glyphicon,'"></i>', x, '</span>  ')
+  if(div) {
+    h = paste0('h', h)
+    o = paste0('<div><',h,'>', o, '</',h,'></div>' )
+    }
+  o
+  }
+
+#' @export
+options_footer <- function(style = "position: absolute; bottom: 0; left: 1; font-size:12px") {
+  div(class = "col-sm-12 text-left text-muted",style=style,
+        HTML('<hr>',
+            '<strong>Package options:</strong><br>',
+            paste('<strong>host:</strong>',        getOption('host'), '<br>'),
+            paste('<strong>raw data:</strong>',    paste(getOption('path.to.raw_v2') %>% str_sub(., 1, 18), "..."),'<br>' ),
+            paste('<strong>db name:</strong>',     getOption('snbDB2'), '<br>'),
+            paste('<strong>db user:</strong>',     getOption('DB_user') , '<br>'),
+            paste('<strong>package:</strong> SNB', packageVersion('SNB2') )
+         )
+      )
+
+  }
+
+
+
+#' @export
+check_sys_pwd <- function(password) {
+  suppressWarnings( system(paste('echo' ,shQuote(password) ,  '| sudo -S echo 1'),
+                intern = TRUE, ignore.stderr = TRUE) ) %>% length == 1
+}

@@ -46,11 +46,7 @@ tetr <- function(condb ) {
 #'    YEAR(datetime_) = YEAR(CURDATE() )
 #' ')
 #'
-dbqSNB <- function(username, host, 
-    q = 'SELECT * FROM boxtables limit 1', 
-    db = getOption('snbDB_v2'), 
-    .boxes = 1:277,
-    ncores = 4) {
+dbqSNB <- function(username, host, q = 'SELECT * FROM boxtables limit 1', db = getOption('snbDB_v2'), .boxes = 1:277, ncores = 4) {
 
     pb = tempfile(fileext = '.txt')
     message('to follow progress open', sQuote(pb), 'in a text editor')
@@ -148,7 +144,20 @@ overnight <- function(buffer = 1, date = Sys.Date()-1, ...) {
 
 
 
+#' hardwareIDs table
+#' 
+#' @export
+harwareIDs <- function(username  = getOption('DB_user') , host = getOption('host') ) {
 
+    con = dbcon(user =username, host = host,   db = getOption('snbDB_v2') )
+    on.exit(dbDisconnect(con))
+    
+    o = dbq(con, 'select box, hwid from boxid order by box, datetime_ desc')[!duplicated(box)]
+    if(nrow(o) < 277) warning("Not all boxes have a registered hardware ID!")
+
+    o  
+
+}
 
 
 

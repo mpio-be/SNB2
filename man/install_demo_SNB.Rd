@@ -4,15 +4,16 @@
 \alias{install_demo_SNB}
 \title{Installs a demo system on 127.0.0.1}
 \usage{
-install_demo_SNB(user, host = "127.0.0.1", rawdata_root = paste(tempdir(),
-  "SNB_demo_RAWDATA", sep = "/"), db = "SNB_demo")
+install_demo_SNB(user = "testuser", host = "127.0.0.1",
+  rawdata_root = paste(tempdir(), "SNB_demo_RAWDATA", sep = "/"),
+  db = "SNB_demo")
 }
 \description{
 Installs a demo system on 127.0.0.1, prepares a temp RAWDATA folder and changes the options
 }
 \examples{
 \dontrun{
-install_demo_SNB('testuser', '127.0.0.1')
+install_demo_SNB()
 }
 
 }

@@ -73,7 +73,7 @@ incoming_files <- function( con, p = getOption("path.to.raw_v2") , y =year(Sys.D
 
 	dbq(con, paste('USE', db))
 
-	newdirs = data.table( dirs = list.files( paste0(p, y), full.name = TRUE, recursive = TRUE) )
+	newdirs = data.table( dirs = list.files( paste(p, y, sep ='/'), full.name = TRUE, recursive = TRUE) )
 	newdirs = newdirs[grep('^box.{1,4}.txt$', tolower(basename(dirs)), perl = TRUE), ]
 	newdirs[, dirs   := gsub('/box.{1,4}.txt$', '', dirs, ignore.case = TRUE) ]
 	newdirs[, dirnam := gsub(p, '', dirs) ]
@@ -169,7 +169,6 @@ hot_files <- function(con, p = getOption("path.to.raw_v2"), db = getOption("snbD
 	}
 
 
-
 #' @title 			Load clean txt files 
 #' @description		Load all files which are free of bugs and thus directly importable to a \code{data.table} with attribute
 #' @param con 		A connection object
@@ -179,8 +178,8 @@ hot_files <- function(con, p = getOption("path.to.raw_v2"), db = getOption("snbD
 #' @return 			a list of \code{data.table} with attributes named 'snb'.
 #' @author  		MV
 #' @export
-load_clean_txt_v2 <- function(h,parralel = FALSE, ncores = 4) {
-	if(parralel) {
+load_clean_txt_v2 <- function(h,parallel = FALSE, ncores = 4) {
+	if(parallel) {
 		library(doParallel)
 		cl = makePSOCKcluster(ncores)
 		registerDoParallel(cl)

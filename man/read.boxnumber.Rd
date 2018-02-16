@@ -2,14 +2,12 @@
 % Please edit documentation in R/admin_butler_ELEMENTS.R
 \name{read.boxnumber}
 \alias{read.boxnumber}
-\title{looks up the box number (v1, v2)}
+\title{looks up the box number}
 \usage{
-read.boxnumber(path, nam = "Boxnummer.txt", boxid, hwidCheck = TRUE)
+read.boxnumber(path, boxid, hwidCheck = TRUE)
 }
 \arguments{
 \item{path}{file path}
-
-\item{nam}{default to Boxnummer.txt}
 
 \item{boxid}{data.table with current box - hwid}
 
@@ -19,7 +17,7 @@ read.boxnumber(path, nam = "Boxnummer.txt", boxid, hwidCheck = TRUE)
 data.table containing Boxnummer.txt info
 }
 \description{
-looks up the box number in Boxnummer.txt (v1) or by association with HW-ID (v2)
+looks up the box number in BoxNNNN.txt and optionally cross-checks it with the HW-ID
 }
 \examples{
  require(sdb)

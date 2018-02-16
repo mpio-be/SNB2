@@ -4,12 +4,12 @@
 \alias{sdcard_format}
 \title{Format SD cards}
 \usage{
-sdcard_format(x = card_format_status(), ids, password, format = FALSE)
+sdcard_format(password, x = card_format_status())
 }
 \arguments{
-\item{x}{card_format_status() output}
-
 \item{password}{password}
+
+\item{x}{card_format_status() output}
 }
 \author{
 MV

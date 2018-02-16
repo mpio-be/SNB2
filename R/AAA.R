@@ -2,6 +2,7 @@
 
 #' @import  tools
 #' @import  data.table
+#' @import  parallel doParallel foreach
 
 
 #' @title 			  Smart Box Data management

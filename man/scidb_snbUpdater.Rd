@@ -5,7 +5,7 @@
 \title{Box files (txt) to scidb.mpio.orn.mpg.de}
 \usage{
 scidb_snbUpdater(con, p = getOption("path.to.raw_v2"), y = year(Sys.Date()),
-  db = getOption("snbDB_v2"), ui = FALSE, demo = FALSE)
+  db = getOption("snbDB_v2"), ui = FALSE, demo = FALSE, ...)
 }
 \arguments{
 \item{con}{a connection object to \code{scidb.mpio.orn.mpg.de} the MySQL database.}
@@ -13,6 +13,8 @@ scidb_snbUpdater(con, p = getOption("path.to.raw_v2"), y = year(Sys.Date()),
 \item{ui}{only relevant in an UI interface (e.g. butler() )}
 
 \item{demo}{only relevant when using a demo system (see install_demo_system() )}
+
+\item{...}{goes to load_clean_txt: mainly parallel = TRUE}
 }
 \description{
 scidb_snbUpdater serializes several functions and performs the update of both the file_status and each b00x table.
@@ -22,7 +24,7 @@ scidb_snbUpdater serializes several functions and performs the update of both th
  install_demo_system('mihai', '127.0.0.1')
  require(sdb)
  con = dbcon(user =  getOption("DB_user") , host = getOption("host"))
- scidb_snbUpdater(con)
+ scidb_snbUpdater(con,  parallel = TRUE)
  closeCon(con)
 }
 }

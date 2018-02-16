@@ -1,3 +1,6 @@
+DB:
+  - update hwid table
+
 
 Continuous:
   - add tests on the way
@@ -6,6 +9,7 @@ Update after v1 freeze:
   - align package
   - update scidbadmin
   - test overnight with real data
+  - check and test diagnose_raw_txt_v2 & diagnose_pull_v2
 
 
 

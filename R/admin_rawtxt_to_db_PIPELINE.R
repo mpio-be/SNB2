@@ -3,7 +3,8 @@
 #' @description 	scidb_snbUpdater serializes several functions and performs the update of both the file_status and each b00x table.
 #' @param con     a connection object to \code{scidb.mpio.orn.mpg.de} the MySQL database.
 #' @param ui      only relevant in an UI interface (e.g. butler() )
-#' @param demo	  only relevant when using a demo system (see install_demo_system() )
+#' @param demo    only relevant when using a demo system (see install_demo_system() )
+#' @param ...	    goes to load_clean_txt: mainly parallel = TRUE
 #' @author  		  MV
 #' @export
 #' @examples
@@ -11,11 +12,11 @@
 #'  install_demo_system('mihai', '127.0.0.1')
 #'  require(sdb)
 #'  con = dbcon(user =  getOption("DB_user") , host = getOption("host"))
-#'  scidb_snbUpdater(con)
+#'  scidb_snbUpdater(con,  parallel = TRUE)
 #'  closeCon(con)
 #' }
 scidb_snbUpdater <- function(con, p = getOption("path.to.raw_v2"), y = year(Sys.Date()) ,
-  db = getOption("snbDB_v2") , ui = FALSE, demo = FALSE) {
+  db = getOption("snbDB_v2") , ui = FALSE, demo = FALSE, ...) {
 
 
   # well_formated_directory
@@ -68,7 +69,7 @@ scidb_snbUpdater <- function(con, p = getOption("path.to.raw_v2"), y = year(Sys.
     if(ui) bar$set(2, message = "Preparing DB upload", detail = m5)
   	cat(m5, '\n')
 
-  	dat = load_clean_txt_v2(h)
+  	dat = load_clean_txt_v2(h, ...)
 
     if(ui) bar$close()
 

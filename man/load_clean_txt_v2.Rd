@@ -4,7 +4,7 @@
 \alias{load_clean_txt_v2}
 \title{Load clean txt files}
 \usage{
-load_clean_txt_v2(h, parralel = FALSE, ncores = 4)
+load_clean_txt_v2(h, parallel = FALSE, ncores = 4)
 }
 \arguments{
 \item{h}{An output of \code{\link{hot_files}}   containing box and path}

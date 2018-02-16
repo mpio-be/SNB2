@@ -17,7 +17,7 @@ TRUE on success
  boxid <- dbq( q= 'select box, hwid from boxid order by box, datetime_ desc',
          db = getOption('snbDB_v2'), host = getOption('host'), user =getOption('DB_user'))[!duplicated(box)]
  x = file_copy_status(bid = boxid)
-sdcard_uploader(x)
+ sdcard_uploader(x)
 }
 \author{
 MV

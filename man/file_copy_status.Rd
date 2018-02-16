@@ -5,8 +5,7 @@
 \alias{card_copy_status}
 \title{Checks inserted SD cards.}
 \usage{
-file_copy_status(download_date = Sys.Date(), x = cardReader(),
-  bid = boxid)
+file_copy_status(download_date = Sys.Date(), x = cardReader(), ...)
 
 card_copy_status(x = file_copy_status())
 }
@@ -16,16 +15,16 @@ card_copy_status(x = file_copy_status())
 \item{x}{a DT as returned by cardReader() for file_copy_status
 or a DT returned by file_copy_status() for card_copy_status()}
 
-\item{bid}{boxid DT (see GUI)}
+\item{...}{pass to  read.boxnumber}
 }
 \value{
 a DT
 }
 \examples{
  require(sdb)
- boxid <- dbq( q= 'select box, hwid from boxid order by box, datetime_ desc',
+ bid <- dbq( q= 'select box, hwid from boxid order by box, datetime_ desc',
          db = getOption('snbDB_v2'), host = getOption('host'), user =getOption('DB_user'))[!duplicated(box)]
- x = file_copy_status(bid = boxid)
+ x = file_copy_status(boxid = bid)
  card_copy_status(x)
 }
 \author{

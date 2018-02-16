@@ -4,14 +4,15 @@
 #' @param password password
 #' @return data.table with 3 columns
 #' @author MV
+#' @export
 #' @examples
 #' head(system_status(password = 'some char'))
 system_status <- function(pulldate = Sys.Date(), password = '') {
 
   # parameters
-    dpath       = dirname( options('path.to.raw')$path.to.raw )
+    dpath       = dirname( getOption('path.to.raw_v2') )
     repo        =  abbrPath(dpath)
-    good_reader = options('cardReader')$cardReader
+    good_reader = getOption('cardReader')
     x           = cardReader()
     cr          = unique( str_trim(x$vendor) )
     os          = Sys.info()[1]
@@ -79,6 +80,7 @@ system_status <- function(pulldate = Sys.Date(), password = '') {
 #' @return data.table containing info on HOTPLUG,MOUNTPOINT,KNAME,MODEL,VENDOR,TRAN,FSTYPE
 #' @param   cardsize default to getOption('cardSize')
 #' @author MV
+#' @export
 #' @examples
 #' x = cardReader();x
 cardReader <- function(cardsize = getOption('cardSize') ) {
@@ -114,13 +116,13 @@ cardReader <- function(cardsize = getOption('cardSize') ) {
 
   }
 
-#' @title       looks up the box number (v1, v2)
-#' @description looks up the box number in Boxnummer.txt (v1) or by association with HW-ID (v2)
+#' @title       looks up the box number 
+#' @description looks up the box number in BoxNNNN.txt and optionally cross-checks it with the HW-ID 
 #' @param       path       file path
-#' @param       nam        default to Boxnummer.txt
 #' @param       boxid      data.table with current box - hwid
 #' @param       hwidCheck  check hwid
 #' @return      data.table containing Boxnummer.txt info
+#' @export
 #' @author      MV
 #' @examples
 #'  require(sdb)
@@ -128,44 +130,25 @@ cardReader <- function(cardsize = getOption('cardSize') ) {
 #'          db = getOption('snbDB_v2'), host = getOption('host'), user =getOption('DB_user'))[!duplicated(box)]
 #' x = cardReader()
 #' z = x[, read.boxnumber(mountpoint, boxid = boxid), by = .(row.names(x)) ]
-read.boxnumber <- function(path, nam  = 'Boxnummer.txt', boxid, hwidCheck = TRUE) {
+read.boxnumber <- function(path, boxid, hwidCheck = TRUE) {
 
   nfiles = length(list.files(path))
-  boxnrfile = paste(path, nam, sep = '/')
 
-  # empty card
-    if(nfiles == 0) {
+  
+    if(nfiles == 0) { # empty card
       v = NA
       b = NA
       empty = TRUE
       valid = FALSE
       }
 
-  # version 1
-    if(file.exists(boxnrfile)) {
-      v = 1
-     if(nfiles >  2)  stop( paste('An SD card (v1) with ', nfiles, 'files. I do not know what to do.') )
-     if(nfiles == 1)  empty = TRUE
-     if(nfiles == 2)  empty = FALSE
+  if(nfiles > 1)  # dirty card
+    stop( paste('An SD card with ', nfiles, 'files. Proceed with caution ☃.') )
 
-      b =  readLines(con  = boxnrfile, warn = FALSE)
 
-      if( length(b) == 0  || is.na(as.integer(b)) ) {
-         b = NA
-         valid = FALSE
-         }
-
-      if( length(b) > 0 && as.integer(b)  ) valid = TRUE
-
-      }
-
-  # version 2
-    if(!file.exists(boxnrfile) & nfiles > 0) {
-      v = 2
-      if(nfiles > 1)  stop( paste('An SD card(v2) with ', nfiles, 'files. I do not know what to do.') )
+  if( nfiles == 1) { # ok card
 
       ff = list.files(path, full.names = TRUE)
-
       empty = file.info(ff, extra_cols = FALSE)$size < 2
       b = basename2box(ff)
 
@@ -187,7 +170,7 @@ read.boxnumber <- function(path, nam  = 'Boxnummer.txt', boxid, hwidCheck = TRUE
         }
       }
 
-  data.table(box = as.integer(b), valid, empty, ver = as.integer(v))
+  data.table(box = as.integer(b), valid, empty)
 
   }
 
@@ -195,31 +178,27 @@ read.boxnumber <- function(path, nam  = 'Boxnummer.txt', boxid, hwidCheck = TRUE
 #' @param download_date default to Sys.Date()
 #' @param x             a DT as returned by cardReader() for file_copy_status
 #'                      or a DT returned by file_copy_status() for card_copy_status()
-#' @param bid           boxid DT (see GUI)
+#' @param ...          pass to  read.boxnumber
 #' @return              a DT
 #' @author MV
+#' @export
 #' @examples
 #'  require(sdb)
-#'  boxid <- dbq( q= 'select box, hwid from boxid order by box, datetime_ desc',
+#'  bid <- dbq( q= 'select box, hwid from boxid order by box, datetime_ desc',
 #'          db = getOption('snbDB_v2'), host = getOption('host'), user =getOption('DB_user'))[!duplicated(box)]
-#'  x = file_copy_status(bid = boxid)
+#'  x = file_copy_status(boxid = bid)
 #'  card_copy_status(x)
-file_copy_status <- function(download_date = Sys.Date() , x = cardReader(), bid = boxid) {
+file_copy_status <- function(download_date = Sys.Date() , x = cardReader(), ...) {
 
   x[, id := .(row.names(x))]
-  b = x[, read.boxnumber(mountpoint, boxid = bid), by = id ]
+  b = x[, read.boxnumber(mountpoint, ...), by = id ]
 
   x = merge(x, b, by = 'id', all.x = TRUE)
 
   src = x[,  .(src = list.files(mountpoint,full.names = TRUE) ) , by = id ]
   x = merge(x, src , by = 'id', all.x = TRUE)
 
-  # ver 1
-  x[ver == 1, dest := paste0(paste0(getOption("path.to.raw"),'/', year(download_date), '/'),
-              format(download_date, '%Y.%m.%d') ,'/', box, '/', basename(src)) ]
-
-  # ver 2
-  x[ver == 2, dest := paste0(paste0(getOption("path.to.raw_v2"), '/',year(download_date), '/'),
+  x[, dest := paste0(paste0(getOption("path.to.raw_v2"), '/',year(download_date), '/'),
               format(download_date, '%Y.%m.%d') ,'/', box, '/', basename(src)) ]
 
   x[is.na(src), dest := NA]
@@ -229,10 +208,11 @@ file_copy_status <- function(download_date = Sys.Date() , x = cardReader(), bid 
  }
 
 #' @rdname file_copy_status
+#' @export
 card_copy_status <- function(x = file_copy_status () ) {
 
   # collapse by sdcard
-  cc = x[, .(nfiles = length( which(!is.na(src))) ), by = .(id, ro, kname, box, ver, valid, empty)]
+  cc = x[, .(nfiles = length( which(!is.na(src))) ), by = .(id, ro, kname, box,  valid, empty)]
   cc[, box_padded := paste('Box', str_pad(box, pad = ' ', width = 3, side = 'both') ) ]
 
   # copied
@@ -257,14 +237,14 @@ card_copy_status <- function(x = file_copy_status () ) {
 #' @param    x        file_copy_status output
 #' @return TRUE on success
 #' @author MV
+#' @export
 #' @examples
 #'  require(sdb)
 #'  boxid <- dbq( q= 'select box, hwid from boxid order by box, datetime_ desc',
 #'          db = getOption('snbDB_v2'), host = getOption('host'), user =getOption('DB_user'))[!duplicated(box)]
 #'  x = file_copy_status(bid = boxid)
-#' sdcard_uploader(x)
+#'  sdcard_uploader(x)
 sdcard_uploader <- function(x) {
-
   ccs = card_copy_status(x)
   z = merge(x, ccs[, .(box, copied)], by = 'box', allow.cartesian = TRUE)
 
@@ -273,7 +253,7 @@ sdcard_uploader <- function(x) {
   if(nrow(z) == 0) stop('nothing to do')
 
   cl = makePSOCKcluster(4); registerDoParallel(cl)
-  o = foreach(i = 1:nrow(z) , .packages = 'SNB', .combine = c)  %dopar% {
+  o = foreach(i = 1:nrow(z) , .packages = 'SNB2', .combine = c)  %dopar% {
     if( !dir.exists (dirname(z[i,dest])) ) dirname(z[i,dest]) %>% dir.create(recursive = TRUE)
 
     file.copy( z[i, src], z[i,dest], overwrite = FALSE, copy.date = TRUE)
@@ -294,40 +274,32 @@ sdcard_uploader <- function(x) {
 #' @title         Remove data (overwrite using an empty file several times) and THEN delete content of the copied SD cards.
 #' @param    x    file_copy_status output
 #' @author MV
+#' @export
 #' @examples
 #' x = file_copy_status(bid = boxid)
-#' scard_cleaner(x)
+#' sdcard_uploader(x) # copy
+#' scard_cleaner(x)   # empty files on cards when copied
 scard_cleaner <- function(x) {
 
     ccs = card_copy_status(x)
     w = merge(x, ccs[, .(box, copied)], by = 'box',allow.cartesian = TRUE)
 
-    # version 1
-    v1 = w[!grepl('Boxnummer.txt', basename(src)) & (copied) & ver == 1]
+    vv = w[(copied) ]
 
-    if( nrow(v1) > 0) {
-        foreach(i = 1:nrow(v1) )  %do% {
-        for (n in 1:10)  file.copy('/dev/null', v1[i,src], overwrite = TRUE)
-        file.remove(v1[i,src]  )
-        }
-      }
-
-    # version 2
-     v2 = w[(copied) & ver == 2]
-
-    if( nrow(v2) > 0) {
-        foreach(i = 1:nrow(v2) )  %do% {
-        for (n in 1:10) file.copy('/dev/null', v2[i,src], overwrite = TRUE)
+    if( nrow(vv) > 0) {
+        foreach(i = 1:nrow(vv) )  %do% {
+        for (n in 1:10) file.copy('/dev/null', vv[i,src], overwrite = TRUE)
         }
       }
 
   }
 
 #' @title    Checks inserted SD cards.
-#' @param    x     a DT as returned by cardReader()
-#' @param    boxid data.table with current box -hwid
+#' @param    x       a DT as returned by cardReader()
+#' @param    boxid   data.table with current box -hwid
 #' @return   data.table
 #' @author   MV
+#' @export
 #' @examples
 #' card_prepare_status()
 card_prepare_status <- function( x = cardReader() ){
@@ -336,8 +308,8 @@ card_prepare_status <- function( x = cardReader() ){
   x[, is.empty := list.files(mountpoint) %>% length == 0 , by = id ]
 
   #html messages
-  x[(is.empty)  , html := Span('Empty card', 'success', 'open-file')]
-  x[!(is.empty) , html := Span('Non-empty card.  Format first.', 'warning', 'warning-sign')]
+  x[(is.empty)  , html := Span('Empty card.', 'success', 'open-file')]
+  x[!(is.empty) , html := Span('☠Non-empty card☠', 'warning', 'warning-sign')]
   x[ro == '1'   , html := Span("Read only card.", 'danger', 'danger-sign') ]
 
   x
@@ -347,29 +319,21 @@ card_prepare_status <- function( x = cardReader() ){
 #' @param x  card_prepare_status() output
 #' @param password  password
 #' @author MV
+#' @export
 sdcard_prepare <- function(x = card_prepare_status (), ids) {
 
   if(nrow(x) == 0) stop('Nothing to do.')
+  
+  if( !all(x$is.empty) ) stop('🙊 Hey! you cannot prepare non-empty cards!!')
 
   if(nrow(x) > length(ids) ) stop('More cards than id-s.')
   if(nrow(x) < length(ids) ) stop('Less cards than id-s.')
 
   x[, box := ids]
+  x[, file_id := paste0(mountpoint, '/BOX',str_pad(box, 4, 'left', 0), '.TXT')]
+  x[, syscall := paste('echo        ""       >', shQuote(file_id) ), by = id]
 
-  # version
-  x[box%in% getOption('boxes_v2'), ver := 2]
-  x[is.na(ver), ver := 1]
-
-  x[ver == 1, file_id := paste0(mountpoint, '/Boxnummer.txt')]
-  x[ver == 2, file_id := paste0(mountpoint, '/BOX',str_pad(box, 4, 'left', 0), '.TXT')]
-
-
-  # PREPARE: add file and box-id
-  x[ver == 1, syscall := paste('echo',shQuote(box) ,'>', shQuote(file_id) ), by = id]
-  x[ver == 2, syscall := paste('echo        ""       >', shQuote(file_id) ), by = id]
-
-
-  # RUN system calls
+  # RUN system call to make an empty file
   o = x[, system(syscall), by = id]
 
   nrow(o[V1 == 0])
@@ -379,6 +343,7 @@ sdcard_prepare <- function(x = card_prepare_status (), ids) {
 
 #' @title Format card
 #' @author MV
+#' @export
 format2vfat <- function(mountpoint, filesystem, password) {
 
   if( !find_installed('mkfs.fat') ) stop('dosfstools is not installed')
@@ -388,7 +353,7 @@ format2vfat <- function(mountpoint, filesystem, password) {
 
     # unmount
     system( paste('echo', shQuote(password), '| sudo -S umount' , mountpoint), wait = TRUE)
-    system( paste('echo', shQuote(password), '| sudo -S rmdir' , mountpoint), wait = TRUE )
+    system( paste('echo', shQuote(password), '| sudo -S rmdir' ,  mountpoint), wait = TRUE )
 
     # format
     system( paste('echo', shQuote(password), '| sudo -S mkfs.fat' , filesystem), wait = TRUE )
@@ -404,6 +369,7 @@ format2vfat <- function(mountpoint, filesystem, password) {
 #' @param    boxid data.table with current box -hwid
 #' @return   data.table
 #' @author   MV
+#' @export
 #' @examples
 #' card_format_status()
 card_format_status <- function( x = cardReader() ){
@@ -424,16 +390,16 @@ card_format_status <- function( x = cardReader() ){
 #' @param x          card_format_status() output
 #' @param password   password
 #' @author MV
-sdcard_format <- function(x = card_format_status (), ids, password, format = FALSE) {
+#' @export
+sdcard_format <- function(password, x = card_format_status () ) {
 
-  pwdCheck = suppressWarnings( system(paste('echo' ,shQuote(password) ,  '| sudo -S echo 1'),
-                intern = TRUE, ignore.stderr = TRUE) ) %>% length
-  if(pwdCheck == 0) stop('Password does not match.')
+  pwdCheck = check_sys_pwd(password)
+  if( !pwdCheck ) stop('Password does not match.')
 
   if(nrow(x) == 0) stop('Nothing to do.')
 
   o = x[, format2vfat(mountpoint, filesystem, password = password), by = id]
-    if(any(o$V1 > 0)) stop(" I could not format all or some cards. Something funny is happening ...")
+    if(any(o$V1 > 0)) stop(" I could not format all or some cards. Re-insert the cards and try again.")
 
   nrow(o[V1 == 0])
 
@@ -442,35 +408,3 @@ sdcard_format <- function(x = card_format_status (), ids, password, format = FAL
 
 
 
-
-cclog <- function() {
-  paste0(tempdir(), '/cclog.txt')
- }
-
-### HTML  ---------------------------------------------------------------------
-
-#' @title html span
-#' @author MV
-#' @examples span('text')
-Span <- function(x, label = 'primary', glyphicon = 'open-file', div = TRUE, h = 2) {
-  o = paste0('<span class="label label-',label,'"><i class="glyphicon glyphicon-',glyphicon,'"></i>', x, '</span>  ')
-  if(div) {
-    h = paste0('h', h)
-    o = paste0('<div><',h,'>', o, '</',h,'></div>' )
-    }
-  o
-  }
-
-options_footer <- function(style = "position: absolute; bottom: 0; left: 1; font-size:12px") {
-  div(class = "col-sm-12 text-left text-muted",style=style,
-        HTML('<hr>',
-            '<strong>Package options:</strong><br>',
-            paste('<strong>host:</strong>', getOption('host'), '<br>'),
-            paste('<strong>raw data:</strong>', paste(getOption('path.to.raw') %>% str_sub(., 1, 18), "..."),'<br>' ),
-            paste('<strong>db name:</strong>', getOption('snbDB'), '<br>'),
-            paste('<strong>db user:</strong>', getOption('DB_user') , '<br>'),
-            paste('<strong>package:</strong> SNB', packageVersion('SNB') )
-         )
-      )
-
-  }

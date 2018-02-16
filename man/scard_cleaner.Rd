@@ -11,7 +11,8 @@ scard_cleaner(x)
 }
 \examples{
 x = file_copy_status(bid = boxid)
-scard_cleaner(x)
+sdcard_uploader(x) # copy
+scard_cleaner(x)   # empty files on cards when copied
 }
 \author{
 MV
