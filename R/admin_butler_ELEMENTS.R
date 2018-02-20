@@ -126,8 +126,7 @@ cardReader <- function(cardsize = getOption('cardSize') ) {
 #' @author      MV
 #' @examples
 #'  require(sdb)
-#'  boxid <- dbq( q= 'select box, hwid from boxid order by box, datetime_ desc',
-#'          db = getOption('snbDB_v2'), host = getOption('host'), user =getOption('DB_user'))[!duplicated(box)]
+#'  boxid <- harwareIDs()
 #' x = cardReader()
 #' z = x[, read.boxnumber(mountpoint, boxid = boxid), by = .(row.names(x)) ]
 read.boxnumber <- function(path, boxid, hwidCheck = TRUE) {
@@ -184,8 +183,7 @@ read.boxnumber <- function(path, boxid, hwidCheck = TRUE) {
 #' @export
 #' @examples
 #'  require(sdb)
-#'  bid <- dbq( q= 'select box, hwid from boxid order by box, datetime_ desc',
-#'          db = getOption('snbDB_v2'), host = getOption('host'), user =getOption('DB_user'))[!duplicated(box)]
+#'  bid <- harwareIDs()
 #'  x = file_copy_status(boxid = bid)
 #'  card_copy_status(x)
 file_copy_status <- function(download_date = Sys.Date() , x = cardReader(), ...) {
@@ -240,8 +238,7 @@ card_copy_status <- function(x = file_copy_status () ) {
 #' @export
 #' @examples
 #'  require(sdb)
-#'  boxid <- dbq( q= 'select box, hwid from boxid order by box, datetime_ desc',
-#'          db = getOption('snbDB_v2'), host = getOption('host'), user =getOption('DB_user'))[!duplicated(box)]
+#'  boxid <- harwareIDs()
 #'  x = file_copy_status(bid = boxid)
 #'  sdcard_uploader(x)
 sdcard_uploader <- function(x) {

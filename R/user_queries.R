@@ -152,7 +152,7 @@ harwareIDs <- function(username  = getOption('DB_user') , host = getOption('host
     con = dbcon(user =username, host = host,   db = getOption('snbDB_v2') )
     on.exit(dbDisconnect(con))
     
-    o = dbq(con, 'select box, hwid from boxid order by box, datetime_ desc')[!duplicated(box)]
+    o = dbq(con, 'select box, hwid from boxid where action = "start" order by box, datetime_ desc')[!duplicated(box)]
     if(nrow(o) < 277) warning("Not all boxes have a registered hardware ID!")
 
     o  

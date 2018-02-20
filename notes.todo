@@ -1,5 +1,5 @@
 DB:
-  - update hwid table
+  ✔ update hwid table @done (18-02-20 12:58) # but 10 boxes are still missing. 
   - SFatWESTERHOLZ
 
 
@@ -7,10 +7,11 @@ Continuous:
   - add tests on the way
 
 Update after v1 freeze:
-  - align package
+  ✔ align package @done (18-02-16 18:43)
+  - add check hwid to options OR add advanced options in butler() and tick check hwid to FALSE
   - update scidbadmin
-  - test overnight with real data
-  - check and test diagnose_raw_txt_v2 & diagnose_pull_v2
+  - test overnight() with real data
+  - check and test diagnose_raw_txt_v2() & diagnose_pull_v2()
 
 
 
