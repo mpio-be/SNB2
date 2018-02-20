@@ -177,7 +177,7 @@ read.boxnumber <- function(path, boxid, hwidCheck = TRUE) {
 #' @param download_date default to Sys.Date()
 #' @param x             a DT as returned by cardReader() for file_copy_status
 #'                      or a DT returned by file_copy_status() for card_copy_status()
-#' @param ...          pass to  read.boxnumber
+#' @param ...           pass to  read.boxnumber, specifically hwidCheck
 #' @return              a DT
 #' @author MV
 #' @export
