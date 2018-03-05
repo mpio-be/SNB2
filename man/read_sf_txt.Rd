@@ -2,7 +2,7 @@
 % Please edit documentation in R/admin_SF.R
 \name{read_sf_txt}
 \alias{read_sf_txt}
-\title{read SF data}
+\title{read SF file}
 \usage{
 read_sf_txt(f)
 }
