@@ -1,7 +1,7 @@
 Package: SNB2
 Type: Package
 Title: Smart Nest-box Data Management
-Version: 2018.1
+Version: 2018.2
 Author: Lotte Schlicht, Mihai Valcu
 Maintainer: Lotte Schlicht <lschlicht@orn.mpg.de>, Mihai Valcu <valcu@orn.mpg.de>
 Depends:
