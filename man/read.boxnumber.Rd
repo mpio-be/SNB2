@@ -21,8 +21,7 @@ looks up the box number in BoxNNNN.txt and optionally cross-checks it with the H
 }
 \examples{
  require(sdb)
- boxid <- dbq( q= 'select box, hwid from boxid order by box, datetime_ desc',
-         db = getOption('snbDB_v2'), host = getOption('host'), user =getOption('DB_user'))[!duplicated(box)]
+ boxid <- harwareIDs()
 x = cardReader()
 z = x[, read.boxnumber(mountpoint, boxid = boxid), by = .(row.names(x)) ]
 }

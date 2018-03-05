@@ -1,0 +1,1356 @@
+20180216-102840.000 SD-Card Removed
+20180216-102906.000 SD-Card Inserted
+20180216-102906.135 SD-Card Initialized
+20180216-102906.135 SD-Card File System mounted
+20180216-102906.552 SD-Card 1908MB free
+20180216-102906.554 Media Change: BOX1020.TXT -> BOX1020.TXT
+20180216-102906.585 MCU: EFM32G230F128 HW-ID: 0x24AC0A0458F0AEEF
+20180216-102906.618 Battery Manufacturer Name :  Dynamis
+20180216-102906.644 Battery Manufacturer Data :  61.90002/15790
+20180216-102906.669 Battery Device Name       :  BMS2-4_V0.3
+20180216-102906.695 Battery Device Type       :  Lithium-Ion
+20180216-102906.703 Battery Serial Number     : 00008
+20180216-102906.710 Battery Design Voltage    : 3.300V per cell
+20180216-102906.718 Battery Design Capacity   : 7500mAh
+20180216-102906.725 Battery Full Charge Capac.: 7942mAh
+20180216-102906.733 Battery Remaining Capacity: 3161mAh
+20180216-102906.742 Battery Runtime to empty  : 4863min (3d)
+20180216-102906.750 Battery Actual Voltage    : 13.0V
+20180216-102906.757 Battery Actual Current    :   39mA
+20180216-102906.758 Reading Configuration File CONFIG.TXT
+20180216-110000.013 Battery Remaining Capacity: 3145mAh
+20180216-110000.022 Battery Runtime to empty  : 5391min (3d)
+20180216-110000.029 Battery Actual Voltage    : 13.0V
+20180216-110000.037 Battery Actual Current    :   35mA
+20180216-110507.933 Transponder: 518196A801AF0001 not found - aborting
+20180216-110508.000 Transponder: UNKNOWN not found - aborting
+20180216-112255.910 Transponder: C980000000008001 not found - aborting
+20180216-112256.000 Transponder: UNKNOWN not found - aborting
+20180216-112618.227 Transponder: 56C0000000008001 not found - aborting
+20180216-112619.000 Transponder: UNKNOWN not found - aborting
+20180216-112640.450 Transponder: 54C213A801AF0001 not found - aborting
+20180216-112641.000 Transponder: UNKNOWN not found - aborting
+20180216-153151.296 Transponder: 54C213A801AF0001 not found - aborting
+20180216-153152.000 Transponder: UNKNOWN not found - aborting
+20180216-153152.338 Transponder: 54C213A801AF0001 not found - aborting
+20180216-153153.000 Transponder: UNKNOWN not found - aborting
+20180216-190000.000 Shutter will be closed
+20180216-190000.002 RFID is powered off
+20180216-190000.003 Feeder is switched off
+20180216-230000.013 Battery Remaining Capacity: 2779mAh
+20180216-230000.022 Battery Runtime to empty  : More than 6 weeks
+20180216-230000.030 Battery Actual Voltage    : 13.0V
+20180216-230000.037 Battery Actual Current    :    2mA
+20180217-015500.000 DCF77: Enabled
+20180217-015656.895 DCF77: Time Frame 1 is 20180217-015700
+20180217-015756.892 DCF77: Time Frame 2 is 20180217-015800
+20180217-015800.894 DCF77: Time Synchronization 01:58:00 (MEZ)
+20180217-015800.001 DCF77: Disabled
+20180217-050000.000 Feeder is switched ON
+20180217-050000.000 Shutter will be opened
+20180217-050000.003 RFID is powered ON
+20180217-050001.000 Transponder: UNKNOWN not found - aborting
+20180217-092939.920 Transponder: 38C0000000008001 not found - aborting
+20180217-092940.000 Transponder: UNKNOWN not found - aborting
+20180217-103029.878 Transponder: 38C0000000008001 not found - aborting
+20180217-103030.000 Transponder: UNKNOWN not found - aborting
+20180217-103030.071 Transponder: 38C0000000008001 not found - aborting
+20180217-103031.000 Transponder: UNKNOWN not found - aborting
+20180217-103031.780 Transponder: E180000000008001 not found - aborting
+20180217-103032.000 Transponder: UNKNOWN not found - aborting
+20180217-103208.649 Transponder: 38C0000000008001 not found - aborting
+20180217-103209.000 Transponder: UNKNOWN not found - aborting
+20180217-103209.079 Transponder: 38C0000000008001 not found - aborting
+20180217-103210.000 Transponder: UNKNOWN not found - aborting
+20180217-103236.868 Transponder: 448213A801AF0001 not found - aborting
+20180217-103237.000 Transponder: UNKNOWN not found - aborting
+20180217-103327.599 Transponder: 0D00000000008001 not found - aborting
+20180217-103328.000 Transponder: UNKNOWN not found - aborting
+20180217-103737.428 Transponder: 2380000000008001 not found - aborting
+20180217-103738.000 Transponder: UNKNOWN not found - aborting
+20180217-103738.287 Transponder: 2380000000008001 not found - aborting
+20180217-103739.000 Transponder: UNKNOWN not found - aborting
+20180217-103739.607 Transponder: 2380000000008001 not found - aborting
+20180217-103740.000 Transponder: UNKNOWN not found - aborting
+20180217-104238.347 Transponder: 38C0000000008001 not found - aborting
+20180217-104239.000 Transponder: UNKNOWN not found - aborting
+20180217-104302.951 Transponder: 0D00000000008001 not found - aborting
+20180217-104303.000 Transponder: UNKNOWN not found - aborting
+20180217-104308.843 Transponder: 45C213A801AF0001 not found - aborting
+20180217-104309.000 Transponder: UNKNOWN not found - aborting
+20180217-104316.914 Transponder: FCC0000000008001 not found - aborting
+20180217-104317.000 Transponder: UNKNOWN not found - aborting
+20180217-104317.282 Transponder: FCC0000000008001 not found - aborting
+20180217-104318.000 Transponder: UNKNOWN not found - aborting
+20180217-104331.241 Transponder: B88213A801AF0001 not found - aborting
+20180217-104332.000 Transponder: UNKNOWN not found - aborting
+20180217-104332.162 Transponder: B88213A801AF0001 not found - aborting
+20180217-104333.000 Transponder: UNKNOWN not found - aborting
+20180217-104702.270 Transponder: 48C0000000008001 not found - aborting
+20180217-104703.000 Transponder: UNKNOWN not found - aborting
+20180217-104703.437 Transponder: 48C0000000008001 not found - aborting
+20180217-104705.000 Transponder: UNKNOWN not found - aborting
+20180217-105133.569 Transponder: 098213A801AF0001 not found - aborting
+20180217-105134.000 Transponder: UNKNOWN not found - aborting
+20180217-105243.810 Transponder: 0D00000000008001 not found - aborting
+20180217-105244.000 Transponder: UNKNOWN not found - aborting
+20180217-105454.496 Transponder: 54C213A801AF0001 not found - aborting
+20180217-105455.000 Transponder: UNKNOWN not found - aborting
+20180217-105512.400 Transponder: 2380000000008001 not found - aborting
+20180217-105513.000 Transponder: UNKNOWN not found - aborting
+20180217-105745.101 Transponder: 45C213A801AF0001 not found - aborting
+20180217-105746.000 Transponder: UNKNOWN not found - aborting
+20180217-110001.000 ERROR SMB_Reset: Try to recover from invalid state
+20180217-110003.237 Battery Actual Voltage    : 12.9V
+20180217-110113.859 Transponder: 518196A801AF0001 not found - aborting
+20180217-110114.000 Transponder: UNKNOWN not found - aborting
+20180217-110114.013 Transponder: 518196A801AF0001 not found - aborting
+20180217-110115.000 Transponder: UNKNOWN not found - aborting
+20180217-110411.606 Transponder: 448213A801AF0001 not found - aborting
+20180217-110412.000 Transponder: UNKNOWN not found - aborting
+20180217-110955.031 Transponder: FCC0000000008001 not found - aborting
+20180217-110956.000 Transponder: UNKNOWN not found - aborting
+20180217-110956.934 Transponder: FCC0000000008001 not found - aborting
+20180217-110957.000 Transponder: UNKNOWN not found - aborting
+20180217-110957.119 Transponder: FCC0000000008001 not found - aborting
+20180217-110958.000 Transponder: UNKNOWN not found - aborting
+20180217-111003.152 Transponder: 0D00000000008001 not found - aborting
+20180217-111004.000 Transponder: UNKNOWN not found - aborting
+20180217-111022.169 Transponder: 38C0000000008001 not found - aborting
+20180217-111023.000 Transponder: UNKNOWN not found - aborting
+20180217-111037.610 Transponder: 2380000000008001 not found - aborting
+20180217-111038.000 Transponder: UNKNOWN not found - aborting
+20180217-111038.041 Transponder: 2380000000008001 not found - aborting
+20180217-111039.000 Transponder: UNKNOWN not found - aborting
+20180217-111119.252 Transponder: E180000000008001 not found - aborting
+20180217-111120.000 Transponder: UNKNOWN not found - aborting
+20180217-111126.877 Transponder: FCC0000000008001 not found - aborting
+20180217-111127.000 Transponder: UNKNOWN not found - aborting
+20180217-111127.184 Transponder: FCC0000000008001 not found - aborting
+20180217-111128.000 Transponder: UNKNOWN not found - aborting
+20180217-111133.406 Transponder: 448213A801AF0001 not found - aborting
+20180217-111134.000 Transponder: UNKNOWN not found - aborting
+20180217-111315.334 Transponder: FCC0000000008001 not found - aborting
+20180217-111316.000 Transponder: UNKNOWN not found - aborting
+20180217-111325.836 Transponder: 54C213A801AF0001 not found - aborting
+20180217-111326.000 Transponder: UNKNOWN not found - aborting
+20180217-111326.112 Transponder: 54C213A801AF0001 not found - aborting
+20180217-111327.000 Transponder: UNKNOWN not found - aborting
+20180217-111328.731 Transponder: 58C213A801AF0001 not found - aborting
+20180217-111329.000 Transponder: UNKNOWN not found - aborting
+20180217-111329.130 Transponder: 58C213A801AF0001 not found - aborting
+20180217-111330.000 Transponder: UNKNOWN not found - aborting
+20180217-111435.748 Transponder: 54C213A801AF0001 not found - aborting
+20180217-111436.000 Transponder: UNKNOWN not found - aborting
+20180217-111514.895 Transponder: 56C0000000008001 not found - aborting
+20180217-111515.000 Transponder: UNKNOWN not found - aborting
+20180217-111515.018 Transponder: 56C0000000008001 not found - aborting
+20180217-111516.000 Transponder: UNKNOWN not found - aborting
+20180217-111609.267 Transponder: FB40000000008001 not found - aborting
+20180217-111610.000 Transponder: UNKNOWN not found - aborting
+20180217-111610.035 Transponder: FB40000000008001 not found - aborting
+20180217-111611.000 Transponder: UNKNOWN not found - aborting
+20180217-111833.630 Transponder: FB40000000008001 not found - aborting
+20180217-111834.000 Transponder: UNKNOWN not found - aborting
+20180217-112415.671 Transponder: 38C0000000008001 not found - aborting
+20180217-112416.000 Transponder: UNKNOWN not found - aborting
+20180217-113123.437 Transponder: 58C213A801AF0001 not found - aborting
+20180217-113124.000 Transponder: UNKNOWN not found - aborting
+20180217-113145.530 Transponder: 2380000000008001 not found - aborting
+20180217-113146.000 Transponder: UNKNOWN not found - aborting
+20180217-113247.423 Transponder: B88213A801AF0001 not found - aborting
+20180217-113248.000 Transponder: UNKNOWN not found - aborting
+20180217-113614.068 Transponder: 38C0000000008001 not found - aborting
+20180217-113615.000 Transponder: UNKNOWN not found - aborting
+20180217-113616.523 Transponder: 38C0000000008001 not found - aborting
+20180217-113617.000 Transponder: UNKNOWN not found - aborting
+20180217-113826.738 Transponder: 514213A801AF0001 not found - aborting
+20180217-113827.000 Transponder: UNKNOWN not found - aborting
+20180217-113839.075 Transponder: 518196A801AF0001 not found - aborting
+20180217-113840.000 Transponder: UNKNOWN not found - aborting
+20180217-113852.824 Transponder: FCC0000000008001 not found - aborting
+20180217-113853.000 Transponder: UNKNOWN not found - aborting
+20180217-113940.073 Transponder: 1F00000000008001 not found - aborting
+20180217-113941.000 Transponder: UNKNOWN not found - aborting
+20180217-113955.358 Transponder: 38C0000000008001 not found - aborting
+20180217-113956.000 Transponder: UNKNOWN not found - aborting
+20180217-114216.882 Transponder: FB40000000008001 not found - aborting
+20180217-114217.000 Transponder: UNKNOWN not found - aborting
+20180217-114218.694 Transponder: FB40000000008001 not found - aborting
+20180217-114219.000 Transponder: UNKNOWN not found - aborting
+20180217-114219.093 Transponder: FB40000000008001 not found - aborting
+20180217-114220.000 Transponder: UNKNOWN not found - aborting
+20180217-114222.162 Transponder: FB40000000008001 not found - aborting
+20180217-114223.000 Transponder: UNKNOWN not found - aborting
+20180217-114248.904 Transponder: FB40000000008001 not found - aborting
+20180217-114249.000 Transponder: UNKNOWN not found - aborting
+20180217-114249.026 Transponder: FB40000000008001 not found - aborting
+20180217-114250.000 Transponder: UNKNOWN not found - aborting
+20180217-114250.070 Transponder: FB40000000008001 not found - aborting
+20180217-114251.000 Transponder: UNKNOWN not found - aborting
+20180217-114253.999 Transponder: FB40000000008001 not found - aborting
+20180217-114254.080 Transponder: UNKNOWN not found - aborting
+20180217-114314.617 Transponder: 2380000000008001 not found - aborting
+20180217-114315.000 Transponder: UNKNOWN not found - aborting
+20180217-114315.108 Transponder: 2380000000008001 not found - aborting
+20180217-114316.000 Transponder: UNKNOWN not found - aborting
+20180217-114319.102 Transponder: 448213A801AF0001 not found - aborting
+20180217-114320.000 Transponder: UNKNOWN not found - aborting
+20180217-114328.984 Transponder: 518196A801AF0001 not found - aborting
+20180217-114329.000 Transponder: UNKNOWN not found - aborting
+20180217-114444.887 Transponder: 2380000000008001 not found - aborting
+20180217-114445.000 Transponder: UNKNOWN not found - aborting
+20180217-114445.256 Transponder: 2380000000008001 not found - aborting
+20180217-114446.000 Transponder: UNKNOWN not found - aborting
+20180217-114710.422 Transponder: 56C0000000008001 not found - aborting
+20180217-114711.000 Transponder: UNKNOWN not found - aborting
+20180217-115536.109 Transponder: FCC0000000008001 not found - aborting
+20180217-115537.000 Transponder: UNKNOWN not found - aborting
+20180217-115835.015 Transponder: FCC0000000008001 not found - aborting
+20180217-115836.000 Transponder: UNKNOWN not found - aborting
+20180217-115916.085 Transponder: 45C213A801AF0001 not found - aborting
+20180217-115917.000 Transponder: UNKNOWN not found - aborting
+20180217-120434.951 Transponder: 6800000000008001 not found - aborting
+20180217-120435.000 Transponder: UNKNOWN not found - aborting
+20180217-120435.073 Transponder: 6800000000008001 not found - aborting
+20180217-120436.000 Transponder: UNKNOWN not found - aborting
+20180217-120523.945 Transponder: 2380000000008001 not found - aborting
+20180217-120524.000 Transponder: UNKNOWN not found - aborting
+20180217-120524.436 Transponder: 2380000000008001 not found - aborting
+20180217-120525.000 Transponder: UNKNOWN not found - aborting
+20180217-120618.908 Transponder: 0D00000000008001 not found - aborting
+20180217-120619.000 Transponder: UNKNOWN not found - aborting
+20180217-121010.753 Transponder: 518196A801AF0001 not found - aborting
+20180217-121011.000 Transponder: UNKNOWN not found - aborting
+20180217-121011.427 Transponder: 518196A801AF0001 not found - aborting
+20180217-121012.000 Transponder: UNKNOWN not found - aborting
+20180217-121617.423 Transponder: 1F00000000008001 not found - aborting
+20180217-121618.000 Transponder: UNKNOWN not found - aborting
+20180217-121716.383 Transponder: 2380000000008001 not found - aborting
+20180217-121717.000 Transponder: UNKNOWN not found - aborting
+20180217-121717.028 Transponder: 2380000000008001 not found - aborting
+20180217-121718.000 Transponder: UNKNOWN not found - aborting
+20180217-121818.128 Transponder: FB40000000008001 not found - aborting
+20180217-121819.000 Transponder: UNKNOWN not found - aborting
+20180217-121857.090 Transponder: 2380000000008001 not found - aborting
+20180217-121858.000 Transponder: UNKNOWN not found - aborting
+20180217-122037.420 Transponder: D020000000008001 not found - aborting
+20180217-122038.000 Transponder: UNKNOWN not found - aborting
+20180217-122125.374 Transponder: 0D00000000008001 not found - aborting
+20180217-122126.000 Transponder: UNKNOWN not found - aborting
+20180217-122129.632 Transponder: 6800000000008001 not found - aborting
+20180217-122130.000 Transponder: UNKNOWN not found - aborting
+20180217-122139.671 Transponder: 45C213A801AF0001 not found - aborting
+20180217-122140.000 Transponder: UNKNOWN not found - aborting
+20180217-123343.466 Transponder: 48C0000000008001 not found - aborting
+20180217-123344.000 Transponder: UNKNOWN not found - aborting
+20180217-123454.584 Transponder: 38C0000000008001 not found - aborting
+20180217-123455.000 Transponder: UNKNOWN not found - aborting
+20180217-123455.259 Transponder: 38C0000000008001 not found - aborting
+20180217-123456.000 Transponder: UNKNOWN not found - aborting
+20180217-123552.439 Transponder: 48C0000000008001 not found - aborting
+20180217-123553.000 Transponder: UNKNOWN not found - aborting
+20180217-123554.778 Transponder: F58196A801AF0001 not found - aborting
+20180217-123555.000 Transponder: UNKNOWN not found - aborting
+20180217-123556.252 Transponder: F58196A801AF0001 not found - aborting
+20180217-123557.000 Transponder: UNKNOWN not found - aborting
+20180217-123955.230 Transponder: 1A0196A801AF0001 not found - aborting
+20180217-123956.000 Transponder: UNKNOWN not found - aborting
+20180217-124025.164 Transponder: 58C213A801AF0001 not found - aborting
+20180217-124026.000 Transponder: UNKNOWN not found - aborting
+20180217-124120.008 Transponder: 56C0000000008001 not found - aborting
+20180217-124121.000 Transponder: UNKNOWN not found - aborting
+20180217-124637.239 Transponder: 2380000000008001 not found - aborting
+20180217-124638.000 Transponder: UNKNOWN not found - aborting
+20180217-124638.344 Transponder: 2380000000008001 not found - aborting
+20180217-124639.000 Transponder: UNKNOWN not found - aborting
+20180217-124639.142 Transponder: 2380000000008001 not found - aborting
+20180217-124640.000 Transponder: UNKNOWN not found - aborting
+20180217-124753.668 Transponder: 38C0000000008001 not found - aborting
+20180217-124754.000 Transponder: UNKNOWN not found - aborting
+20180217-124819.553 Transponder: 48C0000000008001 not found - aborting
+20180217-124820.000 Transponder: UNKNOWN not found - aborting
+20180217-124821.510 Transponder: F58196A801AF0001 not found - aborting
+20180217-124822.000 Transponder: UNKNOWN not found - aborting
+20180217-124831.166 Transponder: E180000000008001 not found - aborting
+20180217-124832.000 Transponder: UNKNOWN not found - aborting
+20180217-125213.534 Transponder: 58C213A801AF0001 not found - aborting
+20180217-125214.000 Transponder: UNKNOWN not found - aborting
+20180217-131154.077 Transponder: FCC0000000008001 not found - aborting
+20180217-131155.000 Transponder: UNKNOWN not found - aborting
+20180217-131227.592 Transponder: 2380000000008001 not found - aborting
+20180217-131228.000 Transponder: UNKNOWN not found - aborting
+20180217-131228.053 Transponder: 2380000000008001 not found - aborting
+20180217-131229.000 Transponder: UNKNOWN not found - aborting
+20180217-131229.376 Transponder: 1F00000000008001 not found - aborting
+20180217-131230.000 Transponder: UNKNOWN not found - aborting
+20180217-131323.886 Transponder: 518196A801AF0001 not found - aborting
+20180217-131324.000 Transponder: UNKNOWN not found - aborting
+20180217-131324.039 Transponder: 518196A801AF0001 not found - aborting
+20180217-131325.000 Transponder: UNKNOWN not found - aborting
+20180217-131413.373 Transponder: FB40000000008001 not found - aborting
+20180217-131414.000 Transponder: UNKNOWN not found - aborting
+20180217-131420.160 Transponder: 54C213A801AF0001 not found - aborting
+20180217-131421.000 Transponder: UNKNOWN not found - aborting
+20180217-131428.337 Transponder: D020000000008001 not found - aborting
+20180217-131429.000 Transponder: UNKNOWN not found - aborting
+20180217-131430.004 Transponder: 2380000000008001 not found - aborting
+20180217-131431.000 Transponder: UNKNOWN not found - aborting
+20180217-131432.420 Transponder: 2380000000008001 not found - aborting
+20180217-131433.000 Transponder: UNKNOWN not found - aborting
+20180217-131520.407 Transponder: 38C0000000008001 not found - aborting
+20180217-131521.000 Transponder: UNKNOWN not found - aborting
+20180217-131521.082 Transponder: 38C0000000008001 not found - aborting
+20180217-131522.000 Transponder: UNKNOWN not found - aborting
+20180217-131600.369 Transponder: 0D00000000008001 not found - aborting
+20180217-131601.000 Transponder: UNKNOWN not found - aborting
+20180217-131604.914 Transponder: 54C213A801AF0001 not found - aborting
+20180217-131605.000 Transponder: UNKNOWN not found - aborting
+20180217-131605.497 Transponder: 54C213A801AF0001 not found - aborting
+20180217-131606.000 Transponder: UNKNOWN not found - aborting
+20180217-131606.233 Transponder: 54C213A801AF0001 not found - aborting
+20180217-131607.000 Transponder: UNKNOWN not found - aborting
+20180217-131607.838 Transponder: 098213A801AF0001 not found - aborting
+20180217-131608.000 Transponder: UNKNOWN not found - aborting
+20180217-131719.712 Transponder: 2380000000008001 not found - aborting
+20180217-131720.000 Transponder: UNKNOWN not found - aborting
+20180217-131720.326 Transponder: 2380000000008001 not found - aborting
+20180217-131721.000 Transponder: UNKNOWN not found - aborting
+20180217-131721.154 Transponder: 2380000000008001 not found - aborting
+20180217-131722.000 Transponder: UNKNOWN not found - aborting
+20180217-131806.361 Transponder: 098213A801AF0001 not found - aborting
+20180217-131807.000 Transponder: UNKNOWN not found - aborting
+20180217-131807.098 Transponder: 098213A801AF0001 not found - aborting
+20180217-131808.000 Transponder: UNKNOWN not found - aborting
+20180217-131849.210 Transponder: 2380000000008001 not found - aborting
+20180217-131850.000 Transponder: UNKNOWN not found - aborting
+20180217-131850.746 Transponder: 2380000000008001 not found - aborting
+20180217-131851.000 Transponder: UNKNOWN not found - aborting
+20180217-131858.871 Transponder: 38C0000000008001 not found - aborting
+20180217-131859.000 Transponder: UNKNOWN not found - aborting
+20180217-131903.823 Transponder: 56C0000000008001 not found - aborting
+20180217-131904.000 Transponder: UNKNOWN not found - aborting
+20180217-131904.406 Transponder: 56C0000000008001 not found - aborting
+20180217-131905.000 Transponder: UNKNOWN not found - aborting
+20180217-131958.606 Transponder: 0D00000000008001 not found - aborting
+20180217-131959.000 Transponder: UNKNOWN not found - aborting
+20180217-132006.729 Transponder: C700000000008001 not found - aborting
+20180217-132007.000 Transponder: UNKNOWN not found - aborting
+20180217-132719.432 Transponder: 58C213A801AF0001 not found - aborting
+20180217-132720.000 Transponder: UNKNOWN not found - aborting
+20180217-133006.707 Transponder: B88213A801AF0001 not found - aborting
+20180217-133007.000 Transponder: UNKNOWN not found - aborting
+20180217-133007.774 Transponder: B88213A801AF0001 not found - aborting
+20180217-133008.000 Transponder: UNKNOWN not found - aborting
+20180217-133011.211 Transponder: 098213A801AF0001 not found - aborting
+20180217-133012.000 Transponder: UNKNOWN not found - aborting
+20180217-133019.867 Transponder: C700000000008001 not found - aborting
+20180217-133020.000 Transponder: UNKNOWN not found - aborting
+20180217-133020.327 Transponder: C700000000008001 not found - aborting
+20180217-133021.000 Transponder: UNKNOWN not found - aborting
+20180217-133057.584 Transponder: B88213A801AF0001 not found - aborting
+20180217-133058.000 Transponder: UNKNOWN not found - aborting
+20180217-133101.107 Transponder: 45C213A801AF0001 not found - aborting
+20180217-133102.000 Transponder: UNKNOWN not found - aborting
+20180217-133102.458 Transponder: 45C213A801AF0001 not found - aborting
+20180217-133103.000 Transponder: UNKNOWN not found - aborting
+20180217-134713.198 Transponder: 2380000000008001 not found - aborting
+20180217-134714.000 Transponder: UNKNOWN not found - aborting
+20180217-134717.475 Transponder: D020000000008001 not found - aborting
+20180217-134718.000 Transponder: UNKNOWN not found - aborting
+20180217-134731.601 Transponder: 38C0000000008001 not found - aborting
+20180217-134732.000 Transponder: UNKNOWN not found - aborting
+20180217-134759.016 Transponder: FB40000000008001 not found - aborting
+20180217-134800.000 Transponder: UNKNOWN not found - aborting
+20180217-134903.045 Transponder: 45C213A801AF0001 not found - aborting
+20180217-134904.000 Transponder: UNKNOWN not found - aborting
+20180217-134926.018 Transponder: D020000000008001 not found - aborting
+20180217-134927.000 Transponder: UNKNOWN not found - aborting
+20180217-134932.149 Transponder: 1F00000000008001 not found - aborting
+20180217-134933.000 Transponder: UNKNOWN not found - aborting
+20180217-135101.492 Transponder: 448213A801AF0001 not found - aborting
+20180217-135102.000 Transponder: UNKNOWN not found - aborting
+20180217-135137.513 Transponder: FCC0000000008001 not found - aborting
+20180217-135138.000 Transponder: UNKNOWN not found - aborting
+20180217-135238.344 Transponder: 518196A801AF0001 not found - aborting
+20180217-135239.000 Transponder: UNKNOWN not found - aborting
+20180217-135239.111 Transponder: 518196A801AF0001 not found - aborting
+20180217-135240.000 Transponder: UNKNOWN not found - aborting
+20180217-135331.163 Transponder: B88213A801AF0001 not found - aborting
+20180217-135332.000 Transponder: UNKNOWN not found - aborting
+20180217-135339.515 Transponder: F58196A801AF0001 not found - aborting
+20180217-135340.000 Transponder: UNKNOWN not found - aborting
+20180217-140712.554 Transponder: 2380000000008001 not found - aborting
+20180217-140713.000 Transponder: UNKNOWN not found - aborting
+20180217-140720.885 Transponder: FB40000000008001 not found - aborting
+20180217-140721.000 Transponder: UNKNOWN not found - aborting
+20180217-140721.008 Transponder: FB40000000008001 not found - aborting
+20180217-140722.000 Transponder: UNKNOWN not found - aborting
+20180217-140722.482 Transponder: FB40000000008001 not found - aborting
+20180217-140723.000 Transponder: UNKNOWN not found - aborting
+20180217-140733.330 Transponder: 38C0000000008001 not found - aborting
+20180217-140734.000 Transponder: UNKNOWN not found - aborting
+20180217-140851.219 Transponder: 48C0000000008001 not found - aborting
+20180217-140852.000 Transponder: UNKNOWN not found - aborting
+20180217-140942.609 Transponder: 2380000000008001 not found - aborting
+20180217-140943.000 Transponder: UNKNOWN not found - aborting
+20180217-141112.172 Transponder: 2380000000008001 not found - aborting
+20180217-141113.000 Transponder: UNKNOWN not found - aborting
+20180217-143556.679 Transponder: 1F00000000008001 not found - aborting
+20180217-143557.000 Transponder: UNKNOWN not found - aborting
+20180217-143720.776 Transponder: FB40000000008001 not found - aborting
+20180217-143721.000 Transponder: UNKNOWN not found - aborting
+20180217-143806.808 Transponder: 48C0000000008001 not found - aborting
+20180217-143807.000 Transponder: UNKNOWN not found - aborting
+20180217-143807.575 Transponder: 48C0000000008001 not found - aborting
+20180217-143808.000 Transponder: UNKNOWN not found - aborting
+20180217-143950.655 Transponder: 54C213A801AF0001 not found - aborting
+20180217-143951.000 Transponder: UNKNOWN not found - aborting
+20180217-143952.198 Transponder: 1A0196A801AF0001 not found - aborting
+20180217-143953.000 Transponder: UNKNOWN not found - aborting
+20180217-143953.150 Transponder: 1A0196A801AF0001 not found - aborting
+20180217-143954.000 Transponder: UNKNOWN not found - aborting
+20180217-144227.234 Transponder: D020000000008001 not found - aborting
+20180217-144228.000 Transponder: UNKNOWN not found - aborting
+20180217-144228.063 Transponder: D020000000008001 not found - aborting
+20180217-144229.000 Transponder: UNKNOWN not found - aborting
+20180217-144245.759 Transponder: 38C0000000008001 not found - aborting
+20180217-144246.000 Transponder: UNKNOWN not found - aborting
+20180217-144247.172 Transponder: 38C0000000008001 not found - aborting
+20180217-144248.000 Transponder: UNKNOWN not found - aborting
+20180217-144505.724 Transponder: FCC0000000008001 not found - aborting
+20180217-144506.000 Transponder: UNKNOWN not found - aborting
+20180217-144506.031 Transponder: FCC0000000008001 not found - aborting
+20180217-144507.000 Transponder: UNKNOWN not found - aborting
+20180217-144958.084 Transponder: 56C0000000008001 not found - aborting
+20180217-144959.000 Transponder: UNKNOWN not found - aborting
+20180217-145332.530 Transponder: FCC0000000008001 not found - aborting
+20180217-145333.000 Transponder: UNKNOWN not found - aborting
+20180217-145548.278 Transponder: 48C0000000008001 not found - aborting
+20180217-145549.000 Transponder: UNKNOWN not found - aborting
+20180217-145555.507 Transponder: 2380000000008001 not found - aborting
+20180217-145556.000 Transponder: UNKNOWN not found - aborting
+20180217-145613.317 Transponder: 518196A801AF0001 not found - aborting
+20180217-145614.000 Transponder: UNKNOWN not found - aborting
+20180217-145614.330 Transponder: 518196A801AF0001 not found - aborting
+20180217-145615.000 Transponder: UNKNOWN not found - aborting
+20180217-145622.814 Transponder: 1A0196A801AF0001 not found - aborting
+20180217-145623.000 Transponder: UNKNOWN not found - aborting
+20180217-145815.934 Transponder: 0D00000000008001 not found - aborting
+20180217-145816.000 Transponder: UNKNOWN not found - aborting
+20180217-145825.654 Transponder: 448213A801AF0001 not found - aborting
+20180217-145826.000 Transponder: UNKNOWN not found - aborting
+20180217-145859.802 Transponder: 0D00000000008001 not found - aborting
+20180217-145900.000 Transponder: UNKNOWN not found - aborting
+20180217-145917.057 Transponder: 448213A801AF0001 not found - aborting
+20180217-145918.000 Transponder: UNKNOWN not found - aborting
+20180217-150141.812 Transponder: F58196A801AF0001 not found - aborting
+20180217-150142.000 Transponder: UNKNOWN not found - aborting
+20180217-151535.300 Transponder: 56C0000000008001 not found - aborting
+20180217-151536.000 Transponder: UNKNOWN not found - aborting
+20180217-151659.374 Transponder: 45C213A801AF0001 not found - aborting
+20180217-151700.000 Transponder: UNKNOWN not found - aborting
+20180217-151700.263 Transponder: 45C213A801AF0001 not found - aborting
+20180217-151701.000 Transponder: UNKNOWN not found - aborting
+20180217-151721.491 Transponder: 2380000000008001 not found - aborting
+20180217-151722.000 Transponder: UNKNOWN not found - aborting
+20180217-152538.650 Transponder: 1F00000000008001 not found - aborting
+20180217-152539.000 Transponder: UNKNOWN not found - aborting
+20180217-154421.729 Transponder: 1A0196A801AF0001 not found - aborting
+20180217-154422.000 Transponder: UNKNOWN not found - aborting
+20180217-154423.634 Transponder: 518196A801AF0001 not found - aborting
+20180217-154424.000 Transponder: UNKNOWN not found - aborting
+20180217-154431.280 Transponder: 6800000000008001 not found - aborting
+20180217-154432.000 Transponder: UNKNOWN not found - aborting
+20180217-154432.446 Transponder: 6800000000008001 not found - aborting
+20180217-154433.000 Transponder: UNKNOWN not found - aborting
+20180217-154456.979 Transponder: 38C0000000008001 not found - aborting
+20180217-154457.000 Transponder: UNKNOWN not found - aborting
+20180217-154500.189 Transponder: 0D00000000008001 not found - aborting
+20180217-154501.000 Transponder: UNKNOWN not found - aborting
+20180217-154522.034 Transponder: 56C0000000008001 not found - aborting
+20180217-154523.000 Transponder: UNKNOWN not found - aborting
+20180217-154526.990 Transponder: 2380000000008001 not found - aborting
+20180217-154527.000 Transponder: UNKNOWN not found - aborting
+20180217-154527.082 Transponder: 2380000000008001 not found - aborting
+20180217-154528.000 Transponder: UNKNOWN not found - aborting
+20180217-154717.466 Transponder: 518196A801AF0001 not found - aborting
+20180217-154718.000 Transponder: UNKNOWN not found - aborting
+20180217-154731.334 Transponder: FCC0000000008001 not found - aborting
+20180217-154732.000 Transponder: UNKNOWN not found - aborting
+20180217-154826.650 Transponder: 58C213A801AF0001 not found - aborting
+20180217-154827.000 Transponder: UNKNOWN not found - aborting
+20180217-154831.945 Transponder: 2380000000008001 not found - aborting
+20180217-154832.000 Transponder: UNKNOWN not found - aborting
+20180217-154833.296 Transponder: 2380000000008001 not found - aborting
+20180217-154834.000 Transponder: UNKNOWN not found - aborting
+20180217-162137.585 Transponder: 098213A801AF0001 not found - aborting
+20180217-162138.000 Transponder: UNKNOWN not found - aborting
+20180217-162200.478 Transponder: 56C0000000008001 not found - aborting
+20180217-162201.000 Transponder: UNKNOWN not found - aborting
+20180217-162203.858 Transponder: 1F00000000008001 not found - aborting
+20180217-162204.000 Transponder: UNKNOWN not found - aborting
+20180217-162206.535 Transponder: 48C0000000008001 not found - aborting
+20180217-162207.000 Transponder: UNKNOWN not found - aborting
+20180217-163952.912 Transponder: 1F00000000008001 not found - aborting
+20180217-163953.000 Transponder: UNKNOWN not found - aborting
+20180217-164000.388 Transponder: 1F00000000008001 not found - aborting
+20180217-164001.000 Transponder: UNKNOWN not found - aborting
+20180217-164012.104 Transponder: 6800000000008001 not found - aborting
+20180217-164013.000 Transponder: UNKNOWN not found - aborting
+20180217-164016.776 Transponder: 54C213A801AF0001 not found - aborting
+20180217-164017.000 Transponder: UNKNOWN not found - aborting
+20180217-164034.450 Transponder: FCC0000000008001 not found - aborting
+20180217-164035.000 Transponder: UNKNOWN not found - aborting
+20180217-164118.818 Transponder: C700000000008001 not found - aborting
+20180217-164119.000 Transponder: UNKNOWN not found - aborting
+20180217-164131.003 Transponder: 2380000000008001 not found - aborting
+20180217-164132.000 Transponder: UNKNOWN not found - aborting
+20180217-164158.270 Transponder: 0D00000000008001 not found - aborting
+20180217-164159.000 Transponder: UNKNOWN not found - aborting
+20180217-164200.339 Transponder: FCC0000000008001 not found - aborting
+20180217-164201.000 Transponder: UNKNOWN not found - aborting
+20180217-164245.620 Transponder: 518196A801AF0001 not found - aborting
+20180217-164246.000 Transponder: UNKNOWN not found - aborting
+20180217-164246.357 Transponder: 518196A801AF0001 not found - aborting
+20180217-164247.000 Transponder: UNKNOWN not found - aborting
+20180217-165658.016 Transponder: 0D00000000008001 not found - aborting
+20180217-165659.000 Transponder: UNKNOWN not found - aborting
+20180217-165756.750 Transponder: B88213A801AF0001 not found - aborting
+20180217-165757.000 Transponder: UNKNOWN not found - aborting
+20180217-165820.981 Transponder: 56C0000000008001 not found - aborting
+20180217-165821.000 Transponder: UNKNOWN not found - aborting
+20180217-165849.901 Transponder: D020000000008001 not found - aborting
+20180217-165850.000 Transponder: UNKNOWN not found - aborting
+20180217-165850.024 Transponder: D020000000008001 not found - aborting
+20180217-165851.000 Transponder: UNKNOWN not found - aborting
+20180217-165958.089 Transponder: 6800000000008001 not found - aborting
+20180217-165959.000 Transponder: UNKNOWN not found - aborting
+20180217-170009.127 Transponder: 45C213A801AF0001 not found - aborting
+20180217-170010.000 Transponder: UNKNOWN not found - aborting
+20180217-170055.357 Transponder: 45C213A801AF0001 not found - aborting
+20180217-170056.000 Transponder: UNKNOWN not found - aborting
+20180217-170056.247 Transponder: 45C213A801AF0001 not found - aborting
+20180217-170057.000 Transponder: UNKNOWN not found - aborting
+20180217-170103.297 Transponder: 1F00000000008001 not found - aborting
+20180217-170104.000 Transponder: UNKNOWN not found - aborting
+20180217-170328.225 Transponder: 518196A801AF0001 not found - aborting
+20180217-170329.000 Transponder: UNKNOWN not found - aborting
+20180217-170330.312 Transponder: 518196A801AF0001 not found - aborting
+20180217-170331.000 Transponder: UNKNOWN not found - aborting
+20180217-170340.458 Transponder: 48C0000000008001 not found - aborting
+20180217-170341.000 Transponder: UNKNOWN not found - aborting
+20180217-170345.773 Transponder: 2380000000008001 not found - aborting
+20180217-170346.000 Transponder: UNKNOWN not found - aborting
+20180217-170346.018 Transponder: 2380000000008001 not found - aborting
+20180217-170347.000 Transponder: UNKNOWN not found - aborting
+20180217-170356.910 Transponder: F58196A801AF0001 not found - aborting
+20180217-170357.000 Transponder: UNKNOWN not found - aborting
+20180217-170408.081 Transponder: 38C0000000008001 not found - aborting
+20180217-170409.000 Transponder: UNKNOWN not found - aborting
+20180217-170505.181 Transponder: 518196A801AF0001 not found - aborting
+20180217-170506.000 Transponder: UNKNOWN not found - aborting
+20180217-170519.936 Transponder: 54C213A801AF0001 not found - aborting
+20180217-170520.000 Transponder: UNKNOWN not found - aborting
+20180217-170520.397 Transponder: 54C213A801AF0001 not found - aborting
+20180217-170521.000 Transponder: UNKNOWN not found - aborting
+20180217-170713.563 Transponder: 38C0000000008001 not found - aborting
+20180217-170714.000 Transponder: UNKNOWN not found - aborting
+20180217-170714.054 Transponder: 38C0000000008001 not found - aborting
+20180217-170715.000 Transponder: UNKNOWN not found - aborting
+20180217-170726.327 Transponder: 0D00000000008001 not found - aborting
+20180217-170727.000 Transponder: UNKNOWN not found - aborting
+20180217-190000.000 Shutter will be closed
+20180217-190000.002 RFID is powered off
+20180217-190000.003 Feeder is switched off
+20180217-230000.013 Battery Remaining Capacity: 2223mAh
+20180217-230000.022 Battery Runtime to empty  : More than 6 weeks
+20180217-230000.029 Battery Actual Voltage    : 12.9V
+20180217-230000.036 Battery Actual Current    :    2mA
+20180218-015500.000 DCF77: Enabled
+20180218-015656.587 DCF77: Time Frame 1 is 20180218-015700
+20180218-015756.584 DCF77: Time Frame 2 is 20180218-015800
+20180218-015800.585 DCF77: Time Synchronization 01:58:00 (MEZ)
+20180218-015800.001 DCF77: Disabled
+20180218-050000.000 Feeder is switched ON
+20180218-050000.000 Shutter will be opened
+20180218-050000.003 RFID is powered ON
+20180218-050001.000 Transponder: UNKNOWN not found - aborting
+20180218-110000.013 Battery Remaining Capacity: 2190mAh
+20180218-110000.022 Battery Runtime to empty  : 3754min (2d)
+20180218-110000.030 Battery Actual Voltage    : 12.8V
+20180218-110000.037 Battery Actual Current    :   35mA
+20180218-153301.564 Transponder: 38C0000000008001 not found - aborting
+20180218-153302.000 Transponder: UNKNOWN not found - aborting
+20180218-153303.006 Transponder: 38C0000000008001 not found - aborting
+20180218-153304.000 Transponder: UNKNOWN not found - aborting
+20180218-165808.224 Transponder: E180000000008001 not found - aborting
+20180218-165809.000 Transponder: UNKNOWN not found - aborting
+20180218-170844.935 Transponder: 54C213A801AF0001 not found - aborting
+20180218-170845.000 Transponder: UNKNOWN not found - aborting
+20180218-170845.150 Transponder: 54C213A801AF0001 not found - aborting
+20180218-170846.000 Transponder: UNKNOWN not found - aborting
+20180218-190000.000 Shutter will be closed
+20180218-190000.002 RFID is powered off
+20180218-190000.003 Feeder is switched off
+20180218-230000.013 Battery Remaining Capacity: 1588mAh
+20180218-230000.022 Battery Runtime to empty  : 47640min (33d)
+20180218-230000.029 Battery Actual Voltage    : 12.8V
+20180218-230000.037 Battery Actual Current    :    2mA
+20180219-015500.000 DCF77: Enabled
+20180219-015656.498 DCF77: Time Frame 1 is 20180219-015700
+20180219-015756.495 DCF77: Time Frame 2 is 20180219-015800
+20180219-015800.496 DCF77: Time Synchronization 01:58:00 (MEZ)
+20180219-015800.001 DCF77: Disabled
+20180219-050000.000 Feeder is switched ON
+20180219-050000.000 Shutter will be opened
+20180219-050000.003 RFID is powered ON
+20180219-050001.000 Transponder: UNKNOWN not found - aborting
+20180219-072453.129 Transponder: 1F00000000008001 not found - aborting
+20180219-072454.000 Transponder: UNKNOWN not found - aborting
+20180219-074355.532 Transponder: 48C0000000008001 not found - aborting
+20180219-074356.000 Transponder: UNKNOWN not found - aborting
+20180219-075656.769 Transponder: 1F00000000008001 not found - aborting
+20180219-075657.000 Transponder: UNKNOWN not found - aborting
+20180219-081255.222 Transponder: 1F00000000008001 not found - aborting
+20180219-081256.000 Transponder: UNKNOWN not found - aborting
+20180219-084914.119 Transponder: 1F00000000008001 not found - aborting
+20180219-084915.000 Transponder: UNKNOWN not found - aborting
+20180219-085001.293 Transponder: 1F00000000008001 not found - aborting
+20180219-085002.000 Transponder: UNKNOWN not found - aborting
+20180219-090032.326 Transponder: 1AC0000000008001 not found - aborting
+20180219-090033.000 Transponder: UNKNOWN not found - aborting
+20180219-090127.175 Transponder: 1AC0000000008001 not found - aborting
+20180219-090128.000 Transponder: UNKNOWN not found - aborting
+20180219-090128.156 Transponder: 1AC0000000008001 not found - aborting
+20180219-090129.000 Transponder: UNKNOWN not found - aborting
+20180219-090344.222 Transponder: 098213A801AF0001 not found - aborting
+20180219-090345.000 Transponder: UNKNOWN not found - aborting
+20180219-090345.082 Transponder: 098213A801AF0001 not found - aborting
+20180219-090346.000 Transponder: UNKNOWN not found - aborting
+20180219-090351.826 Transponder: 288213A801AF0001 not found - aborting
+20180219-090352.000 Transponder: UNKNOWN not found - aborting
+20180219-090352.010 Transponder: 288213A801AF0001 not found - aborting
+20180219-090353.000 Transponder: UNKNOWN not found - aborting
+20180219-090434.424 Transponder: 288213A801AF0001 not found - aborting
+20180219-090435.000 Transponder: UNKNOWN not found - aborting
+20180219-090435.926 Transponder: 288213A801AF0001 not found - aborting
+20180219-090436.000 Transponder: UNKNOWN not found - aborting
+20180219-090436.049 Transponder: 288213A801AF0001 not found - aborting
+20180219-090437.000 Transponder: UNKNOWN not found - aborting
+20180219-090457.445 Transponder: D84213A801AF0001 not found - aborting
+20180219-090458.000 Transponder: UNKNOWN not found - aborting
+20180219-090555.934 Transponder: D84213A801AF0001 not found - aborting
+20180219-090556.000 Transponder: UNKNOWN not found - aborting
+20180219-090556.118 Transponder: D84213A801AF0001 not found - aborting
+20180219-090557.000 Transponder: UNKNOWN not found - aborting
+20180219-090557.069 Transponder: D84213A801AF0001 not found - aborting
+20180219-090558.000 Transponder: UNKNOWN not found - aborting
+20180219-090605.483 Transponder: C980000000008001 not found - aborting
+20180219-090606.000 Transponder: UNKNOWN not found - aborting
+20180219-090624.217 Transponder: 2F0213A801AF0001 not found - aborting
+20180219-090625.000 Transponder: UNKNOWN not found - aborting
+20180219-090625.045 Transponder: 2F0213A801AF0001 not found - aborting
+20180219-090626.000 Transponder: UNKNOWN not found - aborting
+20180219-090628.050 Transponder: F02213A801AF0001 not found - aborting
+20180219-090629.000 Transponder: UNKNOWN not found - aborting
+20180219-090640.343 Transponder: D84213A801AF0001 not found - aborting
+20180219-090641.000 Transponder: UNKNOWN not found - aborting
+20180219-090641.140 Transponder: D84213A801AF0001 not found - aborting
+20180219-090642.000 Transponder: UNKNOWN not found - aborting
+20180219-090708.229 Transponder: F02213A801AF0001 not found - aborting
+20180219-090709.000 Transponder: UNKNOWN not found - aborting
+20180219-090730.955 Transponder: 2F0213A801AF0001 not found - aborting
+20180219-090731.000 Transponder: UNKNOWN not found - aborting
+20180219-090731.016 Transponder: 2F0213A801AF0001 not found - aborting
+20180219-090732.000 Transponder: UNKNOWN not found - aborting
+20180219-090757.797 Transponder: E6C0000000008001 not found - aborting
+20180219-090758.000 Transponder: UNKNOWN not found - aborting
+20180219-090758.410 Transponder: E6C0000000008001 not found - aborting
+20180219-090759.000 Transponder: UNKNOWN not found - aborting
+20180219-090800.005 Transponder: E6C0000000008001 not found - aborting
+20180219-090801.000 Transponder: UNKNOWN not found - aborting
+20180219-090801.018 Transponder: E6C0000000008001 not found - aborting
+20180219-090802.000 Transponder: UNKNOWN not found - aborting
+20180219-090802.091 Transponder: E6C0000000008001 not found - aborting
+20180219-090803.000 Transponder: UNKNOWN not found - aborting
+20180219-090803.103 Transponder: E6C0000000008001 not found - aborting
+20180219-090804.000 Transponder: UNKNOWN not found - aborting
+20180219-090858.501 Transponder: C700000000008001 not found - aborting
+20180219-090859.000 Transponder: UNKNOWN not found - aborting
+20180219-090859.596 Transponder: 0D00000000008001 not found - aborting
+20180219-090900.000 Transponder: UNKNOWN not found - aborting
+20180219-090941.049 Transponder: C700000000008001 not found - aborting
+20180219-090942.000 Transponder: UNKNOWN not found - aborting
+20180219-091022.673 Transponder: 0D00000000008001 not found - aborting
+20180219-091023.000 Transponder: UNKNOWN not found - aborting
+20180219-091543.798 Power-Fail: Received interrupt (POWER FAIL)
+20180219-091543.800 RFID is powered off
+20180219-091543.800 Switching all power outputs OFF
+20180219-091550.780 Power-Fail: Received interrupt (POWER GOOD)
+20180219-091550.782 RFID is powered ON
+20180219-091551.000 Transponder: UNKNOWN not found - aborting
+20180219-091615.512 Transponder: 2C1CE7D001AF0001 not found - aborting
+20180219-091616.000 Transponder: UNKNOWN not found - aborting
+20180219-091641.390 Transponder: 2C1CE7D001AF0001 not found - aborting
+20180219-091642.000 Transponder: UNKNOWN not found - aborting
+20180219-091642.679 Transponder: 2C1CE7D001AF0001 not found - aborting
+20180219-091643.000 Transponder: UNKNOWN not found - aborting
+20180219-092632.314 Transponder: 01C0000000008001 not found - aborting
+20180219-092633.000 Transponder: UNKNOWN not found - aborting
+20180219-092951.611 Transponder: 5EC213A801AF0001 not found - aborting
+20180219-092952.000 Transponder: UNKNOWN not found - aborting
+20180219-110000.013 Battery Remaining Capacity: 6696mAh
+20180219-110000.022 Battery Runtime to empty  : 11816min (8d)
+20180219-110000.029 Battery Actual Voltage    : 13.3V
+20180219-110000.036 Battery Actual Current    :   34mA
+20180219-131011.991 Transponder: 66C0000000008001 not found - aborting
+20180219-131012.000 Transponder: UNKNOWN not found - aborting
+20180219-190000.000 Shutter will be closed
+20180219-190000.002 RFID is powered off
+20180219-190000.003 Feeder is switched off
+20180219-230000.013 Battery Remaining Capacity: 5857mAh
+20180219-230000.020 Battery Runtime to empty  : More than 6 weeks
+20180219-230000.027 Battery Actual Voltage    : 13.3V
+20180219-230000.034 Battery Actual Current    :    0mA
+20180220-015500.000 DCF77: Enabled
+20180220-015656.337 DCF77: Time Frame 1 is 20180220-015700
+20180220-015756.333 DCF77: Time Frame 2 is 20180220-015800
+20180220-015800.335 DCF77: Time Synchronization 01:58:00 (MEZ)
+20180220-015800.001 DCF77: Disabled
+20180220-050000.000 Feeder is switched ON
+20180220-050000.000 Shutter will be opened
+20180220-050000.003 RFID is powered ON
+20180220-050001.000 Transponder: UNKNOWN not found - aborting
+20180220-072950.572 Transponder: 1F00000000008001 not found - aborting
+20180220-072951.000 Transponder: UNKNOWN not found - aborting
+20180220-110000.013 Battery Remaining Capacity: 6497mAh
+20180220-110000.022 Battery Runtime to empty  : 11465min (7d)
+20180220-110000.029 Battery Actual Voltage    : 13.2V
+20180220-110000.036 Battery Actual Current    :   34mA
+20180220-135527.056 Transponder: 2F0213A801AF0001 not found - aborting
+20180220-135528.000 Transponder: UNKNOWN not found - aborting
+20180220-135642.297 Transponder: 2F0213A801AF0001 not found - aborting
+20180220-135643.000 Transponder: UNKNOWN not found - aborting
+20180220-140803.436 Transponder: CF4213A801AF0001 not found - aborting
+20180220-140804.000 Transponder: UNKNOWN not found - aborting
+20180220-141022.699 Transponder: CF4213A801AF0001 not found - aborting
+20180220-141023.000 Transponder: UNKNOWN not found - aborting
+20180220-141023.006 Transponder: CF4213A801AF0001 not found - aborting
+20180220-141024.000 Transponder: UNKNOWN not found - aborting
+20180220-141024.263 Transponder: CF4213A801AF0001 not found - aborting
+20180220-141025.000 Transponder: UNKNOWN not found - aborting
+20180220-145132.271 Transponder: 2380000000008001 not found - aborting
+20180220-145133.000 Transponder: UNKNOWN not found - aborting
+20180220-160430.416 Transponder: 2380000000008001 not found - aborting
+20180220-160431.000 Transponder: UNKNOWN not found - aborting
+20180220-160613.857 Transponder: 7F0213A801AF0001 not found - aborting
+20180220-160614.000 Transponder: UNKNOWN not found - aborting
+20180220-171016.800 Transponder: B88213A801AF0001 not found - aborting
+20180220-171017.000 Transponder: UNKNOWN not found - aborting
+20180220-171115.154 Transponder: B88213A801AF0001 not found - aborting
+20180220-171116.000 Transponder: UNKNOWN not found - aborting
+20180220-190000.000 Shutter will be closed
+20180220-190000.002 RFID is powered off
+20180220-190000.003 Feeder is switched off
+20180220-230000.013 Battery Remaining Capacity: 5783mAh
+20180220-230000.020 Battery Runtime to empty  : More than 6 weeks
+20180220-230000.027 Battery Actual Voltage    : 13.3V
+20180220-230000.035 Battery Actual Current    :    0mA
+20180221-015500.000 DCF77: Enabled
+20180221-015656.309 DCF77: Time Frame 1 is 20180221-015700
+20180221-015756.304 DCF77: Time Frame 2 is 20180221-015800
+20180221-015800.305 DCF77: Time Synchronization 01:58:00 (MEZ)
+20180221-015800.001 DCF77: Disabled
+20180221-050000.000 Feeder is switched ON
+20180221-050000.000 Shutter will be opened
+20180221-050000.003 RFID is powered ON
+20180221-050001.000 Transponder: UNKNOWN not found - aborting
+20180221-065905.126 Transponder: 1F00000000008001 not found - aborting
+20180221-065906.000 Transponder: UNKNOWN not found - aborting
+20180221-070000.072 Transponder: 1F00000000008001 not found - aborting
+20180221-070001.000 Transponder: UNKNOWN not found - aborting
+20180221-070001.789 Transponder: 1F00000000008001 not found - aborting
+20180221-070002.000 Transponder: UNKNOWN not found - aborting
+20180221-070002.035 Transponder: 1F00000000008001 not found - aborting
+20180221-070003.000 Transponder: UNKNOWN not found - aborting
+20180221-075014.603 Transponder: 1F00000000008001 not found - aborting
+20180221-075015.000 Transponder: UNKNOWN not found - aborting
+20180221-090651.788 Transponder: 1F00000000008001 not found - aborting
+20180221-090652.000 Transponder: UNKNOWN not found - aborting
+20180221-092856.851 Transponder: 56C0000000008001 not found - aborting
+20180221-092857.000 Transponder: UNKNOWN not found - aborting
+20180221-105901.933 Transponder: 098213A801AF0001 not found - aborting
+20180221-105902.000 Transponder: UNKNOWN not found - aborting
+20180221-110000.013 Battery Remaining Capacity: 5682mAh
+20180221-110000.022 Battery Runtime to empty  : 10027min (6d)
+20180221-110000.029 Battery Actual Voltage    : 13.2V
+20180221-110000.036 Battery Actual Current    :   34mA
+20180221-112422.191 Transponder: 80C0000000008001 not found - aborting
+20180221-112423.000 Transponder: UNKNOWN not found - aborting
+20180221-135117.171 Transponder: E6C0000000008001 not found - aborting
+20180221-135118.000 Transponder: UNKNOWN not found - aborting
+20180221-141452.079 Transponder: 8B40000000008001 not found - aborting
+20180221-141453.000 Transponder: UNKNOWN not found - aborting
+20180221-143130.050 Transponder: 66C0000000008001 not found - aborting
+20180221-143131.000 Transponder: UNKNOWN not found - aborting
+20180221-150846.155 Transponder: B4C0000000008001 not found - aborting
+20180221-150847.000 Transponder: UNKNOWN not found - aborting
+20180221-153933.182 Transponder: E6C0000000008001 not found - aborting
+20180221-153934.000 Transponder: UNKNOWN not found - aborting
+20180221-155115.244 Transponder: 8B40000000008001 not found - aborting
+20180221-155116.000 Transponder: UNKNOWN not found - aborting
+20180221-155245.604 Transponder: 142213A801AF0001 not found - aborting
+20180221-155246.000 Transponder: UNKNOWN not found - aborting
+20180221-161516.609 Transponder: D6C0000000008001 not found - aborting
+20180221-161517.000 Transponder: UNKNOWN not found - aborting
+20180221-161535.935 Transponder: 05C0000000008001 not found - aborting
+20180221-161536.000 Transponder: UNKNOWN not found - aborting
+20180221-161537.193 Transponder: 05C0000000008001 not found - aborting
+20180221-161538.000 Transponder: UNKNOWN not found - aborting
+20180221-163237.569 Transponder: B4C0000000008001 not found - aborting
+20180221-163238.000 Transponder: UNKNOWN not found - aborting
+20180221-163651.067 Transponder: 9AC0000000008001 not found - aborting
+20180221-163652.000 Transponder: UNKNOWN not found - aborting
+20180221-164430.948 Transponder: 05C0000000008001 not found - aborting
+20180221-164431.000 Transponder: UNKNOWN not found - aborting
+20180221-190000.000 Shutter will be closed
+20180221-190000.002 RFID is powered off
+20180221-190000.003 Feeder is switched off
+20180221-230000.013 Battery Remaining Capacity: 5709mAh
+20180221-230000.020 Battery Runtime to empty  : More than 6 weeks
+20180221-230000.027 Battery Actual Voltage    : 13.3V
+20180221-230000.034 Battery Actual Current    :    0mA
+20180222-015500.000 DCF77: Enabled
+20180222-015656.175 DCF77: Time Frame 1 is 20180222-015700
+20180222-015756.172 DCF77: Time Frame 2 is 20180222-015800
+20180222-015800.173 DCF77: Time Synchronization 01:58:00 (MEZ)
+20180222-015800.001 DCF77: Disabled
+20180222-050000.000 Feeder is switched ON
+20180222-050000.000 Shutter will be opened
+20180222-050000.003 RFID is powered ON
+20180222-050001.000 Transponder: UNKNOWN not found - aborting
+20180222-100831.133 Transponder: 0EC0000000008001 not found - aborting
+20180222-100832.000 Transponder: UNKNOWN not found - aborting
+20180222-103742.934 Transponder: 0D00000000008001 not found - aborting
+20180222-103743.000 Transponder: UNKNOWN not found - aborting
+20180222-103830.205 Transponder: 0D00000000008001 not found - aborting
+20180222-103831.000 Transponder: UNKNOWN not found - aborting
+20180222-110000.013 Battery Remaining Capacity: 5680mAh
+20180222-110000.024 Battery Runtime to empty  : 10023min (6d)
+20180222-110000.031 Battery Actual Voltage    : 13.2V
+20180222-110000.039 Battery Actual Current    :   34mA
+20180222-114643.200 Transponder: 56C0000000008001 not found - aborting
+20180222-114644.000 Transponder: UNKNOWN not found - aborting
+20180222-114649.950 Transponder: 56C0000000008001 not found - aborting
+20180222-114650.000 Transponder: UNKNOWN not found - aborting
+20180222-115745.063 Transponder: 58C213A801AF0001 not found - aborting
+20180222-115746.000 Transponder: UNKNOWN not found - aborting
+20180222-120258.235 Transponder: E6C0000000008001 not found - aborting
+20180222-120259.000 Transponder: UNKNOWN not found - aborting
+20180222-122004.205 Transponder: 56C0000000008001 not found - aborting
+20180222-122005.000 Transponder: UNKNOWN not found - aborting
+20180222-123708.434 Transponder: 1F00000000008001 not found - aborting
+20180222-123709.000 Transponder: UNKNOWN not found - aborting
+20180222-124431.463 Transponder: 098213A801AF0001 not found - aborting
+20180222-124432.000 Transponder: UNKNOWN not found - aborting
+20180222-124437.418 Transponder: 098213A801AF0001 not found - aborting
+20180222-124438.000 Transponder: UNKNOWN not found - aborting
+20180222-130804.852 Transponder: BF4213A801AF0001 not found - aborting
+20180222-130805.000 Transponder: UNKNOWN not found - aborting
+20180222-130849.196 Transponder: 56C0000000008001 not found - aborting
+20180222-130850.000 Transponder: UNKNOWN not found - aborting
+20180222-130850.668 Transponder: 56C0000000008001 not found - aborting
+20180222-130851.000 Transponder: UNKNOWN not found - aborting
+20180222-131113.401 Transponder: D020000000008001 not found - aborting
+20180222-131114.000 Transponder: UNKNOWN not found - aborting
+20180222-131247.505 Transponder: 80C0000000008001 not found - aborting
+20180222-131248.000 Transponder: UNKNOWN not found - aborting
+20180222-132108.162 Transponder: 7F40000000008001 not found - aborting
+20180222-132109.000 Transponder: UNKNOWN not found - aborting
+20180222-132110.162 Transponder: E180000000008001 not found - aborting
+20180222-132111.000 Transponder: UNKNOWN not found - aborting
+20180222-132121.661 Transponder: E6C0000000008001 not found - aborting
+20180222-132122.000 Transponder: UNKNOWN not found - aborting
+20180222-132126.352 Transponder: E6C0000000008001 not found - aborting
+20180222-132127.000 Transponder: UNKNOWN not found - aborting
+20180222-132130.762 Transponder: E6C0000000008001 not found - aborting
+20180222-132131.000 Transponder: UNKNOWN not found - aborting
+20180222-132133.309 Transponder: E6C0000000008001 not found - aborting
+20180222-132134.000 Transponder: UNKNOWN not found - aborting
+20180222-132135.026 Transponder: E6C0000000008001 not found - aborting
+20180222-132136.000 Transponder: UNKNOWN not found - aborting
+20180222-132136.744 Transponder: E6C0000000008001 not found - aborting
+20180222-132137.000 Transponder: UNKNOWN not found - aborting
+20180222-132138.870 Transponder: E6C0000000008001 not found - aborting
+20180222-132139.000 Transponder: UNKNOWN not found - aborting
+20180222-132235.591 Transponder: E6C0000000008001 not found - aborting
+20180222-132236.000 Transponder: UNKNOWN not found - aborting
+20180222-133721.922 Transponder: 1F00000000008001 not found - aborting
+20180222-133722.000 Transponder: UNKNOWN not found - aborting
+20180222-133722.106 Transponder: 1F00000000008001 not found - aborting
+20180222-133723.000 Transponder: UNKNOWN not found - aborting
+20180222-135032.256 Transponder: C700000000008001 not found - aborting
+20180222-135033.000 Transponder: UNKNOWN not found - aborting
+20180222-135212.721 Transponder: BF4213A801AF0001 not found - aborting
+20180222-135213.000 Transponder: UNKNOWN not found - aborting
+20180222-135444.278 Transponder: 56C0000000008001 not found - aborting
+20180222-135445.000 Transponder: UNKNOWN not found - aborting
+20180222-135445.106 Transponder: 56C0000000008001 not found - aborting
+20180222-135446.000 Transponder: UNKNOWN not found - aborting
+20180222-135755.019 Transponder: 38C0000000008001 not found - aborting
+20180222-135756.000 Transponder: UNKNOWN not found - aborting
+20180222-140202.952 Transponder: 80C0000000008001 not found - aborting
+20180222-140203.000 Transponder: UNKNOWN not found - aborting
+20180222-140203.321 Transponder: 80C0000000008001 not found - aborting
+20180222-140204.000 Transponder: UNKNOWN not found - aborting
+20180222-140244.108 Transponder: 41C0000000008001 not found - aborting
+20180222-140245.000 Transponder: UNKNOWN not found - aborting
+20180222-153711.145 Transponder: E180000000008001 not found - aborting
+20180222-153713.000 Transponder: UNKNOWN not found - aborting
+20180222-153724.490 Transponder: E6C0000000008001 not found - aborting
+20180222-153725.000 Transponder: UNKNOWN not found - aborting
+20180222-153732.465 Transponder: E6C0000000008001 not found - aborting
+20180222-153733.000 Transponder: UNKNOWN not found - aborting
+20180222-153825.157 Transponder: E6C0000000008001 not found - aborting
+20180222-153826.000 Transponder: UNKNOWN not found - aborting
+20180222-153932.366 Transponder: E6C0000000008001 not found - aborting
+20180222-153933.000 Transponder: UNKNOWN not found - aborting
+20180222-154016.466 Transponder: FCC0000000008001 not found - aborting
+20180222-154017.000 Transponder: UNKNOWN not found - aborting
+20180222-155228.002 Transponder: 1F00000000008001 not found - aborting
+20180222-155229.000 Transponder: UNKNOWN not found - aborting
+20180222-155230.611 Transponder: 1F00000000008001 not found - aborting
+20180222-155231.000 Transponder: UNKNOWN not found - aborting
+20180222-155331.717 Transponder: E180000000008001 not found - aborting
+20180222-155332.000 Transponder: UNKNOWN not found - aborting
+20180222-155352.864 Transponder: 1F00000000008001 not found - aborting
+20180222-155353.000 Transponder: UNKNOWN not found - aborting
+20180222-163449.975 Transponder: 1F00000000008001 not found - aborting
+20180222-163450.000 Transponder: UNKNOWN not found - aborting
+20180222-164309.784 Transponder: D020000000008001 not found - aborting
+20180222-164310.000 Transponder: UNKNOWN not found - aborting
+20180222-164555.445 Transponder: D020000000008001 not found - aborting
+20180222-164556.000 Transponder: UNKNOWN not found - aborting
+20180222-165322.010 Transponder: 1F00000000008001 not found - aborting
+20180222-165323.000 Transponder: UNKNOWN not found - aborting
+20180222-190000.000 Shutter will be closed
+20180222-190000.002 RFID is powered off
+20180222-190000.003 Feeder is switched off
+20180222-230000.013 Battery Remaining Capacity: 4597mAh
+20180222-230000.020 Battery Runtime to empty  : More than 6 weeks
+20180222-230000.028 Battery Actual Voltage    : 13.2V
+20180222-230000.035 Battery Actual Current    :    0mA
+20180223-015500.000 DCF77: Enabled
+20180223-015656.024 DCF77: Time Frame 1 is 20180223-015700
+20180223-015756.022 DCF77: Time Frame 2 is 20180223-015800
+20180223-015800.023 DCF77: Time Synchronization 01:58:00 (MEZ)
+20180223-015800.001 DCF77: Disabled
+20180223-050000.000 Feeder is switched ON
+20180223-050000.000 Shutter will be opened
+20180223-050000.003 RFID is powered ON
+20180223-050001.000 Transponder: UNKNOWN not found - aborting
+20180223-070424.364 Transponder: 38C0000000008001 not found - aborting
+20180223-070425.000 Transponder: UNKNOWN not found - aborting
+20180223-070443.699 Transponder: E180000000008001 not found - aborting
+20180223-070444.000 Transponder: UNKNOWN not found - aborting
+20180223-070507.554 Transponder: E180000000008001 not found - aborting
+20180223-070508.000 Transponder: UNKNOWN not found - aborting
+20180223-070607.019 Transponder: E6C0000000008001 not found - aborting
+20180223-070608.000 Transponder: UNKNOWN not found - aborting
+20180223-070625.212 Transponder: E180000000008001 not found - aborting
+20180223-070626.000 Transponder: UNKNOWN not found - aborting
+20180223-070830.490 Transponder: 1F00000000008001 not found - aborting
+20180223-070831.000 Transponder: UNKNOWN not found - aborting
+20180223-070831.011 Transponder: 1F00000000008001 not found - aborting
+20180223-070832.000 Transponder: UNKNOWN not found - aborting
+20180223-070832.269 Transponder: 1F00000000008001 not found - aborting
+20180223-070833.000 Transponder: UNKNOWN not found - aborting
+20180223-072729.972 Transponder: 1F00000000008001 not found - aborting
+20180223-072730.000 Transponder: UNKNOWN not found - aborting
+20180223-072730.034 Transponder: 1F00000000008001 not found - aborting
+20180223-072731.000 Transponder: UNKNOWN not found - aborting
+20180223-072732.426 Transponder: 1F00000000008001 not found - aborting
+20180223-072733.000 Transponder: UNKNOWN not found - aborting
+20180223-080412.526 Transponder: C700000000008001 not found - aborting
+20180223-080413.000 Transponder: UNKNOWN not found - aborting
+20180223-080807.870 Transponder: B88213A801AF0001 not found - aborting
+20180223-080808.000 Transponder: UNKNOWN not found - aborting
+20180223-080808.024 Transponder: B88213A801AF0001 not found - aborting
+20180223-080809.000 Transponder: UNKNOWN not found - aborting
+20180223-080812.279 Transponder: B88213A801AF0001 not found - aborting
+20180223-080813.000 Transponder: UNKNOWN not found - aborting
+20180223-084230.684 Transponder: 0CC0000000008001 not found - aborting
+20180223-084231.000 Transponder: UNKNOWN not found - aborting
+20180223-090020.606 Power-Fail: Received interrupt (POWER FAIL)
+20180223-090020.607 RFID is powered off
+20180223-090020.608 Switching all power outputs OFF
+20180223-090026.670 Power-Fail: Received interrupt (POWER GOOD)
+20180223-090026.671 RFID is powered ON
+00000000-000000.000 MAPRDL V1.1 (May 15 2017 09:53:22)
+00000000-000000.000 DCF77: Enabled
+00000000-000000.000 LB1:ON
+00000000-000000.000 Power-Fail: Received interrupt (POWER GOOD)
+00000000-000000.000 SD-Card Removed
+00000000-000000.000 Feeder is switched ON
+00000000-000000.000 Shutter will be opened
+00000000-000000.000 RFID is powered ON
+20140101-120019.000 Transponder: UNKNOWN not found - aborting
+20140101-120822.942 Transponder: BF4213A801AF0001 not found - aborting
+20140101-120843.000 Transponder: UNKNOWN not found - aborting
+20140101-133526.510 SD-Card Inserted
+20140101-133526.646 SD-Card Initialized
+20140101-133526.647 SD-Card File System mounted
+20140101-133527.065 SD-Card 1908MB free
+20140101-133527.067 Using Filename BOX1020.TXT
+20140101-133527.097 MCU: EFM32G230F128 HW-ID: 0x24AC0A0458F0AEEF
+20140101-133527.129 Battery Manufacturer Name :  Dynamis
+20140101-133527.155 Battery Manufacturer Data :  61.90002/15790
+20140101-133527.180 Battery Device Name       :  BMS2-4_V0.3
+20140101-133527.206 Battery Device Type       :  Lithium-Ion
+20140101-133527.213 Battery Serial Number     : 00008
+20140101-133527.220 Battery Design Voltage    : 3.300V per cell
+20140101-133527.227 Battery Design Capacity   : 7500mAh
+20140101-133527.234 Battery Full Charge Capac.: 7414mAh
+20140101-133527.242 Battery Remaining Capacity: 4623mAh
+20140101-133527.251 Battery Runtime to empty  : 7925min (5d)
+20140101-133527.258 Battery Actual Voltage    : 13.1V
+20140101-133527.265 Battery Actual Current    :   35mA
+20140101-133527.266 Reading Configuration File CONFIG.TXT
+20140101-141802.783 Transponder: B88213A801AF0001 not found - aborting
+20140101-141803.000 Transponder: UNKNOWN not found - aborting
+20140101-144617.343 Transponder: B88213A801AF0001 not found - aborting
+20140101-144618.000 Transponder: UNKNOWN not found - aborting
+20140101-144704.561 Transponder: 0800000000008001 not found - aborting
+20140101-144705.000 Transponder: UNKNOWN not found - aborting
+20140101-161951.741 Transponder: 8100000000008001 not found - aborting
+20140101-161952.000 Transponder: UNKNOWN not found - aborting
+20140101-171705.134 Transponder: 56C0000000008001 not found - aborting
+20140101-171706.000 Transponder: UNKNOWN not found - aborting
+20140101-190000.000 Shutter will be closed
+20140101-190000.002 RFID is powered off
+20140101-190000.003 Feeder is switched off
+20140101-190135.558 DCF77: Time Frame 1 is 20180226-165300
+20140101-190235.556 DCF77: Time Frame 2 is 20180226-165400
+20180226-165400.557 Initial Time Synchronisation
+20180226-165400.058 DCF77: Time Synchronization 16:54:00 (MEZ)
+20180226-165400.001 DCF77: Disabled
+20180226-170211.000 SD-Card Removed
+20180226-230000.013 Battery Remaining Capacity: 4300mAh
+20180226-230000.020 Battery Runtime to empty  : More than 6 weeks
+20180226-230000.028 Battery Actual Voltage    : 13.1V
+20180226-230000.035 Battery Actual Current    :    0mA
+20180227-015500.000 DCF77: Enabled
+20180227-015657.769 DCF77: Time Frame 1 is 20180227-015700
+20180227-015757.764 DCF77: Time Frame 2 is 20180227-015800
+20180227-015800.766 DCF77: Time Synchronization 01:58:00 (MEZ)
+20180227-015800.001 DCF77: Disabled
+20180227-050000.000 Feeder is switched ON
+20180227-050000.000 Shutter will be opened
+20180227-050000.003 RFID is powered ON
+20180227-050001.000 Transponder: UNKNOWN not found - aborting
+20180227-090738.000 SD-Card Inserted
+20180227-090738.135 SD-Card Initialized
+20180227-090738.135 SD-Card File System mounted
+20180227-090738.552 SD-Card 1908MB free
+20180227-090738.554 Media Change: BOX1020.TXT -> BOX1020.TXT
+20180227-090738.585 MCU: EFM32G230F128 HW-ID: 0x24AC0A0458F0AEEF
+20180227-090738.617 Battery Manufacturer Name :  Dynamis
+20180227-090738.643 Battery Manufacturer Data :  61.90002/15790
+20180227-090738.668 Battery Device Name       :  BMS2-4_V0.3
+20180227-090738.694 Battery Device Type       :  Lithium-Ion
+20180227-090738.701 Battery Serial Number     : 00008
+20180227-090738.708 Battery Design Voltage    : 3.300V per cell
+20180227-090738.715 Battery Design Capacity   : 7500mAh
+20180227-090738.722 Battery Full Charge Capac.: 7414mAh
+20180227-090738.729 Battery Remaining Capacity: 4251mAh
+20180227-090738.739 Battery Runtime to empty  : 7085min (4d)
+20180227-090738.746 Battery Actual Voltage    : 13.1V
+20180227-090738.753 Battery Actual Current    :   36mA
+20180227-090738.754 Reading Configuration File CONFIG.TXT
+20180227-110000.013 Battery Remaining Capacity: 4195mAh
+20180227-110000.022 Battery Runtime to empty  : 7191min (4d)
+20180227-110000.030 Battery Actual Voltage    : 13.1V
+20180227-110000.037 Battery Actual Current    :   35mA
+20180227-125008.857 Transponder: 1F0213A801AF0001 not found - aborting
+20180227-125009.000 Transponder: UNKNOWN not found - aborting
+20180227-152654.171 Transponder: 0800000000008001 not found - aborting
+20180227-152655.000 Transponder: UNKNOWN not found - aborting
+20180227-174126.000 SD-Card Removed
+20180227-190000.000 Shutter will be closed
+20180227-190000.002 RFID is powered off
+20180227-190000.003 Feeder is switched off
+20180227-230000.013 Battery Remaining Capacity: 3336mAh
+20180227-230000.020 Battery Runtime to empty  : More than 6 weeks
+20180227-230000.028 Battery Actual Voltage    : 13.1V
+20180227-230000.035 Battery Actual Current    :    0mA
+20180228-015500.000 DCF77: Enabled
+20180228-015654.743 DCF77: Time Frame 1 is 20180228-015700
+20180228-015754.738 DCF77: Time Frame 2 is 20180228-015800
+20180228-015800.739 DCF77: Time Synchronization 01:58:00 (MEZ)
+20180228-015800.001 DCF77: Disabled
+20180228-050000.000 Feeder is switched ON
+20180228-050000.000 Shutter will be opened
+20180228-050000.003 RFID is powered ON
+20180228-050001.000 Transponder: UNKNOWN not found - aborting
+20180228-065053.262 Transponder: 1F00000000008001 not found - aborting
+20180228-065054.000 Transponder: UNKNOWN not found - aborting
+20180228-080818.714 Transponder: 1F00000000008001 not found - aborting
+20180228-080819.000 Transponder: UNKNOWN not found - aborting
+20180228-080935.599 Transponder: 38C0000000008001 not found - aborting
+20180228-080936.000 Transponder: UNKNOWN not found - aborting
+20180228-102323.000 SD-Card Inserted
+20180228-102323.135 SD-Card Initialized
+20180228-102323.135 SD-Card File System mounted
+20180228-102323.552 SD-Card 1908MB free
+20180228-102323.554 Media Change: BOX1020.TXT -> BOX1020.TXT
+20180228-102323.587 MCU: EFM32G230F128 HW-ID: 0x24AC0A0458F0AEEF
+20180228-102323.619 Battery Manufacturer Name :  Dynamis
+20180228-102323.644 Battery Manufacturer Data :  61.90002/15790
+20180228-102323.672 Battery Device Name       :  BMS2-4_V0.3
+20180228-102323.697 Battery Device Type       :  Lithium-Ion
+20180228-102323.704 Battery Serial Number     : 00008
+20180228-102323.711 Battery Design Voltage    : 3.300V per cell
+20180228-102323.718 Battery Design Capacity   : 7500mAh
+20180228-102323.725 Battery Full Charge Capac.: 7414mAh
+20180228-102323.732 Battery Remaining Capacity: 3323mAh
+20180228-102323.742 Battery Runtime to empty  : 5112min (3d)
+20180228-102323.749 Battery Actual Voltage    : 13.0V
+20180228-102323.756 Battery Actual Current    :   39mA
+20180228-102323.757 Reading Configuration File CONFIG.TXT
+20180228-110000.013 Battery Remaining Capacity: 3305mAh
+20180228-110000.026 Battery Runtime to empty  : 5665min (3d)
+20180228-110000.033 Battery Actual Voltage    : 13.0V
+20180228-110000.040 Battery Actual Current    :   35mA
+20180228-175824.000 SD-Card Removed
+20180228-190000.000 Shutter will be closed
+20180228-190000.002 RFID is powered off
+20180228-190000.003 Feeder is switched off
+20180228-230000.013 Battery Remaining Capacity: 3336mAh
+20180228-230000.020 Battery Runtime to empty  : More than 6 weeks
+20180228-230000.027 Battery Actual Voltage    : 13.1V
+20180228-230000.034 Battery Actual Current    :    0mA
+20180301-015500.000 DCF77: Enabled
+20180301-015654.943 DCF77: Time Frame 1 is 20180301-015700
+20180301-015754.940 DCF77: Time Frame 2 is 20180301-015800
+20180301-015800.941 DCF77: Time Synchronization 01:58:00 (MEZ)
+20180301-015800.001 DCF77: Disabled
+20180301-050000.000 Feeder is switched ON
+20180301-050000.000 Shutter will be opened
+20180301-050000.003 RFID is powered ON
+20180301-050001.000 Transponder: UNKNOWN not found - aborting
+20180301-091503.000 SD-Card Inserted
+20180301-091503.135 SD-Card Initialized
+20180301-091503.135 SD-Card File System mounted
+20180301-091503.552 SD-Card 1908MB free
+20180301-091503.555 Media Change: BOX1020.TXT -> BOX1020.TXT
+20180301-091503.587 MCU: EFM32G230F128 HW-ID: 0x24AC0A0458F0AEEF
+20180301-091503.619 Battery Manufacturer Name :  Dynamis
+20180301-091503.644 Battery Manufacturer Data :  61.90002/15790
+20180301-091503.670 Battery Device Name       :  BMS2-4_V0.3
+20180301-091503.695 Battery Device Type       :  Lithium-Ion
+20180301-091503.703 Battery Serial Number     : 00008
+20180301-091503.710 Battery Design Voltage    : 3.300V per cell
+20180301-091503.717 Battery Design Capacity   : 7500mAh
+20180301-091503.724 Battery Full Charge Capac.: 7414mAh
+20180301-091503.732 Battery Remaining Capacity: 3209mAh
+20180301-091503.741 Battery Runtime to empty  : 5501min (3d)
+20180301-091503.748 Battery Actual Voltage    : 13.0V
+20180301-091503.755 Battery Actual Current    :   35mA
+20180301-091503.756 Reading Configuration File CONFIG.TXT
+20180301-110000.013 Battery Remaining Capacity: 3157mAh
+20180301-110000.022 Battery Runtime to empty  : 5412min (3d)
+20180301-110000.029 Battery Actual Voltage    : 13.0V
+20180301-110000.037 Battery Actual Current    :   35mA
+20180301-151212.212 Transponder: C980000000008001 not found - aborting
+20180301-151213.000 Transponder: UNKNOWN not found - aborting
+20180301-152533.319 Transponder: C980000000008001 not found - aborting
+20180301-152534.000 Transponder: UNKNOWN not found - aborting
+20180301-155830.903 Transponder: C980000000008001 not found - aborting
+20180301-155831.000 Transponder: UNKNOWN not found - aborting
+20180301-155935.219 Transponder: C980000000008001 not found - aborting
+20180301-155936.000 Transponder: UNKNOWN not found - aborting
+20180301-160838.499 Transponder: 1F00000000008001 not found - aborting
+20180301-160839.000 Transponder: UNKNOWN not found - aborting
+20180301-171357.325 Transponder: B88213A801AF0001 not found - aborting
+20180301-171358.000 Transponder: UNKNOWN not found - aborting
+20180301-171419.637 Transponder: B88213A801AF0001 not found - aborting
+20180301-171420.000 Transponder: UNKNOWN not found - aborting
+20180301-171454.490 Transponder: B88213A801AF0001 not found - aborting
+20180301-171455.000 Transponder: UNKNOWN not found - aborting
+20180301-172542.833 Transponder: C1C0000000008001 not found - aborting
+20180301-172543.000 Transponder: UNKNOWN not found - aborting
+20180301-190000.000 Shutter will be closed
+20180301-190000.002 RFID is powered off
+20180301-190000.003 Feeder is switched off
+20180301-211403.000 SD-Card Removed
+20180301-230000.013 Battery Remaining Capacity: 3336mAh
+20180301-230000.020 Battery Runtime to empty  : More than 6 weeks
+20180301-230000.027 Battery Actual Voltage    : 13.1V
+20180301-230000.034 Battery Actual Current    :    0mA
+20180302-015500.000 DCF77: Enabled
+20180302-015655.243 DCF77: Time Frame 1 is 20180302-015700
+20180302-015755.239 DCF77: Time Frame 2 is 20180302-015800
+20180302-015800.241 DCF77: Time Synchronization 01:58:00 (MEZ)
+20180302-015800.001 DCF77: Disabled
+20180302-050000.000 Feeder is switched ON
+20180302-050000.000 Shutter will be opened
+20180302-050000.003 RFID is powered ON
+20180302-050001.000 Transponder: UNKNOWN not found - aborting
+20180302-074316.000 SD-Card Inserted
+20180302-074316.135 SD-Card Initialized
+20180302-074316.136 SD-Card File System mounted
+20180302-074316.553 SD-Card 1908MB free
+20180302-074316.555 Media Change: BOX1020.TXT -> BOX1020.TXT
+20180302-074316.586 MCU: EFM32G230F128 HW-ID: 0x24AC0A0458F0AEEF
+20180302-074316.619 Battery Manufacturer Name :  Dynamis
+20180302-074316.644 Battery Manufacturer Data :  61.90002/15790
+20180302-074316.670 Battery Device Name       :  BMS2-4_V0.3
+20180302-074316.695 Battery Device Type       :  Lithium-Ion
+20180302-074316.703 Battery Serial Number     : 00008
+20180302-074316.710 Battery Design Voltage    : 3.300V per cell
+20180302-074316.717 Battery Design Capacity   : 7500mAh
+20180302-074316.725 Battery Full Charge Capac.: 7414mAh
+20180302-074316.732 Battery Remaining Capacity: 3255mAh
+20180302-074316.741 Battery Runtime to empty  : 5007min (3d)
+20180302-074316.748 Battery Actual Voltage    : 13.0V
+20180302-074316.755 Battery Actual Current    :   39mA
+20180302-074316.756 Reading Configuration File CONFIG.TXT
+20180302-105224.807 Transponder: 1F00000000008001 not found - aborting
+20180302-105225.000 Transponder: UNKNOWN not found - aborting
+20180302-110000.013 Battery Remaining Capacity: 3157mAh
+20180302-110000.022 Battery Runtime to empty  : 5412min (3d)
+20180302-110000.029 Battery Actual Voltage    : 13.0V
+20180302-110000.036 Battery Actual Current    :   35mA
+20180302-110731.358 Transponder: B88213A801AF0001 not found - aborting
+20180302-110732.000 Transponder: UNKNOWN not found - aborting
+20180302-111748.611 Transponder: C1C0000000008001 not found - aborting
+20180302-111749.000 Transponder: UNKNOWN not found - aborting
+20180302-134648.272 Transponder: FCC0000000008001 not found - aborting
+20180302-134649.000 Transponder: UNKNOWN not found - aborting
+20180302-134649.836 Transponder: FCC0000000008001 not found - aborting
+20180302-134650.000 Transponder: UNKNOWN not found - aborting
+20180302-134650.265 Transponder: FCC0000000008001 not found - aborting
+20180302-134651.000 Transponder: UNKNOWN not found - aborting
+20180302-190000.000 Shutter will be closed
+20180302-190000.002 RFID is powered off
+20180302-190000.003 Feeder is switched off
+20180302-230000.013 Battery Remaining Capacity: 3262mAh
+20180302-230000.021 Battery Runtime to empty  : More than 6 weeks
+20180302-230000.028 Battery Actual Voltage    : 13.1V
+20180302-230000.036 Battery Actual Current    :    0mA
+20180303-015500.000 DCF77: Enabled
+20180303-015655.854 DCF77: Time Frame 1 is 20180303-015700
+20180303-015755.851 DCF77: Time Frame 2 is 20180303-015800
+20180303-015800.853 DCF77: Time Synchronization 01:58:00 (MEZ)
+20180303-015800.001 DCF77: Disabled
+20180303-050000.000 Feeder is switched ON
+20180303-050000.000 Shutter will be opened
+20180303-050000.003 RFID is powered ON
+20180303-050001.000 Transponder: UNKNOWN not found - aborting
+20180303-080715.192 Transponder: B88213A801AF0001 not found - aborting
+20180303-080716.000 Transponder: UNKNOWN not found - aborting
+20180303-095526.338 Transponder: 58C213A801AF0001 not found - aborting
+20180303-095527.000 Transponder: UNKNOWN not found - aborting
+20180303-100045.398 Transponder: 38C0000000008001 not found - aborting
+20180303-100046.000 Transponder: UNKNOWN not found - aborting
+20180303-110000.013 Battery Remaining Capacity: 3157mAh
+20180303-110000.022 Battery Runtime to empty  : 5412min (3d)
+20180303-110000.029 Battery Actual Voltage    : 13.0V
+20180303-110000.037 Battery Actual Current    :   35mA
+20180303-113115.706 Transponder: FCC0000000008001 not found - aborting
+20180303-113116.000 Transponder: UNKNOWN not found - aborting
+20180303-113116.074 Transponder: FCC0000000008001 not found - aborting
+20180303-113117.000 Transponder: UNKNOWN not found - aborting
+20180303-190000.000 Shutter will be closed
+20180303-190000.002 RFID is powered off
+20180303-190000.003 Feeder is switched off
+20180303-230000.014 Battery Remaining Capacity: 2966mAh
+20180303-230000.021 Battery Runtime to empty  : More than 6 weeks
+20180303-230000.028 Battery Actual Voltage    : 13.1V
+20180303-230000.036 Battery Actual Current    :    0mA
+20180304-015500.000 DCF77: Enabled
+20180304-015656.528 DCF77: Time Frame 1 is 20180304-015700
+20180304-015756.526 DCF77: Time Frame 2 is 20180304-015800
+20180304-015800.527 DCF77: Time Synchronization 01:58:00 (MEZ)
+20180304-015800.001 DCF77: Disabled
+20180304-050000.000 Feeder is switched ON
+20180304-050000.000 Shutter will be opened
+20180304-050000.003 RFID is powered ON
+20180304-050001.000 Transponder: UNKNOWN not found - aborting
+20180304-093423.088 Transponder: 38C0000000008001 not found - aborting
+20180304-093424.000 Transponder: UNKNOWN not found - aborting
+20180304-105908.718 Transponder: 71C0000000008001 not found - aborting
+20180304-105909.000 Transponder: UNKNOWN not found - aborting
+20180304-110000.013 Battery Remaining Capacity: 2861mAh
+20180304-110000.022 Battery Runtime to empty  : 5048min (3d)
+20180304-110000.030 Battery Actual Voltage    : 13.0V
+20180304-110000.037 Battery Actual Current    :   34mA
+20180304-112627.446 Transponder: 518196A801AF0001 not found - aborting
+20180304-112628.000 Transponder: UNKNOWN not found - aborting
+20180304-112628.580 Transponder: 518196A801AF0001 not found - aborting
+20180304-112629.000 Transponder: UNKNOWN not found - aborting
+20180304-112629.010 Transponder: 518196A801AF0001 not found - aborting
+20180304-112630.000 Transponder: UNKNOWN not found - aborting
+20180304-112841.118 Transponder: B88213A801AF0001 not found - aborting
+20180304-112842.000 Transponder: UNKNOWN not found - aborting
+20180304-112905.647 Transponder: 868213A801AF0001 not found - aborting
+20180304-112906.000 Transponder: UNKNOWN not found - aborting
+20180304-112906.046 Transponder: 868213A801AF0001 not found - aborting
+20180304-112907.000 Transponder: UNKNOWN not found - aborting
+20180304-112907.028 Transponder: 868213A801AF0001 not found - aborting
+20180304-112908.000 Transponder: UNKNOWN not found - aborting
+20180304-113034.592 Transponder: B88213A801AF0001 not found - aborting
+20180304-113035.000 Transponder: UNKNOWN not found - aborting
+20180304-113112.743 Transponder: FB40000000008001 not found - aborting
+20180304-113113.000 Transponder: UNKNOWN not found - aborting
+20180304-113223.067 Transponder: 018213A801AF0001 not found - aborting
+20180304-113224.000 Transponder: UNKNOWN not found - aborting
+20180304-114658.360 Transponder: 6800000000008001 not found - aborting
+20180304-114659.000 Transponder: UNKNOWN not found - aborting
+20180304-114755.113 Transponder: 48C0000000008001 not found - aborting
+20180304-114756.000 Transponder: UNKNOWN not found - aborting
+20180304-115618.373 Transponder: FCC0000000008001 not found - aborting
+20180304-115619.000 Transponder: UNKNOWN not found - aborting
+20180304-115644.542 Transponder: 56C0000000008001 not found - aborting
+20180304-115645.000 Transponder: UNKNOWN not found - aborting
+20180304-115808.461 Transponder: 868213A801AF0001 not found - aborting
+20180304-115809.000 Transponder: UNKNOWN not found - aborting
+20180304-115810.150 Transponder: 868213A801AF0001 not found - aborting
+20180304-115811.000 Transponder: UNKNOWN not found - aborting
+20180304-123608.276 Transponder: 38C0000000008001 not found - aborting
+20180304-123609.000 Transponder: UNKNOWN not found - aborting
+20180304-123755.755 Transponder: 38C0000000008001 not found - aborting
+20180304-123756.000 Transponder: UNKNOWN not found - aborting
+20180304-123756.123 Transponder: 38C0000000008001 not found - aborting
+20180304-123757.000 Transponder: UNKNOWN not found - aborting
+20180304-130025.144 Transponder: 1F00000000008001 not found - aborting
+20180304-130026.000 Transponder: UNKNOWN not found - aborting
+20180304-190000.000 Shutter will be closed
+20180304-190000.002 RFID is powered off
+20180304-190000.003 Feeder is switched off
+20180304-230000.013 Battery Remaining Capacity: 2595mAh
+20180304-230000.020 Battery Runtime to empty  : More than 6 weeks
+20180304-230000.027 Battery Actual Voltage    : 13.0V
+20180304-230000.035 Battery Actual Current    :    0mA
+20180305-015500.000 DCF77: Enabled
+20180305-015657.157 DCF77: Time Frame 1 is 20180305-015700
+20180305-015757.155 DCF77: Time Frame 2 is 20180305-015800
+20180305-015800.156 DCF77: Time Synchronization 01:58:00 (MEZ)
+20180305-015800.001 DCF77: Disabled
+20180305-050000.000 Feeder is switched ON
+20180305-050000.000 Shutter will be opened
+20180305-050000.003 RFID is powered ON
+20180305-050001.000 Transponder: UNKNOWN not found - aborting
+20180305-073820.542 Transponder: 0D00000000008001 not found - aborting
+20180305-073821.000 Transponder: UNKNOWN not found - aborting
+20180305-082758.864 Transponder: 38C0000000008001 not found - aborting
+20180305-082759.000 Transponder: UNKNOWN not found - aborting
+20180305-082759.477 Transponder: 38C0000000008001 not found - aborting
+20180305-082800.000 Transponder: UNKNOWN not found - aborting
+20180305-082906.515 Transponder: 38C0000000008001 not found - aborting
+20180305-082907.000 Transponder: UNKNOWN not found - aborting
+20180305-084053.046 Transponder: 2C1CE7D001AF0001 not found - aborting
+20180305-084054.000 Transponder: UNKNOWN not found - aborting
+20180305-084102.767 Transponder: 2C1CE7D001AF0001 not found - aborting
+20180305-084103.000 Transponder: UNKNOWN not found - aborting

@@ -15,15 +15,14 @@ card_copy_status(x = file_copy_status())
 \item{x}{a DT as returned by cardReader() for file_copy_status
 or a DT returned by file_copy_status() for card_copy_status()}
 
-\item{...}{pass to  read.boxnumber}
+\item{...}{pass to  read.boxnumber, specifically hwidCheck}
 }
 \value{
 a DT
 }
 \examples{
  require(sdb)
- bid <- dbq( q= 'select box, hwid from boxid order by box, datetime_ desc',
-         db = getOption('snbDB_v2'), host = getOption('host'), user =getOption('DB_user'))[!duplicated(box)]
+ bid <- harwareIDs()
  x = file_copy_status(boxid = bid)
  card_copy_status(x)
 }
