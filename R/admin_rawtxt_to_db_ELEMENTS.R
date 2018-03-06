@@ -179,7 +179,7 @@ hot_files <- function(con, p = getOption("path.to.raw_v2"), db = getOption("snbD
 #' @author  		MV
 #' @export
 load_clean_txt_v2 <- function(h,parallel = FALSE, ncores = 4) {
-	if(parallel) {
+	if(parallel && nrow(h) > ncores) {
 		library(doParallel)
 		cl = makePSOCKcluster(ncores)
 		registerDoParallel(cl)
