@@ -1,4 +1,4 @@
-#' @title         read SF file
+#' @title         read Smart Feeder files
 #' @description   read one SF file as data.table
 #' @param         f path to the SF file
 #' @return        a  \code{data.table} .
@@ -6,6 +6,7 @@
 #' @export
 #' @examples
 #' x = read_sf_txt(f = system.file(package = 'SNB2', 'sample_files', 'BOX1020.TXT'))
+
 
 read_sf_txt <- function(f) {
   d = readRaw_v2(f)
