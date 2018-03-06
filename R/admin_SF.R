@@ -21,7 +21,7 @@ read_sf_txt <- function(f) {
 #' @title         read SF directory
 #' @description   read all SF files in a given root directory
 #' @param         D path to directory
-#' @nextid        next file ID in the db table.
+#' @param         nextid next file ID in the db table.
 #' @return        a  \code{data.table} .
 #' @author        MV
 #' @export

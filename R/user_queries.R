@@ -85,9 +85,11 @@ dbqSNB <- function(username, host, q = 'SELECT * FROM boxtables limit 1', db = g
 #' @param   host     host
 #' @param   date     date, default to last date in file_status table
 #' @param   buffer  (hours)   sunrise + buffer
+#' @export
 #' @param   ...  goes to dbqSNB
 #' @examples
 #' overnight(buffer = 2)
+#' x = overnight( date = anydate('2018.01.23') )
 #'
 overnight <- function(buffer = 1, date = Sys.Date()-1, ...) {
 
@@ -101,6 +103,8 @@ overnight <- function(buffer = 1, date = Sys.Date()-1, ...) {
     q = paste('
     SELECT DISTINCT datetime_, sensor_value transp FROM  boxtables
       WHERE  datetime_ BETWEEN', shQuote(date-1), 'AND', shQuote(date + 1) ),  db = getOption('snbDB_v2'), ... )
+
+  if(nrow(x) == 0) stop(paste('There are no data on', date))
   
   x[transp %in% c('OFF', 'ON'), transp := NA]
   enhanceOutput(x)
@@ -114,7 +118,7 @@ overnight <- function(buffer = 1, date = Sys.Date()-1, ...) {
   s[, srise := srise + buffer*3600]
   x = merge(x, s, by = 'day')
 
-  # subset given sunrise + buffer ad sunset
+  # subset given sunrise + buffer and sunset
   x = x[ (day ==1 & datetime_ >= sset ) |  (day == 2 & datetime_ <= srise )  ][, ':=' (srise = NULL ,sset = NULL)]
 
   if(nrow(x) == 0)  stop('Empty dataset.')

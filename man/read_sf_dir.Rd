@@ -8,6 +8,8 @@ read_sf_dir(D, nextid = NA, basepath = getOption("path.to.raw_v2_SF"))
 }
 \arguments{
 \item{D}{path to directory}
+
+\item{nextid}{next file ID in the db table.}
 }
 \value{
 a  \code{data.table} .

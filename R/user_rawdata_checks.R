@@ -12,11 +12,12 @@
 diagnose_raw_txt_v2 <- function(filePath) {
 
 	x = readRaw_v2(filePath)
-	hid = hwid(filePath)$hwid
 	box = basename2box(filePath) %>% empty2NA
 
 	if(nrow(x) > 1) {
-		# raw data
+		
+		hid = hwid(filePath)$hwid
+
 		x = readRaw_v2(filePath)
 		x[, k := 1:nrow(x)]
 
@@ -25,13 +26,13 @@ diagnose_raw_txt_v2 <- function(filePath) {
 		e = e[!duplicated(err)]
 		e = paste(e$err, collapse = ';')
 
-		brc  = x[str_detect(V, 'Battery Remaining Capacity')][k == max(k), V]
-		bre  = x[str_detect(V, 'Battery Runtime to empty')][k == max(k), V]
-		bav  = x[str_detect(V, 'Battery Actual Voltage')][k == max(k), V]
-		sinc = x[str_detect(V, 'Time Synchronization')][k == max(k), V]
-		rfid = x[str_detect(V, 'RFID is powered ON')][k == max(k), V]
+		brc  = x[str_detect(V, 'Battery Remaining Capacity')][k == max(k), V]  %>% empty2NA
+		bre  = x[str_detect(V, 'Battery Runtime to empty')][k == max(k), V] %>% empty2NA
+		bav  = x[str_detect(V, 'Battery Actual Voltage')][k == max(k), V] %>% empty2NA
+		sinc = x[str_detect(V, 'Time Synchronization')][k == max(k), V] %>% empty2NA
+		rfid = x[str_detect(V, 'RFID is powered ON')][k == max(k), V] %>% empty2NA
 
-		lastr = tail(x, 1000)[, tr := str_extract(V, 'Transponder:[ \\t]*([^\\n\\r]*)') ][ !is.na(tr), .(tr)] %>% unique
+		lastr = tail(x, 100)[, tr := str_extract(V, 'Transponder:[ \\t]*([^\\n\\r]*)') ][ !is.na(tr), .(tr)] %>% unique 
 		lastr = paste(lastr$tr, collapse = ';')
 
 
@@ -96,7 +97,7 @@ diagnose_pull_v2 <- function(date, outDirLocation = getOption('path.to.raw_v2'),
 	x = data.table(box =path2box(ff) )
 	setorder(x, box)
 	o = rbindlist(o, fill = TRUE)
-	o = merge(x, o, by = 'box', alll.x = TRUE)
+	o = merge(x, o, by = 'box', all.x = TRUE)
 	o[is.na(empty_file), empty_file := 'possible corrupted file!!']
 	setorder(o, box)
 
