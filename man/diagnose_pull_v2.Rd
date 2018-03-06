@@ -19,7 +19,7 @@ a data.table
 Output diagnostics of a directory containing raw box files
 }
 \examples{
-x = diagnose_pull_v2(date = "2017.03.03")
+x = diagnose_pull_v2(date = "2018.03.06")
 }
 \author{
 MV

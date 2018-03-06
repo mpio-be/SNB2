@@ -3,7 +3,7 @@
 #' @title        Output diagnostics on raw SNB files (v2)
 #' @description  Output diagnostics of a raw box file
 #' @return       A data.table
-#'
+#' @export
 #' @author       MV
 #' @seealso \code{\link{diagnose_raw_dir}}
 #' @examples     filePath = "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2017/2017.03.03/122/BOX0122.TXT"
@@ -31,6 +31,9 @@ diagnose_raw_txt_v2 <- function(filePath) {
 		sinc = x[str_detect(V, 'Time Synchronization')][k == max(k), V]
 		rfid = x[str_detect(V, 'RFID is powered ON')][k == max(k), V]
 
+		lastr = tail(x, 1000)[, tr := str_extract(V, 'Transponder:[ \\t]*([^\\n\\r]*)') ][ !is.na(tr), .(tr)] %>% unique
+		lastr = paste(lastr$tr, collapse = ';')
+
 
 	# diagnose output
 		o = data.table(
@@ -42,7 +45,8 @@ diagnose_raw_txt_v2 <- function(filePath) {
 				last_Battery_Runtime_to_empty =   bre ,
 				last_Battery_Actual_Voltage  =    bav ,
 				last_Time_Synchronization =       sinc,
-				last_RFID_is_powered_ON =         rfid
+				last_RFID_is_powered_ON =         rfid,
+				last_transponders_1000rows =      lastr
 			)
 
 
@@ -63,14 +67,15 @@ diagnose_raw_txt_v2 <- function(filePath) {
 #' @param    	   date            a character vector formated as 'yyyy.mm.dd' (same as the directory date holding the raw data)
 #' @param    	   outDirLocation the location of the raw data; the default is getOption('path.to.raw_v2')
 #' @return       a data.table
+#' @export
 #' @author       MV
 #' @examples
-#' x = diagnose_pull_v2(date = "2017.03.03")
+#' x = diagnose_pull_v2(date = "2018.03.06")
 
 diagnose_pull_v2 <- function(date, outDirLocation = getOption('path.to.raw_v2'), shiny = FALSE) {
 	require(sdb)
 	require(data.table)
-	require(SNB)
+	require(SNB2)
 	require(shinytoastr)
     require(doParallel)
 
@@ -84,11 +89,20 @@ diagnose_pull_v2 <- function(date, outDirLocation = getOption('path.to.raw_v2'),
 	ff = list.files(path, full.names = TRUE, recursive = TRUE, pattern = 'BOX\\d{4}.TXT')
 
  	# run diagnose_raw_txt for all files
-		o = foreach( i = 1:length(ff), .packages= c('sdb', 'SNB'), .errorhandling= 'remove')  %dopar% {
+		o = foreach( i = 1:length(ff), .packages= c('sdb', 'SNB'), .errorhandling = 'remove')  %dopar% {
 			diagnose_raw_txt_v2(ff[i])
 		}
 
-		rbindlist(o, fill = TRUE)
+	x = data.table(box =path2box(ff) )
+	setorder(x, box)
+	o = rbindlist(o, fill = TRUE)
+	o = merge(x, o, by = 'box', alll.x = TRUE)
+	o[is.na(empty_file), empty_file := 'possible corrupted file!!']
+	setorder(o, box)
+
+	o
+
+
 
   }
 
