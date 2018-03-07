@@ -24,14 +24,14 @@ tetr <- function(condb ) {
   }
 
 
-
-
 #' query raw data, all b_ tables at once
 #' @param   username       username
 #' @param   host           host
 #' @param   q              query,boxtables kw should be used instead of bnnn box name.
-#' @param   testtr_remove  default to TRUE
-#' @export
+#' @param   db            default to getOption('snbDB_v2')
+#' @param   .boxes        default to 1:277
+#' @param   ncores        number of cores to use
+#' @export 
 #' @examples
 #' # Simple SELECT
 #' dbqSNB('mihai', host = "scidb.mpio.orn.mpg.de", 'SELECT * FROM boxtables limit 1')
@@ -46,15 +46,17 @@ tetr <- function(condb ) {
 #'    YEAR(datetime_) = YEAR(CURDATE() )
 #' ')
 #'
-dbqSNB <- function(username, host, q = 'SELECT * FROM boxtables limit 1', db = getOption('snbDB_v2'), .boxes = 1:277, ncores = 4) {
+dbqSNB <- function(username, host = "scidb.mpio.orn.mpg.de", q = 'SELECT * FROM boxtables limit 1', db = getOption('snbDB_v2'), .boxes = 1:277, ncores = 4) {
 
     pb = tempfile(fileext = '.txt')
     message('to follow progress open', sQuote(pb), 'in a text editor')
 
-    require(doParallel)
-    cl = makePSOCKcluster(ncores); registerDoParallel(cl); on.exit(stopCluster(cl))
-
     x =  boxes()[box %in% int2b(.boxes)]
+
+    if(nrow(x) > ncores && ncores > 0) {
+     require(doParallel)
+     cl = makePSOCKcluster(ncores); registerDoParallel(cl); on.exit(stopCluster(cl))
+     }
 
 
     x[, q:= str_replace_all(q, 'boxtables', box) ]
@@ -77,7 +79,7 @@ dbqSNB <- function(username, host, q = 'SELECT * FROM boxtables limit 1', db = g
 
 
     O
-  }
+  } 
 
 
 #' overnight
@@ -162,6 +164,23 @@ harwareIDs <- function(username  = getOption('DB_user') , host = getOption('host
     o  
 
 }
+
+# TODO
+
+#' @name        Missing data in BTatWESTERHOLZ.transponders
+#' @description Data in SNBatWESTERHOLZ_v2.b***  which are nor in BTatWESTERHOLZ.transponders
+#' @param       username       username
+#' @param       host           host
+#' @param       ...          goes to dbqSNB
+#' @return      data.table
+#' @export
+#' @examples
+
+
+getNewTransponders <- function(username, host = "scidb.mpio.orn.mpg.de", ... ) {
+
+
+  }
 
 
 
