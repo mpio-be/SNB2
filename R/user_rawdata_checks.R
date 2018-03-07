@@ -87,7 +87,7 @@ diagnose_pull_v2 <- function(date, outDirLocation = getOption('path.to.raw_v2'),
 
 	msg( paste('Running diagnostics on raw data (v2) for', date) , progressBar = TRUE, timeOut = 30000)
 
-	ff = list.files(path, full.names = TRUE, recursive = TRUE, pattern = 'BOX\\d{4}.TXT')
+	ff = list.files(path, full.names = TRUE, recursive = TRUE, pattern = 'BOX\\d{4}.TXT|BOX\\d{4}.txt')
 
  	# run diagnose_raw_txt for all files
 		o = foreach( i = 1:length(ff), .packages= c('sdb', 'SNB'), .errorhandling = 'remove')  %dopar% {
