@@ -22,6 +22,6 @@ overnight
 }
 \examples{
 overnight(buffer = 2)
-x = overnight( anydate('2018.03.06') )
+x = overnight( date = anydate('2018.01.23') )
 
 }

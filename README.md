@@ -1,2 +1,1 @@
-# SNB2
-SNB package for Smart Boxes version 2 
+`SNB` extends [sdb](https://github.com/mpio-be/sdb).

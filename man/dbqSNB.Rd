@@ -4,8 +4,9 @@
 \alias{dbqSNB}
 \title{query raw data, all b_ tables at once}
 \usage{
-dbqSNB(username, host, q = "SELECT * FROM boxtables limit 1",
-  db = getOption("snbDB_v2"), .boxes = 1:277, ncores = 4)
+dbqSNB(username, host = "scidb.mpio.orn.mpg.de",
+  q = "SELECT * FROM boxtables limit 1", db = getOption("snbDB_v2"),
+  .boxes = 1:277, ncores = 4)
 }
 \arguments{
 \item{username}{username}
@@ -14,7 +15,11 @@ dbqSNB(username, host, q = "SELECT * FROM boxtables limit 1",
 
 \item{q}{query,boxtables kw should be used instead of bnnn box name.}
 
-\item{testtr_remove}{default to TRUE}
+\item{db}{default to getOption('snbDB_v2')}
+
+\item{.boxes}{default to 1:277}
+
+\item{ncores}{number of cores to use}
 }
 \description{
 query raw data, all b_ tables at once

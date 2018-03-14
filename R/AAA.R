@@ -19,7 +19,6 @@
 
 	dcf <- read.dcf(file=system.file("DESCRIPTION", package=pkgname) )
 
-  packageStartupMessage(paste(pkgname, dcf[, "Version"], 'WARNING: SNB-v2 datetime is CET in winter and CEST in summer.' ))
 
 	options(host 		          = 'scidb.mpio.orn.mpg.de')
   options(DB_user           = 'snbAdmin')
