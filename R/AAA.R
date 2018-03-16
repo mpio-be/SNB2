@@ -20,7 +20,7 @@
 	dcf <- read.dcf(file=system.file("DESCRIPTION", package=pkgname) )
 
 
-	options(host 		          = 'scidb.mpio.orn.mpg.de')
+	options(host 		          = sdb::probeDB() )
   options(DB_user           = 'snbAdmin')
   options(path.to.raw_v2    = '/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/')
   options(path.to.raw_v2_SF = '/ds/raw_data_kemp/FIELD/Westerholz/SF/RAWDATA/')
