@@ -7,6 +7,9 @@
 #   FLUSH PRIVILEGES ;
 #   sdb::saveCredentials('testuser', 'cs', '127.0.0.1') 
 # ====================================================================================
+require(SNB2)
+require(data.table)
+assignInNamespace("cedta.override", c(data.table:::cedta.override,"SNB2"), "data.table")
 
 
 context("📌 demo db")

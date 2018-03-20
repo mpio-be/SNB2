@@ -121,23 +121,7 @@ server_butler <- function(input, output, session) {
     HTML(paste('<hr>', x, 'Cards prepared') ) )
     })
 
-  # DB UPLOAD: ------------------------------
-  Upload <- eventReactive(input$button_upload, {
-    con = dbcon(user =  getOption("DB_user") , host = getOption("host") )
-    on.exit(dbDisconnect(con))
 
-    Y = year(input$date)
-
-    # parallel = TRUE TODO, get N cores
-    scidb_snbUpdater(con, db = getOption("snbDB_v2"), p = getOption("path.to.raw_v2"), 
-      ui = TRUE, demo = demoON, y = Y,  parallel = TRUE, ncores = detectCores() )
-
-
-    })
-
-    output$upload <- renderUI({
-    Upload()
-    })
 
 
   }
@@ -177,15 +161,8 @@ ui_butler = function() {
 
       div(style="font-size:25px", passwordInput("pwd", "Password" ) )
 
-      )),
-
-
-      div(class = "col-sm-12 text-center",
-      conditionalPanel( condition = "input.sdcards == 'Upload' ",
-      actionButton("button_upload", "Upload", icon("database", lib = 'font-awesome'),
-      style="font-size:25px;background-color: #DFC531;border-color: #000000")
-
-      )),
+      ))
+      ,
 
       HTML('<hr>'),
       div(class = "col-sm-12 text-center lead",uiOutput("copyOut", style="font-size:20px;color:white;") ),
@@ -220,8 +197,7 @@ ui_butler = function() {
       selected = "Copy",
       tabPanel(title = HTML('<h4 class="text-danger ">Copy</h4>'),           value = "Copy",   uiOutput("copy") ),
       tabPanel(title = HTML('<h4 class="text-danger ">Prepare</h4>'),        value = "Prepare",uiOutput("prepare") ),
-      tabPanel(title = HTML('<h4 class="text-danger ">Format</h4>'),         value = "Format", uiOutput("format") ),
-      tabPanel(title = HTML('<h4 class="text-primary">DB upload</h4>'),      value = "Upload", uiOutput("upload") )
+      tabPanel(title = HTML('<h4 class="text-danger ">Format</h4>'),         value = "Format", uiOutput("format") )
       )
 
       )

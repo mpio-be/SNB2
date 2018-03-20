@@ -165,23 +165,23 @@ harwareIDs <- function(username  = getOption('DB_user') , host = getOption('host
 
 }
 
-# TODO
-
-#' @name        Missing data in BTatWESTERHOLZ.transponders
-#' @description Data in SNBatWESTERHOLZ_v2.b***  which are nor in BTatWESTERHOLZ.transponders
-#' @param       username       username
-#' @param       host           host
-#' @param       ...          goes to dbqSNB
-#' @return      data.table
-#' @export
-#' @examples
-
-
-getNewTransponders <- function(username, host = "scidb.mpio.orn.mpg.de", ... ) {
-
-
-  }
-
-
+# # TODO
+# 
+# #' @name        Missing data in BTatWESTERHOLZ.transponders
+# #' @description Data in SNBatWESTERHOLZ_v2.b***  which are nor in BTatWESTERHOLZ.transponders
+# #' @param       username       username
+# #' @param       host           host
+# #' @param       ...          goes to dbqSNB
+# #' @return      data.table
+# #' @export
+# #' @examples
+# 
+# 
+# getNewTransponders <- function(username, host = "scidb.mpio.orn.mpg.de", ... ) {
+# 
+# 
+#   }
+# 
+# 
 
 

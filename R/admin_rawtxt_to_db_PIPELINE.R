@@ -10,7 +10,7 @@
 #' @examples
 #' \donotrun{
 #'  install_demo_system('mihai', '127.0.0.1')
-#'  require(sdb)
+#'  require(SNB2)
 #'  con = dbcon(user =  getOption("DB_user") , host = getOption("host"))
 #'  scidb_snbUpdater(con,  parallel = TRUE)
 #'  closeCon(con)

@@ -1,7 +1,7 @@
 Package: SNB2
 Type: Package
 Title: Smart Nest-box Data Management
-Version: 2018.2
+Version: 2018.3
 Author: Lotte Schlicht, Mihai Valcu
 Maintainer: Lotte Schlicht <lschlicht@orn.mpg.de>, Mihai Valcu <valcu@orn.mpg.de>
 Depends:
@@ -13,10 +13,13 @@ Depends:
     stringr,
     magrittr,
     data.table,
-    foreach,
     anytime
+Imports:
+    methods,
+    data.table    
 Suggests:
     doParallel,
+    foreach,
     fasttime,
     shiny,
     rhandsontable,

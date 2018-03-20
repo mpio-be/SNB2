@@ -19,8 +19,6 @@ install_demo_SNB <- function(user='testuser', host ='127.0.0.1', rawdata_root = 
     options(path.to.raw_v2  = rawdata_root )
     options(snbDB_v2        = db)
 
-
-    require(sdb)
     con = dbcon(user = user, host = host); on.exit(dbDisconnect(con))
     demo_files_loc =system.file('demo', 'txt', package = 'SNB2')
    
