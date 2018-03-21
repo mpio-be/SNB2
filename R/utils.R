@@ -179,16 +179,25 @@ snbstring2date_v2 <- function(x) {
 #'
 read_snb_txt_v2 <- function(f) {
   d = readRaw_v2(f = f)
-  d = d[ str_detect(V, 'Transponder:|LBO:|LBI:')  ]
+  d[, V := str_to_upper(V)]
+  d = d[ str_detect(V, 'TRANSPONDER:|LBO:|LBI:')  ]
 
   d[, datetime_ := snbstring2date_v2(V) ]
-  d[,   sensor_value := str_extract(V, 'Transponder:[ \\t]*([^\\n\\r]*)') ]
-  d[is.na(sensor_value), sensor_value := str_extract(V, 'LB[IO]:[ \\t]*([^\\n\\r]*)') %>% toupper ]
-  d[, sensor := str_extract(sensor_value, 'LB[IO]|Transponder') %>% tolower]
-  d[, sensor_value := str_replace(sensor_value, 'LB[IO]:|Transponder:', '')]
+  d[,   sensor_value := str_extract(V, 'TRANSPONDER:[ \\t]*([^\\n\\r]*)') ]
+  d[is.na(sensor_value), sensor_value := str_extract(V, 'LB[IO]:[ \\t]*([OFF|ON]*)')  ]
+  d[, sensor := str_extract(sensor_value, 'LB[IO]|TRANSPONDER') ]
+  d[, sensor_value := str_remove(sensor_value, 'LB[IO]:|TRANSPONDER:')]
   d[, sensor_value := str_trim(sensor_value)]
+  d[, sensor := str_sub(sensor, 1, 3) %>% str_to_lower]
 
-  d[, .(datetime_, sensor_value, sensor)]
+  # flag garbage 
+  d[ str_count(sensor_value) != 16 & sensor == 'tra', g := 1]
+  d[ !sensor_value %in% c('ON', 'OFF') & sensor %in% c('lbi', 'lbo'), g := 1]
+
+  # d[!is.na(g)]
+
+  # final subset
+  d[is.na(g), .(datetime_, sensor_value, sensor)]
   }
 
 
@@ -278,7 +287,6 @@ options_footer <- function(style = "position: absolute; bottom: 0; left: 1; font
             '<strong>Package options:</strong><br>',
             paste('<strong>host:</strong>',        getOption('host'), '<br>'),
             paste('<strong>raw data:</strong>',    paste(getOption('path.to.raw_v2') %>% str_sub(., 1, 18), "..."),'<br>' ),
-            paste('<strong>db name:</strong>',     getOption('snbDB2'), '<br>'),
             paste('<strong>db user:</strong>',     getOption('DB_user') , '<br>'),
             paste('<strong>package:</strong> SNB', packageVersion('SNB2') )
          )

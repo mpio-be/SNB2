@@ -22,7 +22,7 @@ The function lists new files which are not yet in  \code{SNBatWESTERHOLZ)v2.file
 }
 \section{Warning}{
  Before performing the file listing the function only looks for new directories therefore any
-			      files which are copied to a given directory AFTER a db update will be overlooked!
+                   files which are copied to a given directory AFTER a db update will be overlooked!
 }
 
 \examples{

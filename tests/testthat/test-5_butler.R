@@ -17,9 +17,8 @@ test_that("butler has good tools.", {
 
     # settings
         install_demo_SNB(user = 'testuser')
-        con = dbcon( user = 'testuser' , host = getOption("host"), db = getOption("snbDB_v2") )
-        scidb_snbUpdater(con, parallel = TRUE, ncores = 2)
-        dbDisconnect(con); rm(con)
+        scidb_snbUpdater()
+
 
     # tests
         system_status() %>% expect_is( 'data.table')

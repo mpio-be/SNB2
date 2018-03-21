@@ -43,7 +43,7 @@ test_that("txt to db pipeline elements work", {
          expect_is(h, 'data.table')
          expect_equal( nrow(h), 3)
 
-         dat = load_clean_txt_v2(h, parallel = TRUE, ncores = 4)
+         dat = load_clean_txt_v2(h)
 
          aa = lapply(dat, attr, which = 'snb')
          expect_true ( sapply(aa, function(x) inherits(x, 'data.table') ) %>% all )
@@ -69,14 +69,10 @@ test_that("txt to db pipeline runs through", {
 
     # settings
         install_demo_SNB(user = 'testuser')
-        con = dbcon( user = 'testuser' , host = getOption("host") )
-
     # pipeline
-        scidb_snbUpdater(con, parallel = TRUE, ncores = 2) %>% expect_is( 'html')
+        expect_true( scidb_snbUpdater() )
+        expect_error( scidb_snbUpdater() ) # second time when called 
         
-
-        dbDisconnect(con); rm(con)
-
 
     })    
 
@@ -85,16 +81,15 @@ test_that("drop_and_reload drops and reload properly", {
 
     # settings
         install_demo_SNB(user = 'testuser')
-        con = dbcon( user = 'testuser' , host = getOption("host"), db = getOption("snbDB_v2") )
-
-        scidb_snbUpdater(con, parallel = TRUE, ncores = 2)
+        scidb_snbUpdater()
 
     # pipeline
+        con = dbcon(user = getOption("DB_user") , host = getOption("host"), db = getOption("snbDB_v2") )
+
         ii = dbq(con, 'select id from file_status')$id[ c(1,3)]
 
         drop_and_reload( con, ii )
 
-        dbDisconnect(con); rm(con)
-
+        dbDisconnect(con)
 
     })    

@@ -4,7 +4,7 @@
 \alias{load_clean_txt_v2}
 \title{Load clean txt files}
 \usage{
-load_clean_txt_v2(h, parallel = FALSE, ncores = 4)
+load_clean_txt_v2(h)
 }
 \arguments{
 \item{h}{An output of \code{\link{hot_files}}   containing box and path}
@@ -15,11 +15,14 @@ load_clean_txt_v2(h, parallel = FALSE, ncores = 4)
 a list of \code{data.table} with attributes named 'snb'.
 }
 \description{
-Load all files which are free of bugs and thus directly importable to a \code{data.table} with attribute
+Load all files which are free of bugs and thus directly importable to 
+                 a \code{data.table} with attribute
 }
 \note{
-The attribute of each \code{data.table} is another one-row \code{data.table} whith 3 columns:
-						    \code{box}, \code{id} (corresponding with the file_status id) and \code{upload_status} = 1 (clean load).
+The attribute of each \code{data.table} is another one-row \code{data.table}
+                 with 3 columns: \code{box}, \code{id} (corresponding with the file_status id) 
+                 and \code{upload_status} = 1 (clean load).
+                 # the function will try to run in parallel.
 }
 \author{
 MV

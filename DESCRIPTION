@@ -16,10 +16,10 @@ Depends:
     anytime
 Imports:
     methods,
+    foreach,
     data.table    
 Suggests:
     doParallel,
-    foreach,
     fasttime,
     shiny,
     rhandsontable,

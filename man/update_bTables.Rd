@@ -4,8 +4,7 @@
 \alias{update_bTables}
 \title{Update  box and file_status tables}
 \usage{
-update_bTables(con, dat, ui = FALSE, demo = FALSE,
-  db = getOption("snbDB_v2"))
+update_bTables(con, dat, db = getOption("snbDB_v2"))
 }
 \arguments{
 \item{con}{a connection object}
@@ -13,7 +12,7 @@ update_bTables(con, dat, ui = FALSE, demo = FALSE,
 \item{dat}{a list of \code{data.table}-s with attributes see \code{\link{load_clean_txt}}.}
 }
 \value{
-the number of uploaded files
+TRUE when both boxes (all) and  file status was updated else FALSE.
 }
 \description{
 Update  box tables with parsed txt data (e.g. by \code{\link{load_clean_txt}}  )

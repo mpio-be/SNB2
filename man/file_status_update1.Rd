@@ -18,7 +18,7 @@ TRUE or the update content when update = FALSE
 }
 \description{
 box, id, path,  filesize are saved to file_status table.
-				The id is a primary key in file_status and identifies chunks of data from the same file in each box b00x table.
+                 The id is a primary key in file_status and identifies chunks of data from the same file in each box b00x table.
 }
 \examples{
 require(sdb)

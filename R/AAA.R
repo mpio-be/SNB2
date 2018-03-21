@@ -1,7 +1,9 @@
 
 
-#' @import  tools
-#' @import  data.table
+#' @import methods tools data.table foreach
+NULL
+
+
 
 #' @title 			  Smart Box Data management
 #' @description 	An all-in-one package for data management, user-level functions and hardware feedback.
