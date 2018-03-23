@@ -17,7 +17,8 @@ Depends:
 Imports:
     methods,
     foreach,
-    data.table    
+    data.table,
+    doParallel   
 Suggests:
     doParallel,
     fasttime,

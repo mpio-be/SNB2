@@ -9,13 +9,13 @@ update_bTables(con, dat, db = getOption("snbDB_v2"))
 \arguments{
 \item{con}{a connection object}
 
-\item{dat}{a list of \code{data.table}-s with attributes see \code{\link{load_clean_txt}}.}
+\item{dat}{a list of \code{data.table}-s with attributes (see \code{load_clean_txt_v2} ).}
 }
 \value{
 TRUE when both boxes (all) and  file status was updated else FALSE.
 }
 \description{
-Update  box tables with parsed txt data (e.g. by \code{\link{load_clean_txt}}  )
+Update  box tables with parsed txt data (e.g. by \code{load_clean_txt_v2}  )
 }
 \author{
 MV
