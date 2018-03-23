@@ -22,11 +22,11 @@ scidb_snbUpdater <- function(u =  getOption("DB_user") , h = getOption("host"),
     con = dbcon(user = u , host = h); on.exit( closeCon(con) )
 
   # well_formated_directory
-  	cat('⟼ Searching for proper directory formats ...')
+  	cat(' ------> Searching for proper directory formats ...')
     well_formated_directory(p, y); cat('done\n')
 
   # incoming_files
-   cat(paste('⟼ Searching for incoming files (not yet in file_status) on ', p , '...' ), '\n')
+   cat(paste(' ------> Searching for incoming files (not yet in file_status) on ', p , '...' ), '\n')
 
     x = incoming_files(con, p, y, db)
 
@@ -36,12 +36,12 @@ scidb_snbUpdater <- function(u =  getOption("DB_user") , h = getOption("host"),
 
   # file_status_update1
     if( !is.null(x)) {
-    	cat('⟼ Updating file_status table ...', '\n')
+    	cat(' ------> Updating file_status table ...', '\n')
     	file_status_update1(con, x)
       }
 
   # hot_files
-  	cat('⟼ Getting the list of new txt files from the file_status table ...', '\n')
+  	cat(' ------> Getting the list of new txt files from the file_status table ...', '\n')
   	h = hot_files(con, p, db)
     if( nrow(h) == 0) {
       
@@ -51,14 +51,14 @@ scidb_snbUpdater <- function(u =  getOption("DB_user") , h = getOption("host"),
       }
 
   # load_clean_txt
-    cat('⟼ Fetching and preparing new files. This can take a while.... \n')
+    cat(' ------> Fetching and preparing new files. This can take a while.... \n')
   	
 
   	dat = load_clean_txt_v2(h)
 
 
   # update_bTables
-  	cat('⟼ Updating individual box tables ....  \n ')
+  	cat(' ------> Updating individual box tables ....  \n ')
     if(length(dat))
   	o = update_bTables(con, dat, db = db)
 

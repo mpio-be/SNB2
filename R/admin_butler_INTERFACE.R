@@ -50,7 +50,7 @@ server_butler <- function(input, output, session) {
       sanitize.text.function = function(x) x
       )
 
-      toastr_info('Before you proceed please review the settings. Is the repository marked as ✓ ?', preventDuplicates = TRUE, timeOut = 10000)
+      toastr_info('Before you proceed please review the settings. Is the repository marked as OK ?', preventDuplicates = TRUE, timeOut = 10000)
 
 
   # SD COPY   ------------------------------
@@ -129,7 +129,7 @@ server_butler <- function(input, output, session) {
 #' @export
 ui_butler = function() {
   ui <- dashboardPage(skin = 'green',
-    dashboardHeader( title = HTML( '👳 Data butler'   ) ) ,
+    dashboardHeader( title = HTML( 'Data butler'   ) ) ,
 
     dashboardSidebar(
       useToastr(),
@@ -189,7 +189,7 @@ ui_butler = function() {
       fluidRow( column( width = 12,
 
       box(title = 'Settings', status = "primary", solidHeader = TRUE, width = 12, collapsible = TRUE,
-      footer = HTML('<small class="text-muted">When not all Settings are ✓ proceed with caution.</small>'),
+      footer = HTML('<small class="text-muted">When not all Settings are OK proceed with caution.</small>'),
       tableOutput("systat")
       ),
 
