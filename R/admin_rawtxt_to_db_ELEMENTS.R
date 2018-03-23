@@ -211,9 +211,9 @@ load_clean_txt_v2 <- function(h) {
 
 
 #' @title           Update  box and file_status tables
-#' @description     Update  box tables with parsed txt data (e.g. by \code{\link{load_clean_txt}}  )
+#' @description     Update  box tables with parsed txt data (e.g. by \code{\link{load_clean_txt_v2}}  )
 #' @param con       a connection object
-#' @param dat       a list of \code{data.table}-s with attributes see \code{\link{load_clean_txt}}.
+#' @param dat       a list of \code{data.table}-s with attributes see \code{\link{load_clean_txt_v2}}.
 #' @return          TRUE when both boxes (all) and  file status was updated else FALSE.
 #' @author          MV
 #' @export

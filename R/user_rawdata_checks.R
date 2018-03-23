@@ -5,7 +5,7 @@
 #' @return       A data.table
 #' @export
 #' @author       MV
-#' @seealso \code{\link{diagnose_raw_dir}}
+#' @seealso     \code{diagnose_raw_dir}
 #' @examples     filePath = "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2017/2017.03.03/122/BOX0122.TXT"
 #' 				 x = diagnose_raw_txt_v2(filePath); x; x
 
