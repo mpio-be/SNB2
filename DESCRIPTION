@@ -1,4 +1,4 @@
-Package: SNB2
+cPackage: SNB2
 Type: Package
 Title: Smart Nest-box Data Management
 Version: 2018.4.2
