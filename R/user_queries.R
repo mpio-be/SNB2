@@ -61,7 +61,7 @@ dbqSNB <- function(username, host = "scidb.mpio.orn.mpg.de", q = 'SELECT * FROM 
 
     x[, q:= str_replace_all(q, 'boxtables', box) ]
 
-    O = foreach(i = 1: nrow(x),.packages = 'sdb') )  %dopar% {
+    O = foreach(i = 1: nrow(x),.packages = 'sdb')  %dopar% {
       cat(i,',', sep = '', file = pb, append = TRUE)
       con = dbcon(username, host = host); on.exit(dbDisconnect(con))
       dbq(con, paste('USE', db ) )
