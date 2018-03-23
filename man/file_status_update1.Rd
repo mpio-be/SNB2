@@ -9,7 +9,7 @@ file_status_update1(con, x, update = TRUE)
 \arguments{
 \item{con}{a connection object}
 
-\item{x}{a table exported by the \link{\code{incoming_files}}}
+\item{x}{a table exported by the incoming_files}
 
 \item{update}{default to TRUE}
 }

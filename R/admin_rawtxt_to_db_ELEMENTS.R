@@ -103,7 +103,7 @@ incoming_files <- function( con, p = getOption("path.to.raw_v2") , y =year(Sys.D
 #' @description     box, id, path,  filesize are saved to file_status table.
 #'                  The id is a primary key in file_status and identifies chunks of data from the same file in each box b00x table.
 #' @param con       a connection object
-#' @param  x        a table exported by the \link{\code{incoming_files}}
+#' @param  x        a table exported by the incoming_files
 #' @param update    default to TRUE
 #' @return          TRUE or the update content when update = FALSE
 #' @author          MV
