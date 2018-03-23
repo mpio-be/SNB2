@@ -142,7 +142,7 @@ read.boxnumber <- function(path, boxid, hwidCheck = TRUE) {
       }
 
   if(nfiles > 1)  # dirty card
-    stop( paste('An SD card with ', nfiles, 'files. Proceed with caution ☃.') )
+    stop( paste('An SD card with ', nfiles, 'files. Proceed with caution') )
 
 
   if( nfiles == 1) { # ok card
@@ -306,7 +306,7 @@ card_prepare_status <- function( x = cardReader() ){
 
   #html messages
   x[(is.empty)  , html := Span('Empty card.', 'success', 'open-file')]
-  x[!(is.empty) , html := Span('☠Non-empty card☠', 'warning', 'warning-sign')]
+  x[!(is.empty) , html := Span('Non-empty card', 'warning', 'warning-sign')]
   x[ro == '1'   , html := Span("Read only card.", 'danger', 'danger-sign') ]
 
   x
@@ -321,7 +321,7 @@ sdcard_prepare <- function(x = card_prepare_status (), ids) {
 
   if(nrow(x) == 0) stop('Nothing to do.')
   
-  if( !all(x$is.empty) ) stop('🙊 Hey! you cannot prepare non-empty cards!!')
+  if( !all(x$is.empty) ) stop('Hey! you cannot prepare non-empty cards!!')
 
   if(nrow(x) > length(ids) ) stop('More cards than id-s.')
   if(nrow(x) < length(ids) ) stop('Less cards than id-s.')
