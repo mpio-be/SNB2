@@ -19,8 +19,20 @@ NULL
 
 	dcf <- read.dcf(file=system.file("DESCRIPTION", package=pkgname) )
 
+  # Do I run on scidbadmin?
+  if( .Platform$OS.type !=  "unix" ) db_host = '127.0.0.1'
 
-	options(host 		          = sdb::probeDB() )
+  if( .Platform$OS.type ==  "unix" ) {
+
+    is.scidbadmin = grepl("192.168.2.124", system('hostname -I', intern = TRUE) )
+    # Set DB host
+    db_host = if(is.scidbadmin) 'scidb.mpio.orn.mpg.de' else '127.0.0.1'
+ 
+    }
+
+  options(host  = db_host )
+
+
   options(DB_user           = 'snbAdmin')
   options(path.to.raw_v2    = '/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/')
   options(path.to.raw_v2_SF = '/ds/raw_data_kemp/FIELD/Westerholz/SF/RAWDATA/')
