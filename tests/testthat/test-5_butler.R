@@ -9,7 +9,7 @@ require(data.table)
 assignInNamespace("cedta.override", c(data.table:::cedta.override,"SNB2"), "data.table")
 
 
-context("👳 butler")
+context("butler")
 
 test_that("butler has good tools.", {
 
@@ -36,7 +36,8 @@ test_that("butler has good tools.", {
          }   
 
 
-
+         #UI
+         testthat::expect_s3_class(ui_butler(), "shiny.tag")
 
 
 

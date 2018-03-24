@@ -11,9 +11,9 @@
 #' @author  		  MV
 #' @export
 #' @examples
-#' \donotrun{
+#' \dontrun{
 #'  require(SNB2)
-#'  install_demo_SNB('mihai', '127.0.0.1')
+#'  install_demo_SNB('snbAdmin', '127.0.0.1')
 #'  scidb_snbUpdater()
 #' }
 #' 

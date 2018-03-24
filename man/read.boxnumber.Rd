@@ -20,10 +20,13 @@ data.table containing Boxnummer.txt info
 looks up the box number in BoxNNNN.txt and optionally cross-checks it with the HW-ID
 }
 \examples{
- require(sdb)
+\dontrun{
+ require(SNB2)
  boxid <- harwareIDs()
-x = cardReader()
-z = x[, read.boxnumber(mountpoint, boxid = boxid), by = .(row.names(x)) ]
+ x = cardReader()
+ z = x[, read.boxnumber(mountpoint, boxid = boxid), by = .(row.names(x)) ]
+}
+
 }
 \author{
 MV

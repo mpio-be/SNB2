@@ -16,8 +16,9 @@ a  character string (length 1).
 Extract hardware ID from a TXT raw data file.
 }
 \examples{
+\dontrun{
 hwid(p =  "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2016/2016.06.07/267/BOX0267.TXT")
-
+}
 }
 \author{
 MV

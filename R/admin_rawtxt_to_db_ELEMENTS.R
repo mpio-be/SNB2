@@ -36,8 +36,9 @@ drop_by_id <- function( con, id , db = getOption("snbDB_v2") ) {
 #' @author             MV
 #' @export
 #' @examples
+#' \dontrun{
 #' well_formated_directory(getOption("path.to.raw_v2"))
-#' 
+#' }
 well_formated_directory <- function(p = getOption("path.to.raw_v2") , y = year(Sys.Date()) ) {
 
     x = data.table( dirs = list.files( paste0(p, y), full.name = TRUE) )
@@ -64,11 +65,13 @@ well_formated_directory <- function(p = getOption("path.to.raw_v2") , y = year(S
 #' @return        a data.table if there are new directories or otherwise NULL
 #' @author        MV
 #' @export
-#' @examples
-#' require(sdb)
-#' con = dbcon('valcu')
+#' @examples 
+#' \dontrun{
+#' require(SNB2)
+#' con = dbcon('snbAdmin')
 #' incoming_files(con)
 #' dbDisconnect(con)
+#' }
 incoming_files <- function( con, p = getOption("path.to.raw_v2") , y =year(Sys.Date()), db = getOption("snbDB_v2") ) {
 
     dbq(con, paste('USE', db))
@@ -109,11 +112,13 @@ incoming_files <- function( con, p = getOption("path.to.raw_v2") , y =year(Sys.D
 #' @author          MV
 #' @export
 #' @examples
-#' require(sdb)
-#' con = dbcon('valcu')
+#' \dontrun{
+#' require(SNB2)
+#' con = dbcon('snbAdmin')
 #' x = incoming_files(con )
 #' o = file_status_update1(update = FALSE)
 #' dbDisconnect(con)
+#' }
 file_status_update1 <- function(con, x, update = TRUE) {
 
     x_is_file_status_file = all(inherits(x, 'data.table') , names(x) %in% c('path', 'box') , length(comment(x)) == 2 )

@@ -13,8 +13,10 @@ A data.table
 Output diagnostics of a raw box file
 }
 \examples{
-    filePath = "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2017/2017.03.03/122/BOX0122.TXT"
-				 x = diagnose_raw_txt_v2(filePath); x; x
+    
+\dontrun{
+filePath = "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2017/2017.03.03/122/BOX0122.TXT"
+	}			 x = diagnose_raw_txt_v2(filePath); x; x
 }
 \author{
 MV

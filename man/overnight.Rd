@@ -21,7 +21,8 @@ overnight(buffer = 1, date = Sys.Date() - 1, ...)
 overnight
 }
 \examples{
+\dontrun{
 overnight(buffer = 2)
 x = overnight( date = anydate('2018.01.23') )
-
+}
 }

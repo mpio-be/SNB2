@@ -16,8 +16,11 @@ a data.table
 the latest test transponder and their holders (authors)
 }
 \examples{
- con = dbcon('mihai', host = 'scidb.mpio.orn.mpg.de')
+ 
+\dontrun{
+con = dbcon('snbAdmin', host = 'scidb.mpio.orn.mpg.de')
 tetr(con)
+}
 }
 \author{
 MV

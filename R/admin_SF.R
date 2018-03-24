@@ -4,8 +4,9 @@
 #' @return        a  \code{data.table} .
 #' @author        MV
 #' @export
-#' @examples
+#' @examples \dontrun{
 #' x = read_sf_txt(f = system.file(package = 'SNB2', 'sample_files', 'BOX1020.TXT'))
+#' }
 
 
 read_sf_txt <- function(f) {
@@ -26,8 +27,9 @@ read_sf_txt <- function(f) {
 #' @return        a  \code{data.table} .
 #' @author        MV
 #' @export
-#' @examples
+#' @examples\dontrun{
 #' read_sf_dir('/ds/raw_data_kemp/FIELD/Westerholz/SF/RAWDATA/2018/')
+#' }
 
 read_sf_dir <- function(D, nextid = NA, basepath = getOption('path.to.raw_v2_SF')) {
 

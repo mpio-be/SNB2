@@ -7,8 +7,11 @@
 \alias{SNB2-package}
 \title{Smart Box Data management}
 \usage{
-Overview help files can be found at http://scidb.mpio.orn.mpg.de
+.onLoad(libname, pkgname)
 }
 \description{
 An all-in-one package for data management, user-level functions and hardware feedback.
+}
+\note{
+Overview help files can be found at http://scidb.mpio.orn.mpg.de
 }

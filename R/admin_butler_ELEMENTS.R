@@ -82,7 +82,7 @@ system_status <- function(pulldate = Sys.Date(), password = '') {
 #' @author MV
 #' @export
 #' @examples
-#' x = cardReader();x
+#' cardReader()
 cardReader <- function(cardsize = getOption('cardSize') ) {
   if( !find_installed('lsblk') ) stop('lsblk is not installed')
 
@@ -125,10 +125,13 @@ cardReader <- function(cardsize = getOption('cardSize') ) {
 #' @export
 #' @author      MV
 #' @examples
-#'  require(sdb)
+#' \dontrun{
+#'  require(SNB2)
 #'  boxid <- harwareIDs()
-#' x = cardReader()
-#' z = x[, read.boxnumber(mountpoint, boxid = boxid), by = .(row.names(x)) ]
+#'  x = cardReader()
+#'  z = x[, read.boxnumber(mountpoint, boxid = boxid), by = .(row.names(x)) ]
+#' }
+#' 
 read.boxnumber <- function(path, boxid, hwidCheck = TRUE) {
 
   nfiles = length(list.files(path))
@@ -182,10 +185,12 @@ read.boxnumber <- function(path, boxid, hwidCheck = TRUE) {
 #' @author MV
 #' @export
 #' @examples
-#'  require(sdb)
+#'\dontrun{
+#'  require(SNB2)
 #'  bid <- harwareIDs()
 #'  x = file_copy_status(boxid = bid)
 #'  card_copy_status(x)
+#' }
 file_copy_status <- function(download_date = Sys.Date() , x = cardReader(), ...) {
 
   x[, id := .(row.names(x))]
@@ -237,10 +242,12 @@ card_copy_status <- function(x = file_copy_status () ) {
 #' @author MV
 #' @export
 #' @examples
-#'  require(sdb)
+#'\dontrun{
+#'  require(SNB2)
 #'  boxid <- harwareIDs()
 #'  x = file_copy_status(bid = boxid)
 #'  sdcard_uploader(x)
+#' }
 sdcard_uploader <- function(x) {
   ccs = card_copy_status(x)
   z = merge(x, ccs[, .(box, copied)], by = 'box', allow.cartesian = TRUE)
@@ -272,10 +279,12 @@ sdcard_uploader <- function(x) {
 #' @param    x    file_copy_status output
 #' @author MV
 #' @export
-#' @examples
+#' @examples 
+#' \dontrun{
 #' x = file_copy_status(bid = boxid)
 #' sdcard_uploader(x) # copy
 #' scard_cleaner(x)   # empty files on cards when copied
+#' }
 scard_cleaner <- function(x) {
 
     ccs = card_copy_status(x)

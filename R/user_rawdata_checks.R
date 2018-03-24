@@ -5,8 +5,10 @@
 #' @return       A data.table
 #' @export
 #' @author       MV
-#' @examples     filePath = "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2017/2017.03.03/122/BOX0122.TXT"
-#' 				 x = diagnose_raw_txt_v2(filePath); x; x
+#' @examples     
+#' \dontrun{
+#' filePath = "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2017/2017.03.03/122/BOX0122.TXT"
+#' 	}			 x = diagnose_raw_txt_v2(filePath); x; x
 
 diagnose_raw_txt_v2 <- function(filePath) {
 
@@ -70,14 +72,11 @@ diagnose_raw_txt_v2 <- function(filePath) {
 #' @export
 #' @author       MV
 #' @examples
+#' \dontrun{
 #' x = diagnose_pull_v2(date = "2018.03.06")
+#' }
 
 diagnose_pull_v2 <- function(date, outDirLocation = getOption('path.to.raw_v2'), shiny = FALSE) {
-	require(sdb)
-	require(data.table)
-	require(SNB2)
-	require(shinytoastr)
-    require(doParallel)
 
 	if(shiny) msg = toastr_success else msg = function(x, ...) message(x, ...)
 	path = paste0(outDirLocation, paste(year(char2date(date)), date, sep = '/') )

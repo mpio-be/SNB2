@@ -6,10 +6,12 @@
 #' @param box A box number (defaults to 999)
 #' @return An actogram (.pdf) that is located at the specified path and a data table with the underlying data.
 #' @export 
-#' @examples
+#' @examples \dontrun{
 #' #copy a BOX001.TXT to the desktop if the blue tit user and run
 #' x = plot_from_raw()
 #' x
+#' }
+
 #' #have a look at your desktop. A file called box_999.pdf should have appeared.
 plot_from_raw = function(path = "/home/bt/Desktop/", box = 999) {
   h = data.table(box = box, path = paste0(path, "BOX001.TXT"), id = 0)
@@ -142,7 +144,9 @@ data_dirs <- function(p = getOption("path.to.raw_v2") ) {
 #' @author      MV
 #' @export
 #' @examples
+#' \dontrun{
 #' a = readRaw_v2(filePath = "/ds/raw_data_kemp/FIELD/Westerholz/breeding_2016_snb_heaven/07062016/122/BOX0122.TXT")
+#' }
 readRaw_v2 <- function(filePath)  {
     data.table(V = readLines(filePath, skipNul = TRUE) )
     }
@@ -173,10 +177,10 @@ snbstring2date_v2 <- function(x) {
 #' @return        a  \code{data.table} .
 #' @author        MV
 #' @export
-#' @examples
+#' @examples \dontrun{
 #' x = read_snb_txt_v2(f = "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2016/2016.06.07/267/BOX0267.TXT")
 #' x = read_snb_txt_v2(f = "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2017/2017.04.24/30/BOX0030.TXT")
-#'
+#' }
 read_snb_txt_v2 <- function(f) {
   d = readRaw_v2(f = f)
   d[, V := str_to_upper(V)]
@@ -207,9 +211,10 @@ read_snb_txt_v2 <- function(f) {
 #' @return        a  character string (length 1).
 #' @author        MV
 #' @export
-#' @examples
+#' @examples 
+#' \dontrun{
 #' hwid(p =  "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2016/2016.06.07/267/BOX0267.TXT")
-#'
+#' }
 hwid <- function(p, n = 300) {
 
   if(length(p) > 1) stop('Something wicked is happening. Stop and check the card!')
@@ -242,7 +247,9 @@ hwid <- function(p, n = 300) {
 #' @author MV
 #' @export
 #' @examples
+#' \dontrun{
 #' find_installed('secure delete')
+#' }
 find_installed <- function(nam) {
 
   o = suppressWarnings( system(paste('which', nam), intern = TRUE) )

@@ -13,10 +13,12 @@ sdcard_uploader(x)
 TRUE on success
 }
 \examples{
- require(sdb)
+\dontrun{
+ require(SNB2)
  boxid <- harwareIDs()
  x = file_copy_status(bid = boxid)
  sdcard_uploader(x)
+}
 }
 \author{
 MV

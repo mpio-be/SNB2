@@ -13,7 +13,9 @@ find_installed(nam)
 logical vector
 }
 \examples{
+\dontrun{
 find_installed('secure delete')
+}
 }
 \author{
 MV

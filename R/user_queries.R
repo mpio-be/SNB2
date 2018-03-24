@@ -5,8 +5,11 @@
 #' @return    a data.table
 #' @export
 #' @author    MV
-#' @examples  con = dbcon('mihai', host = 'scidb.mpio.orn.mpg.de')
+#' @examples  
+#' \dontrun{
+#' con = dbcon('snbAdmin', host = 'scidb.mpio.orn.mpg.de')
 #' tetr(con)
+#' }
 
 tetr <- function(condb ) {
   
@@ -33,19 +36,21 @@ tetr <- function(condb ) {
 #' @param   ncores        number of cores to use
 #' @export 
 #' @examples
+#' \dontrun{
 #' # Simple SELECT
-#' dbqSNB('mihai', host = "scidb.mpio.orn.mpg.de", 'SELECT * FROM boxtables limit 1')
+#' dbqSNB('snbAdmin', host = "scidb.mpio.orn.mpg.de", 'SELECT * FROM boxtables limit 1')
 #'
 #' # Last entry
-#' dbqSNB('mihai', host = "scidb.mpio.orn.mpg.de", 'SELECT * FROM boxtables ORDER BY r_pk desc limit 1')
+#' dbqSNB('snbAdmin', host = "scidb.mpio.orn.mpg.de", 'SELECT * FROM boxtables ORDER BY r_pk desc limit 1')
 #'
 #' # SELECT last n days
-#' x = dbqSNB('mihai', host = "scidb.mpio.orn.mpg.de",
+#' x = dbqSNB('snbAdmin', host = "scidb.mpio.orn.mpg.de",
 #' 'SELECT datetime_, LB, transp FROM  boxtables
 #'    WHERE datetime_ >= DATE_ADD( (SELECT max(datetime_) from  boxtables) , INTERVAL -3 DAY) AND
 #'    YEAR(datetime_) = YEAR(CURDATE() )
 #' ')
-#'
+#' }
+#' 
 dbqSNB <- function(username, host = "scidb.mpio.orn.mpg.de", q = 'SELECT * FROM boxtables limit 1', db = getOption('snbDB_v2'), .boxes = 1:277, ncores = 4) {
 
     pb = tempfile(fileext = '.txt')
@@ -90,9 +95,10 @@ dbqSNB <- function(username, host = "scidb.mpio.orn.mpg.de", q = 'SELECT * FROM 
 #' @export
 #' @param   ...  goes to dbqSNB
 #' @examples
+#' \dontrun{
 #' overnight(buffer = 2)
 #' x = overnight( date = anydate('2018.01.23') )
-#'
+#'}
 overnight <- function(buffer = 1, date = Sys.Date()-1, ...) {
 
   if(missing(date))
@@ -164,24 +170,4 @@ harwareIDs <- function(username  = getOption('DB_user') , host = getOption('host
     o  
 
 }
-
-# # TODO
-# 
-# #' @name        Missing data in BTatWESTERHOLZ.transponders
-# #' @description Data in SNBatWESTERHOLZ_v2.b***  which are nor in BTatWESTERHOLZ.transponders
-# #' @param       username       username
-# #' @param       host           host
-# #' @param       ...          goes to dbqSNB
-# #' @return      data.table
-# #' @export
-# #' @examples
-# 
-# 
-# getNewTransponders <- function(username, host = "scidb.mpio.orn.mpg.de", ... ) {
-# 
-# 
-#   }
-# 
-# 
-
 

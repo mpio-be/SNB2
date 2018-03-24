@@ -20,7 +20,10 @@ nothing
 SNB User Interfaces
 }
 \examples{
-        butler(demo = TRUE, user = 'mihai')
+ 
+\dontrun{       
+butler(demo = TRUE)
+}
 }
 \author{
 MV

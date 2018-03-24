@@ -27,9 +27,9 @@ scidb_snbUpdater serializes several functions and performs the
                update of both the file_status and each b00x table.
 }
 \examples{
-\\donotrun{
+\dontrun{
  require(SNB2)
- install_demo_SNB('mihai', '127.0.0.1')
+ install_demo_SNB('snbAdmin', '127.0.0.1')
  scidb_snbUpdater()
 }
 

@@ -18,7 +18,9 @@ a  \code{data.table} .
 read all SF files in a given root directory
 }
 \examples{
+\dontrun{
 read_sf_dir('/ds/raw_data_kemp/FIELD/Westerholz/SF/RAWDATA/2018/')
+}
 }
 \author{
 MV

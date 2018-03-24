@@ -19,7 +19,9 @@ a data.table
 Output diagnostics of a directory containing raw box files
 }
 \examples{
+\dontrun{
 x = diagnose_pull_v2(date = "2018.03.06")
+}
 }
 \author{
 MV

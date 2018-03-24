@@ -13,7 +13,7 @@ cardReader(cardsize = getOption("cardSize"))
 data.table containing info on HOTPLUG,MOUNTPOINT,KNAME,MODEL,VENDOR,TRAN,FSTYPE
 }
 \examples{
-x = cardReader();x
+cardReader()
 }
 \author{
 MV

@@ -1,0 +1,6 @@
+language: r
+cache: packages
+latex: false
+fortran: false
+warnings_are_errors: false
+r_check_args: '--no-tests'

@@ -18,8 +18,10 @@ An actogram (.pdf) that is located at the specified path and a data table with t
 Plot raw data in the field
 }
 \examples{
+\dontrun{
 #copy a BOX001.TXT to the desktop if the blue tit user and run
 x = plot_from_raw()
 x
+}
 #have a look at your desktop. A file called box_999.pdf should have appeared.
 }

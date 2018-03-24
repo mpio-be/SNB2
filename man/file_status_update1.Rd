@@ -21,11 +21,13 @@ box, id, path,  filesize are saved to file_status table.
                  The id is a primary key in file_status and identifies chunks of data from the same file in each box b00x table.
 }
 \examples{
-require(sdb)
-con = dbcon('valcu')
+\dontrun{
+require(SNB2)
+con = dbcon('snbAdmin')
 x = incoming_files(con )
 o = file_status_update1(update = FALSE)
 dbDisconnect(con)
+}
 }
 \author{
 MV

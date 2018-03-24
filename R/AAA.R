@@ -1,16 +1,14 @@
 
 
-#' @import methods tools data.table foreach
+#' @import methods tools data.table foreach shinydashboard  shiny shinytoastr
 NULL
-
-
 
 #' @title 			  Smart Box Data management
 #' @description 	An all-in-one package for data management, user-level functions and hardware feedback.
 #' @docType 		  package
 #' @name 			    SNB2
 #' @export
-#' @usage
+#' @note
 #' Overview help files can be found at http://scidb.mpio.orn.mpg.de
 #'
 

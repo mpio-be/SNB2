@@ -25,17 +25,19 @@ dbqSNB(username, host = "scidb.mpio.orn.mpg.de",
 query raw data, all b_ tables at once
 }
 \examples{
+\dontrun{
 # Simple SELECT
-dbqSNB('mihai', host = "scidb.mpio.orn.mpg.de", 'SELECT * FROM boxtables limit 1')
+dbqSNB('snbAdmin', host = "scidb.mpio.orn.mpg.de", 'SELECT * FROM boxtables limit 1')
 
 # Last entry
-dbqSNB('mihai', host = "scidb.mpio.orn.mpg.de", 'SELECT * FROM boxtables ORDER BY r_pk desc limit 1')
+dbqSNB('snbAdmin', host = "scidb.mpio.orn.mpg.de", 'SELECT * FROM boxtables ORDER BY r_pk desc limit 1')
 
 # SELECT last n days
-x = dbqSNB('mihai', host = "scidb.mpio.orn.mpg.de",
+x = dbqSNB('snbAdmin', host = "scidb.mpio.orn.mpg.de",
 'SELECT datetime_, LB, transp FROM  boxtables
    WHERE datetime_ >= DATE_ADD( (SELECT max(datetime_) from  boxtables) , INTERVAL -3 DAY) AND
    YEAR(datetime_) = YEAR(CURDATE() )
 ')
+}
 
 }

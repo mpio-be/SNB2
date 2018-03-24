@@ -6,12 +6,12 @@
 #' @author           MV
 #' @export
 #' @return           nothing
-#' @examples         butler(demo = TRUE, user = 'mihai')
+#' @examples  
+#'\dontrun{       
+#' butler(demo = TRUE)
+#' }
 butler <- function(demo = FALSE, user = 'testuser', in.browser = FALSE) {
 
-  # INIT ----------------------------------------------
-    sapply(c('sdb', 'SNB2', 'shiny', 'shinydashboard', 'doParallel', 'data.table', 'magrittr', 'shinytoastr'),
-    function(x) require(x , character.only = TRUE, quietly = TRUE) )
 
     cat("", file = cclog() )
 

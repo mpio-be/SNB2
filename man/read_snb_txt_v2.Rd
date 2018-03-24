@@ -16,9 +16,10 @@ a  \code{data.table} .
 read an SNB file as data.table-s (only transponder and Light barrier data are parsed).
 }
 \examples{
+\dontrun{
 x = read_snb_txt_v2(f = "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2016/2016.06.07/267/BOX0267.TXT")
 x = read_snb_txt_v2(f = "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2017/2017.04.24/30/BOX0030.TXT")
-
+}
 }
 \author{
 MV

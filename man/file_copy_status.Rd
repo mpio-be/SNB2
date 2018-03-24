@@ -21,10 +21,12 @@ or a DT returned by file_copy_status() for card_copy_status()}
 a DT
 }
 \examples{
- require(sdb)
+\dontrun{
+ require(SNB2)
  bid <- harwareIDs()
  x = file_copy_status(boxid = bid)
  card_copy_status(x)
+}
 }
 \author{
 MV

@@ -17,8 +17,9 @@ logical
 The function checks the proper directory format: \code{ year/date[prefix]/box/b00x.txt}
 }
 \examples{
+\dontrun{
 well_formated_directory(getOption("path.to.raw_v2"))
-
+}
 }
 \author{
 MV

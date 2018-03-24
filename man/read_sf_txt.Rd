@@ -16,7 +16,9 @@ a  \code{data.table} .
 read one SF file as data.table
 }
 \examples{
+\dontrun{
 x = read_sf_txt(f = system.file(package = 'SNB2', 'sample_files', 'BOX1020.TXT'))
+}
 }
 \author{
 MV

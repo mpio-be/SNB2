@@ -26,10 +26,12 @@ The function lists new files which are not yet in  \code{SNBatWESTERHOLZ)v2.file
 }
 
 \examples{
-require(sdb)
-con = dbcon('valcu')
+\dontrun{
+require(SNB2)
+con = dbcon('snbAdmin')
 incoming_files(con)
 dbDisconnect(con)
+}
 }
 \author{
 MV
