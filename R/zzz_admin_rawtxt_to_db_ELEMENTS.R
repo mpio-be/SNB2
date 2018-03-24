@@ -29,31 +29,6 @@ drop_by_id <- function( con, id , db = getOption("snbDB_v2") ) {
     }
 
 
-#' @title              Check the raw data directory 
-#' @description        The function checks the proper directory format: \code{ year/date[prefix]/box/b00x.txt}
-#' @param       p      path to raw data, default to getOption("path.to.raw")
-#' @return             logical
-#' @author             MV
-#' @export
-#' @examples
-#' \dontrun{
-#' well_formated_directory(getOption("path.to.raw_v2"))
-#' }
-well_formated_directory <- function(p = getOption("path.to.raw_v2") , y = year(Sys.Date()) ) {
-
-    x = data.table( dirs = list.files( paste0(p, y), full.name = TRUE) )
-
-    x[, dirnam := basename(dirs) ]
-
-    isNotDate = x[ ! grepl('^[0-9]{4}\\.[0-9]{1,2}\\.[0-9]{1,2}$', dirnam )   ]
-
-    if(nrow(isNotDate) > 0) {
-        return(isNotDate)
-        stop('Invalid directories')
-    } else return(TRUE)
-
-    }
-
 
 #' @title         Find out new data files 
 #' @description   The function lists new files which are not yet in  \code{SNBatWESTERHOLZ)v2.file_status}.

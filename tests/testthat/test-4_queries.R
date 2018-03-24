@@ -1,22 +1,14 @@
-
-
-# devtools::test()
-
 # ==========================================================================
 # user queries
 # ==========================================================================
+
 require(SNB2)
-require(data.table)
 assignInNamespace("cedta.override", c(data.table:::cedta.override,"SNB2"), "data.table")
 
 
-context("💁 user queries")
+context(" user queries")
 
 test_that("user queries work.", {
-
-    # settings
-        install_demo_SNB(user = 'testuser')
-        scidb_snbUpdater()
 
     # tests
         con = dbcon(user = getOption('DB_user') , host = getOption("host"), db = getOption("snbDB_v2"))

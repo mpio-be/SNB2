@@ -1,6 +1,27 @@
+
 language: r
 cache: packages
 latex: false
 fortran: false
+
+sudo: required
 warnings_are_errors: false
 r_check_args: '--no-tests'
+
+services:
+ - mysql
+
+before_install:
+  - mysql -u root --password="" < tests/testdb.sql 
+
+
+apt_packages:
+  - libmysqlclient-dev
+  - gdal-bin
+  - libgdal-dev
+  - libgdal1-dev
+  - libproj-dev
+  - libgdal1h
+
+
+  

@@ -52,7 +52,7 @@ install_demo_SNB <- function(user='testuser', host ='127.0.0.1', rawdata_root = 
 
       x[, file.copy(from, mountpoint) , by = i] 
       
-      } else warning('SD cards are not available.')
+      } else message('SD cards are not available.')
     
 
   all(o)  
