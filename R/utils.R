@@ -86,7 +86,9 @@ path2box <- function(x) {
 
 basename2box <- function(ff) {
 
-  as.integer( str_extract(basename(ff) , "-?\\d+") )
+  basename(ff) %>% 
+   str_extract("-?\\d+") %>%
+   as.integer
 
   }
 

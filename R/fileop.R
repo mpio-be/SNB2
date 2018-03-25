@@ -66,18 +66,18 @@ demo_setup <- function(user='testuser', host ='127.0.0.1', rawdata_root = paste(
 #' }
 well_formated_directory <- function(p = getOption("path.to.raw_v2") , y = year(Sys.Date()) ) {
 
-    x = data.table( dirs = list.files( paste0(p, y), full.name = TRUE) )
+  x = data.table( dirs = list.files( paste0(p, y), full.name = TRUE) )
 
-    x[, dirnam := basename(dirs) ]
+  x[, dirnam := basename(dirs) ]
 
-    isNotDate = x[ ! grepl('^[0-9]{4}\\.[0-9]{1,2}\\.[0-9]{1,2}$', dirnam )   ]
+  isNotDate = x[ ! grepl('^[0-9]{4}\\.[0-9]{1,2}\\.[0-9]{1,2}$', dirnam )   ]
 
-    if(nrow(isNotDate) > 0) {
-        return(isNotDate)
-        stop('Invalid directories')
-    } else return(TRUE)
+  if(nrow(isNotDate) > 0) {
+    return(isNotDate)
+    stop('Invalid directories')
+  } else return(TRUE)
 
-    }
+  }
 
 #' @title       List all data directories
 #' @param p     path to raw data, default to getOption("path.to.raw")
@@ -108,8 +108,8 @@ data_dirs <- function(p = getOption("path.to.raw_v2") ) {
 #' }
 data_files <- function(p = getOption("path.to.raw_v2")  ) {
 
-  x = data.table( path = list.files(p, full.name = TRUE, recursive = TRUE) )
-
+  x = data.table( p = list.files(p, full.name = TRUE, recursive = TRUE) )
+  x[, box := basename2box(p)]
 
     }
 
