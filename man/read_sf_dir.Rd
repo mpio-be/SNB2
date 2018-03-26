@@ -4,7 +4,7 @@
 \alias{read_sf_dir}
 \title{read SF directory}
 \usage{
-read_sf_dir(D, nextid = NA, basepath = getOption("path.to.raw_v2_SF"))
+read_sf_dir(D, basepath = getOption("path.to.raw_v2_SF"))
 }
 \arguments{
 \item{D}{path to directory}

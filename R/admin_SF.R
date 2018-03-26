@@ -31,21 +31,19 @@ read_sf_txt <- function(f) {
 #' read_sf_dir('/ds/raw_data_kemp/FIELD/Westerholz/SF/RAWDATA/2018/')
 #' }
 
-read_sf_dir <- function(D, nextid = NA, basepath = getOption('path.to.raw_v2_SF')) {
+read_sf_dir <- function(D, basepath = getOption('path.to.raw_v2_SF')) {
 
  x = data.table( path = list.files(D, all.files = TRUE, full.names = TRUE, recursive = TRUE, pattern = 'TXT$') )
  x[, feeder := path2box(path)]
- x[, id := if (is.na(nextid)) NA else nextid : .N ]
- 
+
  d = x[,read_sf_txt(path), by = path]
 
  d = merge(d, x, by = 'path', sort = FALSE)
 
  d[, path := str_replace(path, basepath, '/')]
 
- d[, pk := NA]
 
- d[, .(feeder, datetime_, transp, path, id, pk)]
+ d[, .(feeder, datetime_, transp, path)]
 
 
  }

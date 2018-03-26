@@ -36,9 +36,28 @@ test_that("File readers and parsers", {
     
     o = data_dirs()
     expect_s3_class(o, 'data.table')
-    # readRaw_v2
-    # read_snb_txt_v2
-    #hwid
+    
+    # ok file
+    o = read_boxtxt(system.file('test_files_SNB', '80', 'BOX0080.TXT', package = 'SNB2'))
+
+    expect_s3_class(o,'data.table')
+
+    # empty file
+    o = read_boxtxt(system.file('test_files_SNB', '83', 'BOX0083.TXT', package = 'SNB2'))
+    expect_equal(attributes(o)$SNB2$garbage, 1) # empty files are 100% garbage
+
+    # only garbage file
+    o = read_boxtxt(system.file('test_files_SNB', '84', 'BOX0084.TXT', package = 'SNB2'))
+    expect_equal(attributes(o)$SNB2$garbage, 1) # empty files are 100% garbage
+
+    # lots of garbage file
+    o = read_boxtxt(system.file('test_files_SNB', '85', 'BOX0085.TXT', package = 'SNB2'))
+    expect_equal(attributes(o)$SNB2$garbage, 0.08) #  #prop garbage (from the total of possibly good lines)
+
+
+
+
+
 
 
     })

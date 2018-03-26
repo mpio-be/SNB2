@@ -96,8 +96,8 @@ data_dirs <- function(p = getOption("path.to.raw_v2") ) {
 
 
 #' @title         List all data files
-#' @description   List all data files that are box.{1,4}.txt$
-#' @param p       path to raw data, default to getOption("path.to.raw")
+#' @description   List all data files whose path contain basename2box() within getOption('boxes_v2') 
+#' @param p       path to raw data, default to getOption("path.to.raw_v2")
 #' @return        a data.table if there are new directories or otherwise NULL
 #' @author        MV
 #' @export
@@ -111,7 +111,10 @@ data_files <- function(p = getOption("path.to.raw_v2")  ) {
   x = data.table( p = list.files(p, full.name = TRUE, recursive = TRUE) )
   x[, box := basename2box(p)]
 
-    }
+  x[ box %in%  getOption('boxes_v2')]
+
+
+  }
 
 
 
@@ -137,12 +140,13 @@ readRaw_v2 <- function(filePath)  {
 #' @return        a  \code{data.table} .
 #' @author        MV
 #' @export
-#' @examples \dontrun{
-#' x = read_snb_txt_v2(f = "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2016/2016.06.07/267/BOX0267.TXT")
-#' x = read_snb_txt_v2(f = "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2017/2017.04.24/30/BOX0030.TXT")
-#' }
-read_snb_txt_v2 <- function(f) {
+#' @examples 
+#' x = read_boxtxt(system.file('test_files_SNB', '80', 'BOX0080.TXT', package = 'SNB2'))
+
+read_boxtxt <- function(f) {
   d = readRaw_v2(f = f)
+  file_path = str_remove(f, getOption('path.to.raw_v2')) 
+
   d[, V := str_to_upper(V)]
   d = d[ str_detect(V, 'TRANSPONDER:|LBO:|LBI:')  ]
 
@@ -157,11 +161,20 @@ read_snb_txt_v2 <- function(f) {
   # flag garbage 
   d[ str_count(sensor_value) != 16 & sensor == 'tra', g := 1]
   d[ !sensor_value %in% c('ON', 'OFF') & sensor %in% c('lbi', 'lbo'), g := 1]
-
-  # d[!is.na(g)]
+  #prop garbage (from the total of possibly good lines)
+  pg = nrow(d[g == 1])/nrow(d)
 
   # final subset
-  d[is.na(g), .(datetime_, sensor_value, sensor)]
+  o = d[is.na(g), .(datetime_, sensor_value, sensor)]
+  o[, path := file_path ]
+
+  if(nrow(o) == 0) pg = 1
+
+  # set attributes (set file_path too because of empty files)
+  setattr(o, 'SNB2', data.frame(box= basename2box(f), path = file_path, garbage = pg) )
+
+  o
+
   }
 
 

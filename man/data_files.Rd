@@ -7,13 +7,13 @@
 data_files(p = getOption("path.to.raw_v2"))
 }
 \arguments{
-\item{p}{path to raw data, default to getOption("path.to.raw")}
+\item{p}{path to raw data, default to getOption("path.to.raw_v2")}
 }
 \value{
 a data.table if there are new directories or otherwise NULL
 }
 \description{
-List all data files that are box.{1,4}.txt$
+List all data files whose path contain basename2box() within getOption('boxes_v2')
 }
 \examples{
 \dontrun{
