@@ -10,7 +10,9 @@
 #'\dontrun{       
 #' butler(demo = TRUE)
 #' }
-butler <- function(user = 'testuser', in.browser = FALSE) {
+butler <- function(user = 'testuser', in.browser = FALSE, HOST = 'scidb.mpio.orn.mpg.de') {
+
+  options(host  = HOST )
 
 
     cat("", file = cclog() )
@@ -29,7 +31,7 @@ butler <- function(user = 'testuser', in.browser = FALSE) {
 #' @export
 server_butler <- function(input, output, session) {
 
-  HWID = harwareIDs(host = 'scidb.mpio.orn.mpg.de')
+  HWID = harwareIDs()
 
   # init  -------------------------------
     autoInvSys    <- reactiveTimer(5000)
