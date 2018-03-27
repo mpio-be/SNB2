@@ -17,7 +17,7 @@
 #'  scidb_snbUpdater()
 #' }
 #' 
-scidb_snbUpdater <- function(u =  getOption("DB_user") , h = getOption("host"), 
+scidb_snbUpdater_old <- function(u =  getOption("DB_user") , h = getOption("host"), 
     p = getOption("path.to.raw_v2"), y = year(Sys.Date()) , db = getOption("snbDB_v2") ) {
     con = dbcon(user = u , host = h); on.exit( closeCon(con) )
 

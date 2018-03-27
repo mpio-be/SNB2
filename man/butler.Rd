@@ -4,14 +4,14 @@
 \alias{butler}
 \title{SNB butler}
 \usage{
-butler(demo = FALSE, user = "testuser", in.browser = FALSE)
+butler(user = "testuser", in.browser = FALSE)
 }
 \arguments{
-\item{demo}{default to FALSE; if TRUE runs  `install_demo_SNB()` first.}
-
 \item{user}{local system and db user (passed to install_demo_SNB) .}
 
 \item{in.browser}{default to FALSE. If true open the local interface in the default browser.}
+
+\item{demo}{default to FALSE; if TRUE runs  `install_demo_SNB()` first.}
 }
 \value{
 nothing

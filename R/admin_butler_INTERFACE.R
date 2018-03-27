@@ -10,15 +10,10 @@
 #'\dontrun{       
 #' butler(demo = TRUE)
 #' }
-butler <- function(demo = FALSE, user = 'testuser', in.browser = FALSE) {
+butler <- function(user = 'testuser', in.browser = FALSE) {
 
 
     cat("", file = cclog() )
-
-    if(demo) { 
-      install_demo_SNB(user, '127.0.0.1')
-      demoON <<- TRUE
-      }
 
 
 
@@ -34,7 +29,7 @@ butler <- function(demo = FALSE, user = 'testuser', in.browser = FALSE) {
 #' @export
 server_butler <- function(input, output, session) {
 
-  HWID = harwareIDs()
+  HWID = harwareIDs(host = 'scidb.mpio.orn.mpg.de')
 
   # init  -------------------------------
     autoInvSys    <- reactiveTimer(5000)

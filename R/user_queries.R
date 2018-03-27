@@ -51,7 +51,8 @@ tetr <- function(condb ) {
 #' ')
 #' }
 #' 
-dbqSNB <- function(username, host = "scidb.mpio.orn.mpg.de", q = 'SELECT * FROM boxtables limit 1', db = getOption('snbDB_v2'), .boxes = 1:277, ncores = 4) {
+dbqSNB <- function(username, host = "scidb.mpio.orn.mpg.de", q = 'SELECT * FROM boxtables limit 1', 
+                  db = getOption('snbDB_v2'), .boxes = getOption('boxes_v2'), ncores = 4) {
 
     pb = tempfile(fileext = '.txt')
     message('to follow progress open', sQuote(pb), 'in a text editor')

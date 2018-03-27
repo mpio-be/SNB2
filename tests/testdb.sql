@@ -51,6 +51,51 @@ CREATE TABLE IF NOT EXISTS b082 (
 ) ENGINE=Aria ;
 
 
+
+CREATE TABLE IF NOT EXISTS b083 (
+  datetime_ datetime DEFAULT NULL,
+  sensor_value varchar(16) DEFAULT NULL COMMENT 'Transponder ID and Light barrier state',
+  sensor varchar(3) DEFAULT NULL COMMENT 'sensor type: tra = transponder, lbi = internal light barrier, lbo = outer light barrier',
+  path varchar(255) NOT NULL COMMENT 'rootdir /ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2',
+  r_pk bigint(20) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (r_pk),
+  KEY datetime_ (datetime_),
+  KEY transp (sensor_value),
+  KEY sensor (sensor)
+) ENGINE=Aria ;
+
+
+CREATE TABLE IF NOT EXISTS b084 (
+  datetime_ datetime DEFAULT NULL,
+  sensor_value varchar(16) DEFAULT NULL COMMENT 'Transponder ID and Light barrier state',
+  sensor varchar(3) DEFAULT NULL COMMENT 'sensor type: tra = transponder, lbi = internal light barrier, lbo = outer light barrier',
+  path varchar(255) NOT NULL COMMENT 'rootdir /ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2',
+  r_pk bigint(20) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (r_pk),
+  KEY datetime_ (datetime_),
+  KEY transp (sensor_value),
+  KEY sensor (sensor)
+) ENGINE=Aria ;
+
+
+CREATE TABLE IF NOT EXISTS b085 (
+  datetime_ datetime DEFAULT NULL,
+  sensor_value varchar(16) DEFAULT NULL COMMENT 'Transponder ID and Light barrier state',
+  sensor varchar(3) DEFAULT NULL COMMENT 'sensor type: tra = transponder, lbi = internal light barrier, lbo = outer light barrier',
+  path varchar(255) NOT NULL COMMENT 'rootdir /ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2',
+  r_pk bigint(20) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (r_pk),
+  KEY datetime_ (datetime_),
+  KEY transp (sensor_value),
+  KEY sensor (sensor)
+) ENGINE=Aria ;
+
+
+
+
+
+
+
 CREATE TABLE IF NOT EXISTS boxid (
   box int(11) NOT NULL,
   hwid varchar(50) NOT NULL COMMENT 'hardware id',
