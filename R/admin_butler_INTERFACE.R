@@ -12,6 +12,9 @@
 #' }
 butler <- function(user = 'testuser', in.browser = FALSE, HOST = 'scidb.mpio.orn.mpg.de') {
 
+  require(foreach)
+  require(doParallel)
+
   options(host  = HOST )
 
 

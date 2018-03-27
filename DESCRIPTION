@@ -23,7 +23,6 @@ Imports:
     shinytoastr,
     shinydashboard
 Suggests:
-    doParallel,
     fasttime,
     ggplot2,
     openxlsx,
