@@ -1,15 +1,46 @@
 
 
-#' @title 		  integer to box name
-#' @description convert an integer as b00x
+#' @title 		  Box names conversions
+#' @description Box names conversions from/to  int, path, basemame to boxname
 #' @param 		  x box names (numeric)
 #' @return 		  character vector
 #' @author  	  MV
 #' @export
-#' @examples	int2b(1)
+#' @examples	
+#' int2b(1)
+#' path2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB_v2/RAWDATA/2016/2016.01.26/011/BOX001.TXT")
+#' basename2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA/2016/2016.01.26/011/BOX001.TXT")
+#' basename2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB_v2/RAWDATA/2016/2016.01.26/011/BOX0080.TXT")
+#' 
 int2b <- function(x) {
-	paste0('b',str_pad(x, 3, 'left', pad = '0') )
+  paste0('b',str_pad(x, 3, 'left', pad = '0') )
+  }
+
+#' @rdname int2b
+#' @export
+b2int <- function(x) {
+	str_remove(x, 'b') %>%
+  as.integer
 	}
+
+#' @rdname int2b
+#' @export
+path2box <- function(x) {
+  dirname(x) %>%
+    basename %>%
+    as.integer
+  }
+
+#' @rdname int2b
+#' @export
+basename2box <- function(ff) {
+  basename(ff) %>% 
+   str_extract("-?\\d+") %>%
+   as.integer
+  }
+
+
+
 
 #' @title 		  3 digits box list
 #' @description	A list of boxes in westerholz formated as b00x
@@ -59,43 +90,6 @@ na.replace <- function(x, replace_value = ''){
 path2year <- function(x) {
    str_extract(x, "\\b(20)\\d{2}\\b") %>% as.integer
   }
-
-#' @title     box from file path (v1)
-#' @description extract box from a file path string
-#' @export
-#' @author    MV
-#' @examples  path2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB_v2/RAWDATA/2016/2016.01.26/011/BOX001.TXT")
-
-path2box <- function(x) {
-   # str_extract(x, "\\b\\d{3}\\b")
-  dirname(x) %>%
-    basename %>%
-    as.integer
-
-  }
-
-
-
-#' @title       basename to box
-#' @description extract box from a file path (basename) string
-#' @author    MV
-#' @export
-#' @examples  
-#' basename2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA/2016/2016.01.26/011/BOX001.TXT")
-#' basename2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB_v2/RAWDATA/2016/2016.01.26/011/BOX0080.TXT")
-
-basename2box <- function(ff) {
-
-  basename(ff) %>% 
-   str_extract("-?\\d+") %>%
-   as.integer
-
-  }
-
-
-
-
-
 
 
 

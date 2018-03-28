@@ -26,7 +26,7 @@ Installs a demo system: prepares a temp RAWDATA folder and changes the options
 }
 \examples{
 \dontrun{
-demo_setup(install.test.db = TRUE)
+demo_setup(install.test.db = TRUE, admin.user = 'mihai')
 }
 
 }

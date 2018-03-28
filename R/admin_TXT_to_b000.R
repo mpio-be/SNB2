@@ -8,10 +8,10 @@
 #'  require(SNB2)
 #'  
 #'  demo_setup(install.test.db = TRUE, admin.user = 'mihai')
-#'  scidb_snbUpdater()
+#'  scidb_snbUpdater.b000 ()
 #' }
 #' 
-scidb_snbUpdater <- function() {
+scidb_snbUpdater.b000 <- function() {
     Start = Sys.time()
     cat(' ------> Getting settings ...')  
         u =  getOption("DB_user") 

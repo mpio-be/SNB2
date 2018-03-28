@@ -120,20 +120,22 @@ CREATE TABLE IF NOT EXISTS black_list (
 
 
 CREATE TABLE transponders (
-site_type   int(2)        NOT NULL  COMMENT '1 = box, 2 = feeder',
-site        int(6)        NOT NULL  COMMENT 'site ID: box or feeder ID',
-transponder char(16)      NOT NULL  COMMENT 'transponder ID',
-datetime_   datetime      NOT NULL  COMMENT 'CEST',
-`path`      varchar(255)  NOT NULL ,
- pk          bigint       NOT NULL AUTO_INCREMENT,
+  site_type   int(2)        NOT NULL  COMMENT '1 = box, 2 = feeder',
+  site        int(6)        NOT NULL  COMMENT 'site ID: box or feeder ID',
+  transponder char(16)      NOT NULL  COMMENT 'transponder ID',
+  datetime_   datetime      NOT NULL  COMMENT 'CEST',
+  `path`      varchar(255)  NOT NULL ,
+   pk          bigint       NOT NULL AUTO_INCREMENT,
 
-PRIMARY KEY (pk),
+  PRIMARY KEY (pk),
 
-KEY sitetype  (site_type)   ,
-KEY site      (site)        ,
-KEY transp    (transponder) ,
-KEY datetime  (datetime_)   ,
-KEY `path`      (`path`)        ,
-KEY transponders_site_type (site_type,site,`path`)
+  KEY sitetype  (site_type)   ,
+  KEY site      (site)        ,
+  KEY transp    (transponder) ,
+  KEY datetime  (datetime_)   ,
+  KEY `path`      (`path`)        
 
-) ENGINE=Aria
+
+  ) ENGINE=Aria
+
+

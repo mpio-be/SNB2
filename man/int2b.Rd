@@ -2,9 +2,18 @@
 % Please edit documentation in R/utils.R
 \name{int2b}
 \alias{int2b}
-\title{integer to box name}
+\alias{b2int}
+\alias{path2box}
+\alias{basename2box}
+\title{Box names conversions}
 \usage{
 int2b(x)
+
+b2int(x)
+
+path2box(x)
+
+basename2box(ff)
 }
 \arguments{
 \item{x}{box names (numeric)}
@@ -13,10 +22,14 @@ int2b(x)
 character vector
 }
 \description{
-convert an integer as b00x
+Box names conversions from/to  int, path, basemame to boxname
 }
 \examples{
 int2b(1)
+path2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB_v2/RAWDATA/2016/2016.01.26/011/BOX001.TXT")
+basename2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA/2016/2016.01.26/011/BOX001.TXT")
+basename2box("/ds/raw_data_kemp/FIELD/Westerholz/SNB_v2/RAWDATA/2016/2016.01.26/011/BOX0080.TXT")
+
 }
 \author{
 MV

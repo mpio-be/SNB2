@@ -10,7 +10,7 @@
 #' @export
 #' @examples
 #'\dontrun{
-#'demo_setup(install.test.db = TRUE)
+#' demo_setup(install.test.db = TRUE, admin.user = 'mihai')
 #' }
 #'
 demo_setup <- function(user = 'testuser', admin.user, host ='127.0.0.1', 
@@ -29,7 +29,8 @@ demo_setup <- function(user = 'testuser', admin.user, host ='127.0.0.1',
     options(host            = host)
     options(path.to.raw_v2  = rawdata_root )
     options(snbDB_v2        = db)
-    options(boxes_v2        = 81:85) # in test_files_SNB directory
+    options(transpondersDB  = db)
+    options(boxes_v2        = 80:85) # in test_files_SNB directory
 
     demo_files_loc = system.file('test_files_SNB', package = 'SNB2')
 
