@@ -51,16 +51,19 @@ scidb_snbUpdater.b000 <- function() {
 
         dbDisconnect(con)
    
-
-
     cat(' ------> Identifying new files ...')
         if(nrow(alldbf) == 0) newf = copy(rawf) else {
 
-            newf = merge(rawf, alldbf, by = 'path', all.x = TRUE)
-            newf = newf[is.na(indb)]
+        newf = merge(rawf, alldbf, by = 'path', all.x = TRUE)
+        newf = newf[is.na(indb)]
         }
-        
-        if( nrow(newf) == 0 ) stop ('-------- NO NEW FILES FOUND -------- ')
+
+        if( nrow(newf) == 0 ) {
+            cat('None found. Will stop now.\n')
+            return(0)
+            stop ('-------- NO NEW FILES FOUND -------- ')
+
+        } 
 
         cat('got', nrow(newf), 'new files. OK\n')
 
@@ -88,7 +91,7 @@ scidb_snbUpdater.b000 <- function() {
         pb = txtProgressBar(max = length(O), style = 3 )
         con = dbcon(u, host = h, db = db)
 
-        o = foreach(i = 1: length(O), .combine = c, .final=sum)  %do% {
+        out = foreach(i = 1: length(O), .combine = c, .final=sum)  %do% {
             oi = O[[i]]
             atr = attributes(oi)$SNB2
 
@@ -100,9 +103,12 @@ scidb_snbUpdater.b000 <- function() {
         } 
         
         dbDisconnect(con)
-        cat('\n      Uploaded', o , 'new files.\n')
+        cat('\n      Uploaded', out , 'new files.\n')
 
     cat(' ------> Done in', timetaken(Start))
+
+    out
+
 
  }
 
