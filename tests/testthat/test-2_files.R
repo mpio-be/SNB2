@@ -3,17 +3,8 @@
 # ==========================================================================
 
 
+demo_setup(install.test.db = FALSE)
 
-test_that("Demo setup ini", {
-    
-    expect_true( demo_setup() )
-
-    expect_identical(getOption('DB_user') , user)
-    expect_identical(getOption('host') , host)
-    expect_identical(getOption('snbDB_v2') , db)
-    expect_identical(getOption('path.to.raw_v2') , rawdata_root)
-
-    })
 
 test_that("repo checks", {
     

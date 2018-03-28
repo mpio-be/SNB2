@@ -4,16 +4,29 @@
 \alias{demo_setup}
 \title{Installs a demo system}
 \usage{
-demo_setup(user = "testuser", host = "127.0.0.1",
+demo_setup(user = "testuser", admin.user, host = "127.0.0.1",
   rawdata_root = paste(tempdir(), "SNB_demo_RAWDATA", sep = "/"),
-  db = "tests")
+  db = "tests", install.test.db = TRUE)
+}
+\arguments{
+\item{user}{user}
+
+\item{admin.user}{admin.user}
+
+\item{host}{host}
+
+\item{rawdata_root}{rawdata_root}
+
+\item{db}{db}
+
+\item{install.test.db}{when TRUE (the default) installs a test db}
 }
 \description{
-Installs a demo system prepares a temp RAWDATA folder and changes the options
+Installs a demo system: prepares a temp RAWDATA folder and changes the options
 }
 \examples{
 \dontrun{
-demo_setup()
+demo_setup(install.test.db = TRUE)
 }
 
 }

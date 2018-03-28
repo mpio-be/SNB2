@@ -77,7 +77,8 @@ dbqSNB <- function(username, host = "scidb.mpio.orn.mpg.de", q = 'SELECT * FROM 
       o
       } %>% rbindlist
 
-
+    registerDoSEQ()  
+      
     if(nrow(O) == 0)  warning('Your query returns an empty dataset.')
 
     if(nrow(O) > 0)   

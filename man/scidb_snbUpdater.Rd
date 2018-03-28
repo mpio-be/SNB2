@@ -6,24 +6,14 @@
 \usage{
 scidb_snbUpdater()
 }
-\arguments{
-\item{u}{user, default to getOption("DB_user")}
-
-\item{h}{host, default to getOption("host")}
-
-\item{p}{path, default to getOption("path.to.raw_v2")}
-
-\item{y}{year, default to year(Sys.Date()}
-
-\item{db}{db name, default to getOption("snbDB_v2")}
-}
 \value{
 TRUE if all txt are updated
 }
 \examples{
 \dontrun{
  require(SNB2)
- demo_setup()
+ 
+ demo_setup(install.test.db = TRUE, admin.user = 'mihai')
  scidb_snbUpdater()
 }
 

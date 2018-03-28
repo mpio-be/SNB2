@@ -1,20 +1,35 @@
 
 #' @title Installs a demo system 
-#' @description Installs a demo system prepares a temp RAWDATA folder and changes the options
+#' @description Installs a demo system: prepares a temp RAWDATA folder and changes the options
+#' @param  user user
+#' @param  admin.user admin.user
+#' @param  host host
+#' @param  rawdata_root rawdata_root
+#' @param  db db
+#' @param  install.test.db  when TRUE (the default) installs a test db
 #' @export
 #' @examples
 #'\dontrun{
-#'demo_setup()
+#'demo_setup(install.test.db = TRUE)
 #' }
 #'
-demo_setup <- function(user='testuser', host ='127.0.0.1', rawdata_root = paste(tempdir(),'SNB_demo_RAWDATA',sep ='/'), db ='tests') {
+demo_setup <- function(user = 'testuser', admin.user, host ='127.0.0.1', 
+    rawdata_root = paste(tempdir(),'SNB_demo_RAWDATA',sep ='/'), db = 'tests',
+    install.test.db = TRUE ) {
+  
+  # restore db
+  if( install.test.db) {
+  mysqlrestore(system.file('testdb.sql', package = 'SNB2'), user = admin.user, db = db )
     
+  }
+
+
   #change options & connect to db
     options(DB_user         = user)
     options(host            = host)
     options(path.to.raw_v2  = rawdata_root )
     options(snbDB_v2        = db)
-    options(boxes_v2        = 81:85)
+    options(boxes_v2        = 81:85) # in test_files_SNB directory
 
     demo_files_loc = system.file('test_files_SNB', package = 'SNB2')
 

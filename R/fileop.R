@@ -59,8 +59,8 @@ data_dirs <- function(p = getOption("path.to.raw_v2") ) {
 #' }
 data_files <- function(p = getOption("path.to.raw_v2")  ) {
 
-  x = data.table( p = list.files(p, full.name = TRUE, recursive = TRUE) )
-  x[, box := basename2box(p)]
+  x = data.table( path = list.files(p, full.name = TRUE, recursive = TRUE) )
+  x[, box := basename2box(path)]
 
   x[ box %in%  getOption('boxes_v2')]
 
