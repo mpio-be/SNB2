@@ -69,7 +69,7 @@ scidb_snbUpdater.b000 <- function() {
 
     cat(' ------> Parsing new txt files ....')    
 
-        O = foreach(i = 1: nrow(newf),.packages = c('SNB2') )  %do% {
+        O = foreach(i = 1: nrow(newf)  )  %do% {
             read_boxtxt(newf[i,path])      
           } ; cat('OK\n')
 

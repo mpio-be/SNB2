@@ -4,7 +4,7 @@
 \alias{boxes}
 \title{3 digits box list}
 \usage{
-boxes(x = 1:277)
+boxes(x = getOption("boxes_v2"))
 }
 \arguments{
 \item{x}{box names (numeric)}

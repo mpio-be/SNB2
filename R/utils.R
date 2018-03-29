@@ -49,7 +49,7 @@ basename2box <- function(ff) {
 #' @author  	  MV
 #' @export
 #' @examples	  boxes()
-boxes <- function(x = 1:277) {
+boxes <- function(x = getOption('boxes_v2') ) {
 	o = data.table(box = paste0('b',str_pad(x, 3, 'left', pad = '0') ) )
 	setkey(o, box)
 	o

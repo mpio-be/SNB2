@@ -8,7 +8,8 @@
 #' @examples     
 #' \dontrun{
 #' filePath = "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2017/2017.03.03/122/BOX0122.TXT"
-#' 	}			 x = diagnose_raw_txt_v2(filePath); x; x
+#' 			 x = diagnose_raw_txt_v2(filePath); x; x
+#' }
 
 diagnose_raw_txt_v2 <- function(filePath) {
 
