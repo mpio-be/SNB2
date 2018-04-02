@@ -43,7 +43,7 @@ box_activity <- function(lastday, days_before = 1) {
     test.tr = tetr(con)
 
     a = Sys.time()
-    d = boxes(bb)
+    d = boxes()
     d[, sql :=  paste('select sensor, sensor_value v FROM', box, 'WHERE datetime_ 
             BETWEEN', shQuote(lastday-days_before), 'AND', shQuote(lastday)) ]
     d = d[, dbq(con, sql), by = box]
