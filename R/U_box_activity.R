@@ -9,6 +9,16 @@
 #' @examples     
 #' \dontrun{
 #'    x = box_activity()
+#' 
+#'   ggplot(X, aes(x = log(total_tr_reads+1), y = log(total_lb_reads), color = `N_transp\ndetected`  ) ) +
+#'   geom_point() + geom_abline(intercept = 0, slope = 1) + 
+#'   geom_text_repel(data =X[unk_act > .5], 
+#'    aes(x = log(total_tr_reads+1), y = log(total_lb_reads), label = box) ) +
+#'    xlab('log [ total transponder reads]') + 
+#'    ylab('log [ total light-barrier reads]') + 
+#'     scale_colour_brewer(palette = "Set1")
+
+#' 
 #'  }            
 
 box_activity <- function(lastday, days_before = 1) {
@@ -57,17 +67,6 @@ box_activity <- function(lastday, days_before = 1) {
     X[, unk_act := resid( lm(log(total_lb_reads) ~ log(total_tr_reads+1) ) ) ]
     X[unk_act < 0, unk_act := 0]
     X[, `N_transp\ndetected` := factor(n_tr)]
-
-
-
-  # ggplot(X, aes(x = log(total_tr_reads+1), y = log(total_lb_reads), color = `N_transp\ndetected`  ) ) +
-  #   geom_point() + geom_abline(intercept = 0, slope = 1) + 
-  #   geom_text_repel(data =X[unk_act > .5], 
-  #     aes(x = log(total_tr_reads+1), y = log(total_lb_reads), label = box) ) +
-  #     xlab('log [ total transponder reads]') + 
-  #     ylab('log [ total light-barrier reads]') + 
-  #      scale_colour_brewer(palette = "Set1")
-
 
 
 
