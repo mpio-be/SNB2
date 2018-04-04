@@ -16,4 +16,7 @@ scidb_snbUpdater <- function() {
     o = scidb_snbUpdater.b000()
     if(o > 0)
         scidb_snbUpdater.transponders ()
+
+
+
 }
