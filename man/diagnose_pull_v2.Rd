@@ -20,7 +20,8 @@ Output diagnostics of a directory containing raw box files
 }
 \examples{
 \dontrun{
-x = diagnose_pull_v2(date = "2018.03.06")
+options(host = 'scidb.mpio.orn.mpg.de')  
+x = diagnose_pull_v2(date = "2018.04.03")
 }
 }
 \author{

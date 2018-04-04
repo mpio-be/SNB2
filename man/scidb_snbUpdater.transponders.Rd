@@ -4,7 +4,7 @@
 \alias{scidb_snbUpdater.transponders}
 \title{b000 tables to transponders table pipeline}
 \usage{
-scidb_snbUpdater.transponders()
+scidb_snbUpdater.transponders(file = "~/scidb_snbUpdater.log")
 }
 \value{
 TRUE on success
@@ -15,7 +15,7 @@ TRUE on success
  
  demo_setup(install.test.db = TRUE, admin.user = 'mihai')
  scidb_snbUpdater.b000()
- scidb_snbUpdater.transponders ()
+ scidb_snbUpdater.transponders()
 }
 
 }

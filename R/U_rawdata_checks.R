@@ -7,7 +7,8 @@
 #' @author       MV
 #' @examples     
 #' \dontrun{
-#' filePath = "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2017/2017.03.03/122/BOX0122.TXT"
+#' options(host = 'scidb.mpio.orn.mpg.de') 
+#' filePath = "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2018/2018.04.03/1/BOX0001.TXT"
 #' 			 x = diagnose_raw_txt_v2(filePath); x; x
 #' }
 
@@ -70,11 +71,14 @@ diagnose_raw_txt_v2 <- function(filePath) {
 #' @param    	   date            a character vector formated as 'yyyy.mm.dd' (same as the directory date holding the raw data)
 #' @param    	   outDirLocation the location of the raw data; the default is getOption('path.to.raw_v2')
 #' @return       a data.table
+#' @importFrom parallel makePSOCKcluster detectCores stopCluster
+#' @importFrom doParallel registerDoParallel 
 #' @export
 #' @author       MV
 #' @examples
 #' \dontrun{
-#' x = diagnose_pull_v2(date = "2018.03.06")
+#' options(host = 'scidb.mpio.orn.mpg.de')  
+#' x = diagnose_pull_v2(date = "2018.04.03")
 #' }
 
 diagnose_pull_v2 <- function(date, outDirLocation = getOption('path.to.raw_v2'), shiny = FALSE) {
@@ -89,7 +93,7 @@ diagnose_pull_v2 <- function(date, outDirLocation = getOption('path.to.raw_v2'),
 	ff = list.files(path, full.names = TRUE, recursive = TRUE, pattern = 'BOX\\d{4}.TXT|BOX\\d{4}.txt')
 
  	# run diagnose_raw_txt for all files
-		o = foreach( i = 1:length(ff), .packages= c('sdb', 'SNB'), .errorhandling = 'remove')  %dopar% {
+		o = foreach( i = 1:length(ff), .packages= c('sdb', 'SNB2'), .errorhandling = 'remove')  %dopar% {
 			diagnose_raw_txt_v2(ff[i])
 		}
 
@@ -98,6 +102,14 @@ diagnose_pull_v2 <- function(date, outDirLocation = getOption('path.to.raw_v2'),
 	o = rbindlist(o, fill = TRUE)
 	o = merge(x, o, by = 'box', all.x = TRUE)
 	o[is.na(empty_file), empty_file := 'possible corrupted file!!']
+	o[, this_pull := 'yes']
+
+	b = data.table(box =  getOption('boxes_v2') )
+
+	o = merge(b,o, by = 'box', all.x = TRUE)
+
+	 o[is.na(this_pull), this_pull := 'file not present!']
+
 	setorder(o, box)
 
 	o

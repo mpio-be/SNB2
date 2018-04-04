@@ -19,6 +19,17 @@ Box activity estimate based on light-barrier to transponder ratio
     
 \dontrun{
    x = box_activity()
+   require(ggplot2)   
+   require(ggrepel)   
+  
+  ggplot(x, aes(x = log(total_tr_reads+1), y = log(total_lb_reads), color = `N_transp\\ndetected`  ) ) +
+  geom_point() + geom_abline(intercept = 0, slope = 1) + 
+  geom_text_repel(data =x[unk_act > .5], 
+   aes(x = log(total_tr_reads+1), y = log(total_lb_reads), label = box) ) +
+   xlab('log [ total transponder reads]') + 
+   ylab('log [ total light-barrier reads]') + 
+    scale_colour_brewer(palette = "Set1")
+
  }            
 }
 \author{

@@ -4,7 +4,7 @@
 \alias{scidb_snbUpdater.b000}
 \title{txt Box files (txt) to db b000 tables pipeline}
 \usage{
-scidb_snbUpdater.b000()
+scidb_snbUpdater.b000(file = "~/scidb_snbUpdater.log")
 }
 \value{
 TRUE if all txt are updated
