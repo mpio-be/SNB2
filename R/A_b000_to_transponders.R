@@ -12,7 +12,7 @@
 #' }
 #' 
 
-scidb_snbUpdater.transponders <- function(file = '~scidb_snbUpdater.log') {
+scidb_snbUpdater.transponders <- function(file = '~/scidb_snbUpdater.log') {
 
  if(interactive() ) OF = '' else OF = file
 

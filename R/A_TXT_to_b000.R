@@ -11,7 +11,7 @@
 #'  scidb_snbUpdater.b000 ()
 #' }
 #' 
-scidb_snbUpdater.b000 <- function(file = '~scidb_snbUpdater.log') {
+scidb_snbUpdater.b000 <- function(file = '~/scidb_snbUpdater.log') {
     
     if(interactive() ) OF = '' else OF = file
 

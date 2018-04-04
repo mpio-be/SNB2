@@ -11,7 +11,12 @@
 #' }
 #' 
 #' 
-scidb_snbUpdater <- function() {
+scidb_snbUpdater <- function(file = '~/scidb_snbUpdater.log') {
+
+    if(file.exists(file)) file.remove(file)
+
+    cat(' ------> Started at:', format(Sys.time(), "%a %b %d %X %Y %Z") , '\n', append=TRUE, file= file)     
+        
 
     o = scidb_snbUpdater.b000()
     if(o > 0)
