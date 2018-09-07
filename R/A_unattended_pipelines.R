@@ -20,7 +20,7 @@ scidb_snbUpdater <- function(file = '~/scidb_snbUpdater.log') {
 
     o = scidb_snbUpdater.b000()
     if(o > 0)
-        scidb_snbUpdater.transponders ()
+        scidb_snbUpdater.transponders()
 
 
 
