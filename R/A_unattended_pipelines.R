@@ -19,8 +19,10 @@ scidb_snbUpdater <- function(file = '~/scidb_snbUpdater.log') {
         
 
     o = scidb_snbUpdater.b000()
-    if(o > 0)
-        scidb_snbUpdater.transponders()
+    
+    Sys.sleep(5)
+
+    scidb_snbUpdater.transponders()
 
 
 
