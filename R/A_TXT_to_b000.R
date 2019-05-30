@@ -15,7 +15,8 @@ scidb_snbUpdater.b000 <- function(file = '~/scidb_snbUpdater.log') {
     
     if(interactive() ) OF = '' else OF = file
 
-    Start = Sys.time()
+    Start = proc.time()
+    
     cat(' ------> Getting settings ...', append=TRUE, file=OF) 
         u =  getOption("DB_user") 
         h = getOption("host")
@@ -52,7 +53,7 @@ scidb_snbUpdater.b000 <- function(file = '~/scidb_snbUpdater.log') {
         alldbf[, indb := TRUE]
         alldbf[, path := paste0(p, path)]
 
-        dbDisconnect(con)
+        closeCon(con)
    
     cat(' ------> Identifying new files ...', append=TRUE, file=OF)
         if(nrow(alldbf) == 0) newf = copy(rawf) else {
@@ -85,8 +86,8 @@ scidb_snbUpdater.b000 <- function(file = '~/scidb_snbUpdater.log') {
             cat('got', nrow(B), 'bad files. will write to black_list ... \n', append=TRUE, file=OF)
 
         con = dbcon(u, host = h, db = db)
-        dbWriteTable(con, 'black_list' , B , row.names = FALSE, append = TRUE)
-        dbDisconnect(con)
+        DBI::dbWriteTable(con, 'black_list' , B , row.names = FALSE, append = TRUE)
+        closeCon(con)
         } else cat('All files are OK... \n', append=TRUE, file=OF)
         
 
@@ -99,13 +100,13 @@ scidb_snbUpdater.b000 <- function(file = '~/scidb_snbUpdater.log') {
             atr = attributes(oi)$SNB2
 
             if(atr$garbage < 0.5) {
-              res = dbWriteTable(con, int2b(atr$box) , oi , row.names = FALSE, append = TRUE)
+              res = DBI::dbWriteTable(con, int2b(atr$box) , oi , row.names = FALSE, append = TRUE)
               } else res = FALSE
             setTxtProgressBar(pb, i)
             res
         } 
         
-        dbDisconnect(con)
+        closeCon(con)
         cat('\n      Uploaded', out , 'new files.\n', append=TRUE, file=OF)
 
     cat(' ------> Done in', timetaken(Start), append=TRUE, file=OF)

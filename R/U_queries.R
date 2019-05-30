@@ -52,32 +52,39 @@ tetr <- function(condb ) {
 #' }
 #' 
 dbqSNB <- function(username, host = "scidb.mpio.orn.mpg.de", q = 'SELECT * FROM boxtables limit 1', 
-                  db = getOption('snbDB_v2'), .boxes = getOption('boxes_v2'), ncores = 4) {
+                  db = getOption('snbDB_v2'), .boxes = getOption('boxes_v2') ) {
 
     pb = tempfile(fileext = '.txt')
     message('to follow progress open', sQuote(pb), 'in a text editor')
 
     x =  boxes()[box %in% int2b(.boxes)]
 
-    if(nrow(x) > ncores && ncores > 0) {
-     require(doParallel)
-     cl = makePSOCKcluster(ncores); registerDoParallel(cl); on.exit(stopCluster(cl))
-     }
 
 
     x[, q:= str_replace_all(q, 'boxtables', box) ]
 
+    
+    require('doFuture') # TODO: move to Imports
+    registerDoFuture()
+    plan(multiprocess)
+
+
     O = foreach(i = 1: nrow(x),.packages = c('sdb') )  %dopar% {
+      
       cat(i,',', sep = '', file = pb, append = TRUE)
       con = dbcon(username, host = host); on.exit(dbDisconnect(con))
-      dbq(con, paste('USE', db ) )
+      dbExecute(con, paste('USE', db ) )
       o = dbq(con, x[i, q] )
       if(is.null(o) ) message(x[i, box] , 'returns no data for the given query.') else
       o[, box := x[i, box] ]
       o
-      } %>% rbindlist
+      } 
 
-    registerDoSEQ()  
+    O = O[ ! sapply(O, nrow )  == 0 ]
+
+    O = rbindlist(O)
+
+
       
     if(nrow(O) == 0)  warning('Your query returns an empty dataset.')
 

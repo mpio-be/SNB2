@@ -8,12 +8,14 @@ Depends:
     R (>= 3.0.0),
     utils,
     methods, 
+    DBI,
     tools,
     sdb,
     stringr,
     magrittr,
     data.table,
-    anytime
+    anytime,
+    doFuture
 Imports:
     methods,
     foreach,
