@@ -1,6 +1,6 @@
 
 
-#' @import methods tools data.table foreach shinydashboard  shiny shinytoastr
+#' @import methods tools DBI data.table foreach doFuture shinydashboard  shiny shinytoastr
 NULL
 
 #' @title 			  Smart Box Data management

@@ -2,6 +2,7 @@
 # user queries
 # ==========================================================================
 
+require(sdb)
 require(SNB2)
 assignInNamespace("cedta.override", c(data.table:::cedta.override,"SNB2"), "data.table")
 
@@ -13,9 +14,8 @@ context(" user queries")
 test_that("user queries work.", {
 
     # tests
-        con = dbcon(user = getOption('DB_user') , host = getOption("host"), db = getOption("snbDB_v2"))
-       
-        x = dbqSNB(user =  getOption('DB_user'), host = getOption("host"), ncores = 2, .boxes = getOption("boxes_v2"),
+    
+        x = dbqSNB(username =  getOption('DB_user'), host = getOption("host"), .boxes = getOption("boxes_v2"),
                 q = 'select * from boxtables')
         expect_is(x, 'data.table')
         
@@ -24,7 +24,7 @@ test_that("user queries work.", {
         
         # no data thus warning 
         expect_warning( 
-            dbqSNB(user = getOption('DB_user'), host = getOption("host"), ncores = 2,  .boxes = getOption("boxes_v2"),
+            dbqSNB(username = getOption('DB_user'), host = getOption("host"),  .boxes = getOption("boxes_v2"),
                 q = paste('select * from boxtables where datetime_ > ', shQuote(Sys.Date())) )
             )
        
