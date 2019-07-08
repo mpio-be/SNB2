@@ -32,7 +32,7 @@ NULL
   options(DB_user           = 'snbAdmin')
   options(path.to.raw_v2    = '/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/')
   options(path.to.raw_v2_SF = '/ds/raw_data_kemp/FIELD/Westerholz/SF/RAWDATA/')
-  options(snbDB_v2          = 'SNBatWESTERHOLZ_v3')
+  options(snbDB_v2          = 'SNBatWESTERHOLZ_v2')
   options(transpondersDB    = 'BTatWESTERHOLZ')
   options(cardReader        = 'Lexar')
   options(cardSize          = 2) 
