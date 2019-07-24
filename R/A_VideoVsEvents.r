@@ -377,3 +377,30 @@ class(checkIn) = paste( c("SNBcheckIn", class(checkIn)) )
 
 checkIn
 }
+                                
+##Methods definitions
+
+
+setClass("SNBcheckIn",slots = c(x="data.table"))
+setMethod("plot", signature(x="SNBcheckIn"), function(x, ParentsOnly = TRUE) {
+  par(mar = c(5.1, 8.1, 1.1, 1.1))
+  data("VideoBoxTimes")
+  BoxTimes = copy(as.data.table(VideoBoxTimes))
+  PlotBoxTimes = unique(BoxTimes, by = c('box', 'date_'))
+  plot(1:2, 1:2, xlim = range(as.ITime(x[,time_2])), ylim = c(0.5,(nrow(PlotBoxTimes)+2)), ylab = '', xlab = "Time", xaxt = 'n', yaxt = 'n')
+  axis(2, at = 1:nrow(PlotBoxTimes), labels = paste(PlotBoxTimes[, box], PlotBoxTimes[, date_], sep = ": "), las = 2)
+  axis(1, at = (0:23)*60*60, labels = 0:23)
+  for(i in 1 : nrow(PlotBoxTimes)) {
+    d1 = subset(x, date_ == PlotBoxTimes[i, date_] & box == PlotBoxTimes[i, box])
+    d1[, time_2 := as.numeric(as.ITime(time_2))]
+    if(ParentsOnly == TRUE) d1[, snbIn := snbParentsIn]
+
+    points(d1[snbIn == 1 & videoIn == 0,time_2], rep(i+0.2, length(d1[snbIn == 1 & videoIn == 0,time_2])), cex = 0.5, col = d1[snbIn == 1 & videoIn == 0, COL], pch = "|")
+    points(d1[snbIn == 0 & videoIn == 1,time_2], rep(i-0.2, length(d1[snbIn == 0 & videoIn == 1,time_2])), cex = 0.5, col = d1[snbIn == 0 & videoIn == 1, COL], pch = "|")
+    points(d1[snbIn == 1 & videoIn == 1,time_2], rep(i, length(d1[snbIn == 1 & videoIn == 1,time_2])), cex = 0.5, col = d1[snbIn == 1 & videoIn == 1, COL], pch = "|")
+
+  }
+  legend("topright", legend = c("Inside in SNB but not video data", "Inside in SNB and video data", "Inside in video but not SNB data"), col = c("red", "green", "blue"), pch = 16)
+})
+
+
