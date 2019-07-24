@@ -9,6 +9,9 @@ scard_cleaner(x)
 \arguments{
 \item{x}{file_copy_status output}
 }
+\description{
+Remove data (overwrite using an empty file several times) and THEN delete content of the copied SD cards.
+}
 \examples{
 \dontrun{
 x = file_copy_status(bid = boxid)

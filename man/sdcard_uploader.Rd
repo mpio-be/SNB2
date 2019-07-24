@@ -12,6 +12,9 @@ sdcard_uploader(x)
 \value{
 TRUE on success
 }
+\description{
+Copy SD cards content to repository
+}
 \examples{
 \dontrun{
  require(SNB2)

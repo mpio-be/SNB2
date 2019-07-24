@@ -9,6 +9,9 @@ scidb_snbUpdater.transponders(file = "~/scidb_snbUpdater.log")
 \value{
 TRUE on success
 }
+\description{
+b000 tables to transponders table pipeline
+}
 \examples{
 \dontrun{
  require(SNB2)

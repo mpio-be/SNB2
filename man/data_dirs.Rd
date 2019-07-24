@@ -12,6 +12,9 @@ data_dirs(p = getOption("path.to.raw_v2"))
 \value{
 a data.table
 }
+\description{
+List all data directories
+}
 \author{
 MV
 }

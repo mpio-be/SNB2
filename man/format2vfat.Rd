@@ -6,6 +6,9 @@
 \usage{
 format2vfat(mountpoint, filesystem, password)
 }
+\description{
+Format card
+}
 \author{
 MV
 }

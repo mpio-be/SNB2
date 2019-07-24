@@ -14,6 +14,9 @@ system_status(pulldate = Sys.Date(), password = "")
 \value{
 data.table with 3 columns
 }
+\description{
+system screening: looks up all the relevant system settings
+}
 \examples{
 head(system_status(password = 'some char'))
 }

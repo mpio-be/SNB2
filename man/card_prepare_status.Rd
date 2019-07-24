@@ -14,6 +14,9 @@ card_prepare_status(x = cardReader())
 \value{
 data.table
 }
+\description{
+Checks inserted SD cards.
+}
 \examples{
 card_prepare_status()
 }

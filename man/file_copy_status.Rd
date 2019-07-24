@@ -20,6 +20,9 @@ or a DT returned by file_copy_status() for card_copy_status()}
 \value{
 a DT
 }
+\description{
+Checks inserted SD cards.
+}
 \examples{
 \dontrun{
  require(SNB2)

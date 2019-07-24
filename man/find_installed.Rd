@@ -12,6 +12,9 @@ find_installed(nam)
 \value{
 logical vector
 }
+\description{
+Find if an external software is installed
+}
 \examples{
 \dontrun{
 find_installed('secure delete')

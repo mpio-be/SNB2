@@ -11,6 +11,9 @@ sdcard_format(password, x = card_format_status())
 
 \item{x}{card_format_status() output}
 }
+\description{
+Format SD cards
+}
 \author{
 MV
 }

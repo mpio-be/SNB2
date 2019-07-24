@@ -12,6 +12,9 @@ cardReader(cardsize = getOption("cardSize"))
 \value{
 data.table containing info on HOTPLUG,MOUNTPOINT,KNAME,MODEL,VENDOR,TRAN,FSTYPE
 }
+\description{
+Finds attached card reader devices (a wrapper to lsblk)
+}
 \examples{
 cardReader()
 }

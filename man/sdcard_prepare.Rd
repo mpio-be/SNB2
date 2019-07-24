@@ -11,6 +11,9 @@ sdcard_prepare(x = card_prepare_status(), ids)
 
 \item{password}{password}
 }
+\description{
+Prepare SD cards
+}
 \author{
 MV
 }

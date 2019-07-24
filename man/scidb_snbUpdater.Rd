@@ -6,6 +6,9 @@
 \usage{
 scidb_snbUpdater(file = "~/scidb_snbUpdater.log")
 }
+\description{
+Unattended pipelines
+}
 \examples{
 \dontrun{
  require(SNB2)
