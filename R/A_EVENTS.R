@@ -1,3 +1,4 @@
+
 #' @title Pipeline function to extract events
 #'
 #' @description Calls a set of sub-functions to extract information about box entries and exits. Note that all activity that is not connected with any transponder and triggers only one light barrier is removed. The pros and cons of different parameter choices can be assessed via \link{SNBvsVid_v2}, which performs a comparison with existing video data during provisioning. Note: DATA IS MADE UNIQUE FOR NOW (excepting r_pk or course)!
