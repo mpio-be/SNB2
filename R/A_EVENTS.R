@@ -58,6 +58,7 @@
 #'
 #' }
 #' @author LS
+#' @export
 #' @examples
 #'##Not run
 #'#establish connection
