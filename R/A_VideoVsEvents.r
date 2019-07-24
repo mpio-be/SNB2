@@ -346,6 +346,7 @@ calcTimeInside_v2 = function(x, timescale){
 
 #'@title Assemble the data for comparing SNB and video data by unit of time.
 #'@details Called by \link{SNBvsVid_v2}, please follow the link for further details.
+#' @export
 checkIn_v2 = function(vTCout, timescale = 1) {
   checkIn = list()
   data("VideoBoxTimes")
@@ -381,11 +382,12 @@ checkIn
 ##Methods definitions
 
 
-setClass("SNBcheckIn",slots = c(x="data.table"))
+setClass("SNBcheckIn",slots = c(x="data.table"), S3methods = TRUE)
 setMethod("plot", signature(x="SNBcheckIn"), function(x, ParentsOnly = TRUE) {
   par(mar = c(5.1, 8.1, 1.1, 1.1))
   data("VideoBoxTimes")
-  BoxTimes = copy(as.data.table(VideoBoxTimes))
+  BoxTimes = data.table(VideoBoxTimes)
+
   PlotBoxTimes = unique(BoxTimes, by = c('box', 'date_'))
   plot(1:2, 1:2, xlim = range(as.ITime(x[,time_2])), ylim = c(0.5,(nrow(PlotBoxTimes)+2)), ylab = '', xlab = "Time", xaxt = 'n', yaxt = 'n')
   axis(2, at = 1:nrow(PlotBoxTimes), labels = paste(PlotBoxTimes[, box], PlotBoxTimes[, date_], sep = ": "), las = 2)
