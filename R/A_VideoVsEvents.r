@@ -20,6 +20,7 @@
 #'\item{\link{checkIn_v2}}{ which returns the 7th list item of the output}
 #'}
 #'@author LS
+#'@export
 #'@examples
 #'##not run
 #'#create connection
@@ -362,9 +363,9 @@ checkIn = rbindlist(checkIn)
 checkIn[, time_ := time_*timescale]
 checkIn[, time_2 := as.POSIXct(time_, origin = "1970-01-01")]
 checkIn[, timescale := timescale]
-class(checkIn) = c("SNBcheckIn", "data.table", "data.frame")
 
 #set colours for plotting
+checkIn[, COL := as.character(NA) ]
 checkIn[videoIn == 1 & snbIn == 0, COL := 'blue']
 checkIn[videoIn == 1 & snbIn == 0 & (shift(snbIn, 1, 0) == 1 | shift(snbIn, 1, 0, type = "lead") == 1), COL := "green", by = list(box, date_)]
 checkIn[snbIn == videoIn, COL := "green"]
@@ -372,6 +373,7 @@ checkIn[videoIn == 0 & snbIn == 1, COL := 'red']
 checkIn[videoIn == 0 & snbIn == 1 & (shift(videoIn, 1, 0) == 1 | shift(videoIn, 1, 0, type = "lead") == 1), COL := "green", by = list(box, date_)]
 
 
+class(checkIn) = paste( c("SNBcheckIn", class(checkIn)) )
 
-return(checkIn)
+checkIn
 }

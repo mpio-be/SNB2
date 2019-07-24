@@ -69,16 +69,16 @@
 #'plot(x[[1]])
 #'
 #'#fetch data where INs and OUTs are not yet combined
-#'x = SNBevents::fetch_data_v2(con, box = 1, from = "2019-05-01", to = "2019-05-30")
-#'x = SNBevents::events_v2(x, cluster_events_threshold = 0.2, group_ins_and_outs = FALSE)
+#'x = fetch_data_v2(con, box = 1, from = "2019-05-01", to = "2019-05-30")
+#'x = events_v2(x, cluster_events_threshold = 0.2, group_ins_and_outs = FALSE)
 #'x
 #'
 #'#fetch data for multiple boxes
 #' X = list()
 #' STATS = list()
 #' for(i in c(3, 5, 206, 210)){
-#'   x = SNBevents::fetch_data_v2(con, box = i, from = "2019-05-01", to = "2019-05-30")
-#'   x = SNBevents::events_v2(x, cluster_events_threshold = 0.2, silent = TRUE)
+#'   x = fetch_data_v2(con, box = i, from = "2019-05-01", to = "2019-05-30")
+#'   x = events_v2(x, cluster_events_threshold = 0.2, silent = TRUE)
 #'   X[[length(X)+1]] <- x[[1]]
 #'   STATS[[length(STATS)+1]] <- x[[2]]
 #' }
@@ -96,9 +96,9 @@
 
 events_v2 = function(x, group_ins_and_outs = TRUE, FUN = "translate_validity_v2", stats.out = TRUE, tr_threshold = 5, broken_LB_threshold = 600, cluster_events_threshold = 2, max_distance = 14*60*60, cluster_fronts_threshold = 5, no_front = NULL, silent = FALSE)
 {
-  x = SNBevents::fetch_ins_outs_v2(x, tr_threshold = tr_threshold, broken_LB_threshold = broken_LB_threshold, cluster_events_threshold = cluster_events_threshold); if (nrow(x) == 0)   return()
+  x = fetch_ins_outs_v2(x, tr_threshold = tr_threshold, broken_LB_threshold = broken_LB_threshold, cluster_events_threshold = cluster_events_threshold); if (nrow(x) == 0)   return()
 
-  x = SNBevents::assign_direction_v2(x); stats = x[[2]];  x = copy(x[[1]]);  if (nrow(x) == 0) return()
+  x = assign_direction_v2(x); stats = x[[2]];  x = copy(x[[1]]);  if (nrow(x) == 0) return()
 
   if(group_ins_and_outs == FALSE) {
       x[, startt := as.POSIXct(floor(startt), origin = "1970-01-01", tz = "Europe/Berlin")]
@@ -119,9 +119,9 @@ events_v2 = function(x, group_ins_and_outs = TRUE, FUN = "translate_validity_v2"
       return(x)
   }
 
-  x = SNBevents::concat_events_v2(x, max_distance = max_distance);  if(nrow(x) == 0) return()
+  x = concat_events_v2(x, max_distance = max_distance);  if(nrow(x) == 0) return()
 
-  x = SNBevents::combine_front_v2(x, cluster_fronts_threshold = cluster_fronts_threshold, no_front = no_front);  if(nrow(x) == 0) return()
+  x = combine_front_v2(x, cluster_fronts_threshold = cluster_fronts_threshold, no_front = no_front);  if(nrow(x) == 0) return()
 
   x = eval(call(FUN,x)); stats = c(stats, x[[2]]); class(stats) <- "SNBstats"; x = copy(x[[1]])
   class(x) <- c("SNBoutput", "data.table", "data.frame")

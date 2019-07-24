@@ -91,16 +91,16 @@ x = events_v2(x, cluster_events_threshold = 0.2)
 plot(x[[1]])
 
 #fetch data where INs and OUTs are not yet combined
-x = SNBevents::fetch_data_v2(con, box = 1, from = "2019-05-01", to = "2019-05-30")
-x = SNBevents::events_v2(x, cluster_events_threshold = 0.2, group_ins_and_outs = FALSE)
+x = fetch_data_v2(con, box = 1, from = "2019-05-01", to = "2019-05-30")
+x = events_v2(x, cluster_events_threshold = 0.2, group_ins_and_outs = FALSE)
 x
 
 #fetch data for multiple boxes
 X = list()
 STATS = list()
 for(i in c(3, 5, 206, 210)){
-  x = SNBevents::fetch_data_v2(con, box = i, from = "2019-05-01", to = "2019-05-30")
-  x = SNBevents::events_v2(x, cluster_events_threshold = 0.2, silent = TRUE)
+  x = fetch_data_v2(con, box = i, from = "2019-05-01", to = "2019-05-30")
+  x = events_v2(x, cluster_events_threshold = 0.2, silent = TRUE)
   X[[length(X)+1]] <- x[[1]]
   STATS[[length(STATS)+1]] <- x[[2]]
 }
