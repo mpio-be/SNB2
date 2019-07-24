@@ -8,6 +8,7 @@
 #' @param to Until which point should the data be fetched? Can be a date-time object or an r_pk (column r_pk from the bxxx tables)
 #'
 #' @return A data.table with all the information from the bxxx table, and an additional box column. Any rows where the column datetime_ is NA are removed.
+#' @export
 #' @examples
 #' #Not run
 #' #see help of function events_v2
@@ -40,6 +41,7 @@ fetch_data_v2 = function (con, box = NA, from = NA, to = NA) {
 #' @param broken_LB_threshold Time in seconds after which a light barrier that is constantly on will be marked as off.
 #' @param cluster_events_threshold Time in seconds within which different oieces of activity will be considered as belonging together.
 #' @details See \link{events_v2} for further information.
+#' @export
 #' @examples
 #' #Not run
 #' #see help of function events_v2
@@ -120,6 +122,7 @@ fetch_ins_outs_v2 = function (x, tr_threshold = 5, broken_LB_threshold = 600, cl
 #' @param x A data.table as supplied by \link{fetch_ins_outs_v2}.
 #' @param hardware_threshold = 0.05 Time in seconds within which a changed of outer and inner light barrier is assumed to be "at the same time". This is defined by the hardware settings and should therefore usually not be changed.
 #' @details See \link{events_v2} for further information. Note that after some minor alterations, the output of this function is returned, if in function \link{events_v2} groups_ins_and_outs = FALSE.
+#' @export
 #' @examples
 #' #Not run
 #' #see help of function events_v2
@@ -203,6 +206,7 @@ assign_direction_v2 = function(x, hardware_threshold = 0.05) {
 #' @param x A data.table as supplied by \link{assign_direction_v2}.
 #' @param max_distance Maximum time in seconds within which different pieces of activity will be considered as belonging to a single event.
 #' @details See \link{events_v2} for further information.
+#' @export
 #' @examples
 #' #Not run
 #' #see help of function events_v2
@@ -289,6 +293,7 @@ concat_events_v2 = function(x, max_distance = 14*60*60) {
 #' @param cluster_fronts_threshold Time in seconds within which FRONTs are grouped together.
 #' @param no_front Define which activities are assumed to NOT be a front. Defaults to anything that is completely unclear, or that ended or started inside of the box (e.g. OUT, IN, BACK, ...)
 #' @details See \link{events_v2} for further information.
+#' @export
 #' @examples
 #' #Not run
 #' #see help of function events_v2
@@ -338,6 +343,7 @@ combine_front_v2 = function(x, cluster_fronts_threshold = 5, no_front = NULL){
 #'
 #' @param x A data.table as supplied by \link{combine_front_v2}.
 #' @details See \link{events_v2} for further information.
+#' @export
 #' @examples
 #' #Not run
 #' #see help of function events_v2
