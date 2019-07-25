@@ -380,8 +380,9 @@ checkIn
                                 
 ##Methods definitions
 
-
+#'@export
 setClass("SNBcheckIn",slots = c(x="data.table"))
+#'@export
 setMethod("plot", signature(x="SNBcheckIn"), function(x, ParentsOnly = TRUE) {
   par(mar = c(5.1, 8.1, 1.1, 1.1))
   data("VideoBoxTimes")
@@ -400,7 +401,12 @@ setMethod("plot", signature(x="SNBcheckIn"), function(x, ParentsOnly = TRUE) {
     points(d1[snbIn == 1 & videoIn == 1,time_2], rep(i, length(d1[snbIn == 1 & videoIn == 1,time_2])), cex = 0.5, col = d1[snbIn == 1 & videoIn == 1, COL], pch = "|")
 
   }
-  legend("topright", legend = c("Inside in SNB but not video data", "Inside in SNB and video data", "Inside in video but not SNB data"), col = c("red", "green", "blue"), pch = 16)
+  text(10*60*60, nrow(PlotBoxTimes)+0.75, "Activity in video but not SNB (blue if outside one timescale of SNB)", cex = 0.9, adj = 0)
+  text(10*60*60, nrow(PlotBoxTimes)+1.25, "Activity in video and SNB", cex = 0.9, adj = 0)
+  text(10*60*60, nrow(PlotBoxTimes)+1.75, "Activity in SNB but not video (red if outside one timescale of video)", cex = 0.9, adj = 0)
+  
+  
+  #legend("topright", legend = c("Inside in SNB but not video data", "Inside in SNB and video data", "Inside in video but not SNB data"), col = c("red", "green", "blue"), pch = 16)
 })
 
 
