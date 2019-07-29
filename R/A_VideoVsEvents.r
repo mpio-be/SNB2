@@ -72,8 +72,11 @@ videoEvaluation_v2 = function(...) {
     Parents = copy(as.data.table(VideoParents))
     VideoData = copy(as.data.table(VideoObs))
     VideoData[, date_ := as.IDate(date_)]
-    SNBdata = rbindlist(apply(BoxTimes, MARGIN = 1, FUN = function(x, con) fetch_data_v2(con, box = x[1], from = x[6], to = x[7]), con = con))
-    SNBdata <- rbindlist(lapply(split(SNBdata, SNBdata[, box]), FUN = function(x) events_v2(x, stats.out = FALSE, ...)))
+
+    SNBdata = rbindlist(mapply(FUN = function(x, y, z, con) { dbq(con, paste0("SELECT *, ", x, " as box FROM SNBatWESTERHOLZ_v2.", int2b(x), " where datetime_ > '", y, "' and datetime_ < '", z, "'")) }, x = BoxTimes[, box], y = BoxTimes[, START_sql], z = BoxTimes[, END_sql], MoreArgs = list(con = con), SIMPLIFY = FALSE))
+    
+    
+    SNBdata <- rbindlist(lapply(split(SNBdata, SNBdata[, box]), FUN = function(x) events_v2(x, ...)))
     SNBdata <- merge(SNBdata,Parents,by="box")
     SNBdata[,date_:=as.IDate(in_)]
     SNBdata[,snb_row_id:=1:nrow(SNBdata)]

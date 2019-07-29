@@ -6,7 +6,6 @@
 #' @param box The box number for which the data should be fetched.
 #' @param from From which point onwards should the data be fetched? Can be a date-time object or an r_pk (column r_pk from the bxxx tables)
 #' @param to Until which point should the data be fetched? Can be a date-time object or an r_pk (column r_pk from the bxxx tables)
-#'
 #' @return A data.table with all the information from the bxxx table, and an additional box column. Any rows where the column datetime_ is NA are removed.
 #' @export
 #' @examples
@@ -14,22 +13,7 @@
 #' #see help of function events_v2
 #' ?events_v2()
 fetch_data_v2 = function (con, box = NA, from = NA, to = NA) {
-
-  if (is.na(box) | is.na(from) | is.na(to))
-    print("Please provide values for \"box\", \"from\" and \"to\"")
-  box = sprintf("%03d", as.numeric(box))
-  if (is.numeric(from) & is.numeric(to)) {
-    x = dbq(con, paste0("SELECT ", box, " as box, UNIX_TIMESTAMP(datetime_) as datetime_, sensor_value, sensor, r_pk, path FROM SNBatWESTERHOLZ_v2.",
-                        int2b(box), " WHERE r_pk >= ", from, " AND r_pk <= ",
-                        to))
-
-  }
-  else {
-    x = dbq(con, paste0("SELECT ", box, " as box, UNIX_TIMESTAMP(datetime_) as datetime_, sensor_value, sensor, r_pk, path FROM SNBatWESTERHOLZ_v2.",
-                        int2b(box), " WHERE datetime_ >= '", from, "' AND datetime_ <= '",to, "'"))
-  }
-  x = subset(x, !is.na(datetime_))
-  return(x)
+ .Defunct()
 }
 
 #' @title Split data into different pieces of activity
@@ -48,6 +32,8 @@ fetch_data_v2 = function (con, box = NA, from = NA, to = NA) {
 #' ?events_v2()
 
 fetch_ins_outs_v2 = function (x, tr_threshold = 5, broken_LB_threshold = 600, cluster_events_threshold = 1) {
+  x = subset(x, !is.na(datetime_))
+  
   #sort data by datetime_
   setkey(x, path, datetime_)
   x = unique(x, by = c("datetime_", "sensor_value", "sensor"))
@@ -266,7 +252,7 @@ concat_events_v2 = function(x, max_distance = 14*60*60) {
     by = list(transp, event)]
 
   # if the actions assigned to each other are from the same data-row, set all information for final action to unknown
-  x[in_r_pk == out_r_pk, ':=' (out_ = NA, out_duration = NA, out_r_pk = NA, val3 = NA, val4 = NA)]
+  #x[in_r_pk == out_r_pk, ':=' (out_ = NA, out_duration = NA, out_r_pk = NA, val3 = NA, val4 = NA)]
 
   # paste information on initial and final side for first action (e.g. IN) and final action (e.g. OUT), respectively
   # if first and last action identical, only use information from first action
@@ -278,7 +264,7 @@ concat_events_v2 = function(x, max_distance = 14*60*60) {
 
   x = unique(x, by = c(names(x)))
   x[transp == '', transp := NA]
-  setkey(x, box, in_, out_, transp)
+  setkey(x, in_, out_, transp)
   return(x)
 
 
@@ -369,8 +355,10 @@ translate_validity_v2 = function(x) {
 
 
 #methods definitions
+#'@export
 setClass("SNBstats",
          slots = c(x="vector"))
+#'@export
 setMethod("print", signature(x="SNBstats"), function(x) {
   print(paste0("No. duplicated rows: ", x[1]))
   print(paste0("Max no. transponders/line: ", x[2]))
@@ -380,9 +368,10 @@ setMethod("print", signature(x="SNBstats"), function(x) {
 
 })
 
+#' @export
 setClass("SNBoutput",
          slots = c(x="data.table"))
-
+#' @export
 setMethod("plot", signature(x="SNBoutput"), function(x) {
   copy(x) -> X
   X[is.na(out_), out_ := as.POSIXct(in_)]
@@ -403,7 +392,7 @@ setMethod("plot", signature(x="SNBoutput"), function(x) {
   }
 
   YLIM = c(min(X[,date_in]), max(X[,date_out]))
-  par(las = 1, mar = c(5.1, 7.1, 4.1, 2.1))
+  par(las = 1, mar = c(5.1, 7.1, 0.1, 0.1))
   plot(1:2,1:2, type = 'n', xlim = c(0, 24), ylim = YLIM, xlab = "Time of day", ylab = '', yaxt = 'n')
   axis(2, at =  axTicks(2), labels = as.IDate(axTicks(2)))
   arrows(X[,time_in], X[,date_in]+X[,offset], X[,time_out], X[,date_out]+X[,offset], length = 0, col = X[,COL])

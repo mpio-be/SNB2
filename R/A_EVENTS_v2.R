@@ -1,21 +1,20 @@
 
 #' @title Pipeline function to extract events
 #'
-#' @description Calls a set of sub-functions to extract information about box entries and exits. Note that all activity that is not connected with any transponder and triggers only one light barrier is removed. The pros and cons of different parameter choices can be assessed via \link{SNBvsVid_v2}, which performs a comparison with existing video data during provisioning. Note: DATA IS MADE UNIQUE FOR NOW (excepting r_pk or course)!
+#' @description Calls a set of sub-functions to extract information about box entries and exits. Note that all activity that is not connected with any transponder and triggers only one light barrier is removed. The pros and cons of different parameter choices can be assessed via \link{SNBvsVid_v2}, which performs a comparison with existing video data during provisioning. Note: DATA IS MADE UNIQUE FOR NOW (excepting r_pk or course)! Please make sure that you only supply one box at a time!
 #'
 #' @param x A data.table with raw data as provided by the function \link{fetch_data_v2}
 #' @param group_ins_and_outs logical. Should every piece of activity be returned separately (e.g. to merge with observational data), or should they be grouped together to "INs" and "OUTs"? Defaults to TRUE.
 #' @param FUN function to translate detailed information about the direction of the activity. Defaults to the function \link{translate_validity_v2}, which assigns "IN-OUT" and "FRONT"
-#' @param stats.out logical. Should statistics about the data quality be returned? Defaults to TRUE.
-
 #' @param tr_threshold Optional argument passed to function \link{fetch_ins_outs_v2}. Time in seconds where the light barriers are assigned to a specific transponder. Defaults to 5.
 #' @param broken_LB_threshold Optional argument passed to function \link{fetch_ins_outs_v2}. Time in seconds after which a light barrier that is constantly on will be marked as "OFF". Defaults to 600. Experimental.
 #' @param cluster_events_threshold Optional argument passed to function \link{fetch_ins_outs_v2}. Time in seconds within which different pieces of activity will be considered as belonging to a single event. Defaults to 1. Note this parameter may reduce the computing time at the cost of detail.
 #' @param max_distance Optional argument passed to function \link{concat_events_v2}. Maximum time in seconds within which two pieces of activity may be grouped together. Defaults to 14 hours.
 #' @param cluster_fronts_threshold Optional argument passed to function \link{combine_fronts_v2}. Time in seconds within which "FRONT" events of the same transponder will be grouped together.
 #' @param no_front NULL or character(). Optional argument passed to function \link{combine_fronts_v2}. Defines which directions are assumed to be a "FRONT" when events are grouped by the function \link{combine_front_v2}. Defaults to NULL, which means that everything where no pass through the nestbox opening was registered is scored as a "FRONT".
-#' @return \itemize{\item{If group_ins_and_outs = TRUE and stats.out = FALSE:}
-#' {data.table of SNB events with 10 columns. Use plot(this_datatable) to immediately plot this data.} \itemize{
+#' @param silent Should the stats about the data quality be printed or not? Defaults to TRUE.
+#' @return \itemize{\item{If group_ins_and_outs = TRUE: }
+#' {data.table of SNB events with 10 columns. Use plot(this_datatable) to immediately plot this data. Use attr(this_datatable, "stats") to fetch information on the data quality (use print() for readability).} \itemize{
 #'   \item{box: } box number
 #'   \item{transp: } transponder connected to the event
 #'   \item{in_: } datetime of the start of the activity
@@ -27,7 +26,6 @@
 #'   \item{direction_detail: } Full information about the direction of movements as specified by the light barriers. Formatted e.g. as O/I|I/O, containing the information (position of bird at the beginning of the "in_")/(position of the bird at the end of the "in_")|(position of bird at the beginning of the "out_")/(position of the bird at the end of the "out_"). Capital letters mean that this is true light barrier information, lower-case letters mean that the position of the bird was inferred by the next or previous activity (e.g. and OUT is usually followed by an IN).
 #'   \item{direction: } Summarized directional information as specified by the function \link{translate_validity_v2}, e.g. "IN" or "OUT". Note that this function can be supplied as an argument to the function, so that it is easy to adjust to any needs.
 #'   }}
-#'  \item{If group_ins_and_outs = TRUE and stats.out = TRUE:}{ List of two, where the first list element is the data table as described above, and the second list element contains information about how reliable the specific data probably is. Use print(these_stats) to view details.}
 #'  \item{If group_ins_and_outs = FALSE: }{A data.table with the following information:}{\itemize{
 #'  \item{box: } The box number
 #'  \item{r_pk: } The r_pk referring to the original bxxx table.
@@ -57,6 +55,7 @@
 #'}
 #'
 #' }
+#' @note Please supply only one box at a time!
 #' @author LS
 #' @export
 #' @examples
@@ -64,39 +63,65 @@
 #'#establish connection
 #'con = dbcon('YOUR_USER_NAME')
 #'
-#'#fetch data for a single box
-#'x = fetch_data_v2(con, box = 1, from = "2019-05-01", to = "2019-05-30")
-#'x = events_v2(x, cluster_events_threshold = 0.2)
-#'plot(x[[1]])
+#'#fetch raw data for a single box
+#'#note that this function should ALWAYS only be run on data from a single box!
+#'raw_x = dbq(con, 'SELECT * FROM SNBatWESTERHOLZ_v2.b001 where datetime_ > "2019-05-01" and datetime_ < "2019-05-31"')
+#'raw_x[, box := 1] #there is no need to supply the box number, but you may need it lateron...
 #'
-#'#fetch data where INs and OUTs are not yet combined
-#'x = fetch_data_v2(con, box = 1, from = "2019-05-01", to = "2019-05-30")
-#'x = events_v2(x, cluster_events_threshold = 0.2, group_ins_and_outs = FALSE)
-#'x
+#'#Calculate when individuals were at the box (e.g. "IN-OUT")
+#'x = events_v2(raw_x)
+#'plot(x)
+#'print(attr(x, 'stats'))  
+#'
+#'#fetch data where INs and OUTs are not yet combined 
+#'x = events_v2(raw_x, group_ins_and_outs = FALSE)
+#'x #note that there is no plot method for this output.
 #'
 #'#fetch data for multiple boxes
-#' X = list()
-#' STATS = list()
-#' for(i in c(3, 5, 206, 210)){
-#'   x = fetch_data_v2(con, box = i, from = "2019-05-01", to = "2019-05-30")
-#'   x = events_v2(x, cluster_events_threshold = 0.2, silent = TRUE)
-#'   X[[length(X)+1]] <- x[[1]]
-#'   STATS[[length(STATS)+1]] <- x[[2]]
-#' }
-#' stats = as.data.table(do.call(rbind, STATS))
+#'X = list()
+#'for(i in c(3, 5, 206, 210)){
+#'  print(i)
+#'  raw_x = dbq(con, paste0('SELECT * FROM SNBatWESTERHOLZ_v2.', int2b(i), ' where datetime_ > "2019-05-01" and datetime_ < "2019-05-31"'))
+#'  x = events_v2(raw_x, silent = TRUE)
+#'  x[, box := i]
+#'  X[[length(X)+1]] <- x
+#'}
 #'
-#' setnames(stats, names(stats), c("dupl", "max_tr", "mean_tr", "prop_reliable", "prop_reliable_tr"))
-#' #Plot method for SNB data (note that data has class "SNBoutput")
-#' plot(X[[1]])
-#' plot(X[[3]])
-#' #note that the histogram is most informative when many boxes are run
-#' par(mfrow = c(2,1))
-#' hist(stats$prop_reliable, 20, xlab = "Proportion of high quality data\nall data", main = '')
-#' hist(stats$prop_reliable_tr, 20, xlab = "Proportion of high quality data\ntransponder data", main = '')
-#' summary(stats$prop_reliable); summary(stats$prop_reliable_tr)
-
-events_v2 = function(x, group_ins_and_outs = TRUE, FUN = "translate_validity_v2", stats.out = TRUE, tr_threshold = 5, broken_LB_threshold = 600, cluster_events_threshold = 2, max_distance = 14*60*60, cluster_fronts_threshold = 5, no_front = NULL, silent = FALSE)
+#'
+#'#Plot method for SNB data (note that data has class "SNBoutput")
+#'plot(X[[1]])
+#'plot(X[[3]])
+#'
+#'#combine to one dataset
+#'all = rbindlist(X)
+#'
+#'#use all cores -- 5 minutes, depending on the settings
+#'#use different parameter settings to adjust daa to your needs
+#'a = Sys.time()
+#'library(doParallel)
+#'cl = makePSOCKcluster(50) # 50 cores
+#'registerDoParallel(cl)
+#'
+#'d = foreach(i = 1:277) %dopar% {
+#'  require(SNB2)
+#'  con = dbcon('lschlicht')
+#'  raw_x = dbq(con, paste0('SELECT * FROM SNBatWESTERHOLZ_v2.', int2b(i), ' where datetime_ > "2019-05-01" and datetime_ < "2019-05-31"'))
+#'  closeCon(con)
+#'  x = events_v2(raw_x, silent = TRUE, tr_threshold = 2, cluster_events_threshold = 2, max_distance = 16*60*60, cluster_fronts_threshold = 5)
+#'  x[, box := i]
+#'}
+#'stopCluster(cl)
+#'registerDoSEQ()
+#'Sys.time()-a
+#'
+#'stats = as.data.table(do.call(rbind,lapply(d, FUN = function(x) attr(x, "stats"))))
+#'setnames(stats, names(stats), c("dupl", "max_tr", "mean_tr", "prop_reliable", "prop_reliable_tr"))
+#'
+#'hist(stats[, prop_reliable])
+events_v2 = function(x, group_ins_and_outs = TRUE, FUN = "translate_validity_v2", tr_threshold = 5, broken_LB_threshold = 600, cluster_events_threshold = 2, max_distance = 14*60*60, cluster_fronts_threshold = 5, no_front = NULL, silent = FALSE)
 {
+  x[, datetime_ := as.numeric(datetime_)]
+  
   x = fetch_ins_outs_v2(x, tr_threshold = tr_threshold, broken_LB_threshold = broken_LB_threshold, cluster_events_threshold = cluster_events_threshold); if (nrow(x) == 0)   return()
 
   x = assign_direction_v2(x); stats = x[[2]];  x = copy(x[[1]]);  if (nrow(x) == 0) return()
@@ -125,7 +150,10 @@ events_v2 = function(x, group_ins_and_outs = TRUE, FUN = "translate_validity_v2"
   x = combine_front_v2(x, cluster_fronts_threshold = cluster_fronts_threshold, no_front = no_front);  if(nrow(x) == 0) return()
 
   x = eval(call(FUN,x)); stats = c(stats, x[[2]]); class(stats) <- "SNBstats"; x = copy(x[[1]])
-  class(x) <- c("SNBoutput", "data.table", "data.frame")
-  output = list(x, stats)
-  if(stats.out == TRUE)  { if(silent == FALSE) print(output[[2]]); return(output)} else return(x)
+  class(x) <- c("SNBoutput", class(x))
+  setattr(x, "stats", stats)
+  
+  if(silent == FALSE) print(attr(x, "stats")) 
+  
+  return(x)
 }
