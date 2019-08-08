@@ -156,8 +156,8 @@ events_v2 = function(x, setTZ = "Etc/GMT-2", group_ins_and_outs = TRUE, FUN = "t
   
   x[, in_ := as.POSIXct(floor(in_), origin = "1970-01-01", tz = "Europe/Berlin")]
   x[, out_ := as.POSIXct(floor(out_), origin = "1970-01-01", tz = "Europe/Berlin")]
-  x[, in_ := force.tz(in_, new.tz = setTZ)]
-  x[, out_ := force.tz(out_, new.tz = setTZ)]
+  setattr(x$in_, "tzone", setTZ)
+  setattr(x$out_, "tzone", setTZ)
   
   class(x) <- c("SNBoutput", class(x))
   setattr(x, "stats", stats)
