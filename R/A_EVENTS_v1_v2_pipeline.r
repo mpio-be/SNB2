@@ -17,10 +17,13 @@
 #' @export
 #' @examples
 #' df = data.table(box = 1, from = "2016-05-01 00:00:00", to = "2019-06-30 00:00:00")
-#' hooray = eva('lschlicht', df, time_threshold_v1 = 10, tr_threshold_v2 = 100)
+#' hooray = eva(YOUR_USER_NAME_as_specified_in_saveCredentials, df, time_threshold_v1 = 10, tr_threshold_v2 = 100)
 #' hooray
 #' plot(hooray)
 #' plot(subset(hooray, !is.na(transp) & box == 1 & in_ > "2019-03-15" & in_ < "2019-04-05"))
+#' #Note that you can access the colours and counts of individual transponders by using
+#' tr = plot(hooray)
+#' tr
 
 eva = function(username, df, setTZ = "Etc/GMT-2",
                time_threshold_v1 = 2, max_distance_v1 = 16*60*60,
