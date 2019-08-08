@@ -383,15 +383,13 @@ checkIn
 }
                                 
 ##Methods definitions
-
-<<<<<<< HEAD
 #'@export
 setClass("SNBcheckIn",slots = c(x="data.table"))
-#'@export
-=======
 
+#'@export
 setClass("SNBcheckIn",slots = c(x="data.table"), S3methods = TRUE)
->>>>>>> 627070551dd4ed364ab330fe54c7d4dcdc78d8e3
+
+#'@export
 setMethod("plot", signature(x="SNBcheckIn"), function(x, ParentsOnly = TRUE) {
   par(mar = c(5.1, 8.1, 1.1, 1.1))
   data("VideoBoxTimes")

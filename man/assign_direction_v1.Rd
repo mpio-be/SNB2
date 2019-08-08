@@ -2,57 +2,21 @@
 % Please edit documentation in R/A_EVENTS_elements_v1.R
 \name{assign_direction_v1}
 \alias{assign_direction_v1}
-\title{Assign a direction based on individual ins and outs}
+\title{Assign direction to different pieces of activity}
 \usage{
 assign_direction_v1(x)
 }
 \arguments{
-\item{x}{a data.frame as provided by the function fetch_ins_outs}
-}
-\value{
-a data.frame with directional information
+\item{x}{A data.table as supplied by \link{fetch_ins_outs_v1}.}
 }
 \description{
-This function assigns the direction based on a decision rule (see details).
+Assign direction to different pieces of activity, e.g. "IN" and "OUT"
 }
 \details{
-To assign directions, the first (non-'00'), and the last (non-'00') light barriers are used.
-Additionally, the information whether both light barriers were triggered at any point of the event (= individual passes
-through the entrance) is used.
-
-The first light barrier is scored as "1" (outer light barrier), "2" (inner light barrier), or "0" (no directional information; either "00" or "12")
-
-Passes through the entrace are scored as either "0" (no pass) or "2" (pass)
-
-The last light barrier is scored as "1" (outer light barrier), "2" (inner light barrier), or "0" (no directional information; either "00" or "12")
-
-Together this can be interpreted as a three-digit number; for example 122 would that first the outer light barrier was triggered,
-then both, and then the inner light barrier only. This is clearly a nestbox entry.
-
-Available directions are IN (nestbox entry), OUT (nestbox exit), BACK (hanging inside at the entrance of the nestbox),
-FRONT (hanging outside at the entrance of the nestbox), PASS (pass through the nestbox opening without information about the direction),
-NOPASS (no light barriers triggered, or light barriers contradictory; no pass through the nestbox opening).
-
-The current direction definitions are given below:
-\itemize{
- \item IN: 122|120|022
- \item OUT: 021|221|220
- \item BACK: 222|202
- \item FRONT: 121|101
- \item PASS: 020
- \item NOPASS: 000|102|201
-}
-}
-\note{
-Rule definitions are marked in the code with a "###RULE###".
+See \link{events_v1} for further information. Note that after some minor alterations, the output of this function is returned, if in function \link{events_v1} groups_ins_and_outs = FALSE.
 }
 \examples{
-see function events
-}
-\seealso{
-\code{\link{events}}, \code{\link{fetch_data}}, \code{\link{remove_faulty_data}},
-\code{\link{trim_data}}, \code{\link{fetch_ins_outs}}, \code{\link{concat_events}},
-}
-\author{
-LS
+#Not run
+#see help of function events_v1
+?events_v1()
 }

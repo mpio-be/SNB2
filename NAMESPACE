@@ -4,10 +4,7 @@ export(.onLoad)
 export(SNBvsVid_v2)
 export(Span)
 export(abbrPath)
-<<<<<<< HEAD
 export(assign_direction_v1)
-=======
->>>>>>> 627070551dd4ed364ab330fe54c7d4dcdc78d8e3
 export(assign_direction_v2)
 export(assign_direction_v2.1)
 export(b2int)
@@ -25,10 +22,7 @@ export(checkIn_v2)
 export(check_sys_pwd)
 export(combine_front_v2)
 export(combine_front_v2.1)
-<<<<<<< HEAD
 export(concat_events_v1)
-=======
->>>>>>> 627070551dd4ed364ab330fe54c7d4dcdc78d8e3
 export(concat_events_v2)
 export(concat_events_v2.1)
 export(data_dirs)
@@ -38,7 +32,7 @@ export(demo_setup)
 export(diagnose_pull_v2)
 export(diagnose_raw_txt_v2)
 export(empty2NA)
-<<<<<<< HEAD
+export(eva)
 export(events_v1)
 export(events_v2)
 export(events_v2.1)
@@ -46,16 +40,11 @@ export(fetch_data_v1)
 export(fetch_data_v2)
 export(fetch_data_v2.1)
 export(fetch_ins_outs_v1)
-=======
-export(events_v2)
-export(events_v2.1)
-export(fetch_data_v2)
-export(fetch_data_v2.1)
->>>>>>> 627070551dd4ed364ab330fe54c7d4dcdc78d8e3
 export(fetch_ins_outs_v2)
 export(fetch_ins_outs_v2.1)
 export(file_copy_status)
 export(find_installed)
+export(force.tz)
 export(format2vfat)
 export(harwareIDs)
 export(hwid)
@@ -82,10 +71,7 @@ export(server_butler)
 export(snbstring2date_v2)
 export(system_status)
 export(tetr)
-<<<<<<< HEAD
 export(translate_validity_v1)
-=======
->>>>>>> 627070551dd4ed364ab330fe54c7d4dcdc78d8e3
 export(translate_validity_v2)
 export(ui_butler)
 export(well_formated_directory)

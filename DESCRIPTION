@@ -7,13 +7,11 @@ Maintainer: Lotte Schlicht <lschlicht@orn.mpg.de>, Mihai Valcu <valcu@orn.mpg.de
 Depends:
     R (>= 3.0.0),
     utils,
-    methods, 
     DBI,
     tools,
     sdb,
     stringr,
     magrittr,
-    data.table,
     anytime,
     doFuture
 Imports:

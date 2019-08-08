@@ -4,10 +4,11 @@
 \alias{events_v2}
 \title{Pipeline function to extract events}
 \usage{
-events_v2(x, group_ins_and_outs = TRUE, FUN = "translate_validity_v2",
-  tr_threshold = 5, broken_LB_threshold = 600,
-  cluster_events_threshold = 2, max_distance = 14 * 60 * 60,
-  cluster_fronts_threshold = 5, no_front = NULL, silent = FALSE)
+events_v2(x, setTZ = "Etc/GMT-2", group_ins_and_outs = TRUE,
+  FUN = "translate_validity_v2", tr_threshold = 5,
+  broken_LB_threshold = 600, cluster_events_threshold = 2,
+  max_distance = 16 * 60 * 60, cluster_fronts_threshold = 5,
+  no_front = NULL, silent = FALSE)
 }
 \arguments{
 \item{x}{A data.table with raw data as provided by the function \link{fetch_data_v2}}
@@ -80,7 +81,7 @@ Each subfunction performs a specific task. The tasks can be described as follows
 }
 }
 \note{
-Please supply only one box at a time!
+Please supply only one box at a time! There is a wrapper function which can be used to fetch data across the two databases and across boxes: \link{eva}
 }
 \examples{
 ##Not run
@@ -142,6 +143,9 @@ stats = as.data.table(do.call(rbind,lapply(d, FUN = function(x) attr(x, "stats")
 setnames(stats, names(stats), c("dupl", "max_tr", "mean_tr", "prop_reliable", "prop_reliable_tr"))
 
 hist(stats[, prop_reliable])
+}
+\seealso{
+\link{eva}
 }
 \author{
 LS

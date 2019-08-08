@@ -316,8 +316,6 @@ combine_front_v2 = function(x, cluster_fronts_threshold = 5, no_front = NULL){
   x[, combine := NULL]
   x = unique(x, by = names(x))
 
-  x[, in_ := as.POSIXct(floor(in_), origin = "1970-01-01", tz = "Europe/Berlin")]
-  x[, out_ := as.POSIXct(floor(out_), origin = "1970-01-01", tz = "Europe/Berlin")]
   x[transp == '', transp := NA]
 
 }
@@ -363,8 +361,8 @@ setMethod("print", signature(x="SNBstats"), function(x) {
   print(paste0("No. duplicated rows: ", x[1]))
   print(paste0("Max no. transponders/line: ", x[2]))
   print(paste0("Mean no. transponders/line: ", x[3]))
-  print(paste0("Proportion of highly reliable lines: ", x[4]))
-  print(paste0("Proportion of highly reliable lines with transponder: ", x[5]))
+  print(paste0("Proportion of reliable lines: ", x[4]))
+  print(paste0("Proportion of reliable lines with transponder: ", x[5]))
 
 })
 
@@ -372,8 +370,9 @@ setMethod("print", signature(x="SNBstats"), function(x) {
 setClass("SNBoutput",
          slots = c(x="data.table"))
 #' @export
-setMethod("plot", signature(x="SNBoutput"), function(x) {
+setMethod("plot", signature(x="SNBoutput"), function(x, ylim = c(min(X[,date_in]), max(X[,date_out]))) {
   copy(x) -> X
+  X[, count := length(out_), by = transp]
   X[is.na(out_), out_ := as.POSIXct(in_)]
   X[is.na(out_duration), out_duration := in_duration]
   X[, date_in := as.IDate(in_)]
@@ -381,9 +380,9 @@ setMethod("plot", signature(x="SNBoutput"), function(x) {
   X[, date_out := as.IDate(out_)]
   X[, time_out := as.numeric((as.ITime(out_)+out_duration)/60/60)]
   X[is.na(transp), transp := '']
-  X[, COL := as.numeric(as.factor(transp))]
-  X[is.na(transp), transp := '']
-  X[, offset := as.numeric(as.factor(transp))]; X[, offset := offset/max(offset)]; X[, offset := offset - mean(offset)]
+  X[, transp := factor(transp, levels = names(sort(table(transp), decreasing = TRUE)))]
+  X[, COL := as.numeric(transp)]
+  X[, offset := as.numeric(transp)]; X[, offset := offset/max(offset)]; X[, offset := offset - mean(offset)]
   sleep = X[date_in != date_out, ]
   if(nrow(sleep) > 0) {
   sleep1 = copy(sleep); sleep1[, ':=' (date_out = date_in, time_out = 24)]
@@ -391,14 +390,15 @@ setMethod("plot", signature(x="SNBoutput"), function(x) {
   X = rbindlist(list(X[date_in == date_out, ], sleep1, sleep2))
   }
 
-  YLIM = c(min(X[,date_in]), max(X[,date_out]))
+  #YLIM = c(min(X[,date_in]), max(X[,date_out]))
   par(las = 1, mar = c(5.1, 7.1, 0.1, 0.1))
-  plot(1:2,1:2, type = 'n', xlim = c(0, 24), ylim = YLIM, xlab = "Time of day", ylab = '', yaxt = 'n')
+  plot(1:2,1:2, type = 'n', xlim = c(0, 24), xlab = "Time of day", ylab = '', yaxt = 'n', ylim = ylim)
+  axis(2, at = 13000:30000, labels = FALSE, tcl = -0.2)
   axis(2, at =  axTicks(2), labels = as.IDate(axTicks(2)))
   arrows(X[,time_in], X[,date_in]+X[,offset], X[,time_out], X[,date_out]+X[,offset], length = 0, col = X[,COL])
   points(X[,time_in], X[,date_in]+X[,offset], col = X[,COL], pch = '|', cex = 0.3)
 
-  X = unique(subset(X, select = c(transp, COL)))
+  X = unique(subset(X, select = c(transp, COL, count)))
   X[, COL2 := rep(palette(), 10)[COL]]
   return(X)
 })

@@ -204,3 +204,21 @@ install_desktop <- function() {
 
 
 }
+
+#' @title force timezones.
+#' @param x A POSIXct object
+#' @param new.tz time zone to convert to
+#' @param diff.tz Optional. The difference between the current and the new timezone, if known. Note that providing this variable will increase the speed of the function 100-fold. Defaults to NULL, in which case the difference is calculated.
+#' @details Note if diff.tz is not supplied, this is time-consuming because it uses substring (ca. 1.5 seconds/100000 items). However, if diff.tz is not supplied should handle CET/CEST and other time-zone mixes correctly.
+#' @note Note that the time zones that are defined by its offset to UTC are coded e.g. "Etc/GMT-2", where the sign of the code is opposite to the expectation: "Etc/GMT-2" refers to the time zone GMT+2 (which is also printed).
+#' @export
+force.tz = function(x, new.tz, diff.tz = NULL) {
+  if(is.null(diff.tz)) {
+  old.tz = attr(x, 'tzone')
+  tmp = as.character(as.IDate(x))
+  diff.tz = as.numeric(difftime(as.POSIXct(tmp, tz = old.tz), as.POSIXct(tmp, tz = new.tz), units = 'secs'))
+  }
+  x = x - diff.tz
+  attr(x, "tzone") <- new.tz
+  x
+}

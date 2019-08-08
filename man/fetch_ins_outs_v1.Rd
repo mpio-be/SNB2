@@ -2,28 +2,23 @@
 % Please edit documentation in R/A_EVENTS_elements_v1.R
 \name{fetch_ins_outs_v1}
 \alias{fetch_ins_outs_v1}
-\title{Fetch individual ins and outs}
+\title{Split data into different pieces of activity for SNB data version v1}
 \usage{
 fetch_ins_outs_v1(x, time_threshold)
 }
 \arguments{
-\item{x}{a data.frame as provided by the function trim_data}
-}
-\value{
-a data.frame where individual ins and outs are grouped together
+\item{time_threshold}{Time in seconds. If the time difference between two consecutive lines is larger or equal to time_threshold, the rows will be treated as independent pieces of activity. Defaults to 2.}
 }
 \description{
 This function fetches individual in and out events based on a time threshold and transponder readings.
 If two transponder readings occur close in time, the rows in between are removed, because it is unclear to which
-individual this data belongs.
+individual this data belongs, and the information about the direction of the movement is marked as "unclear".
+}
+\details{
+See \link{events_v1} for further information.
 }
 \examples{
-see function events
-}
-\seealso{
-\code{\link{events}}, \code{\link{fetch_data}}, \code{\link{remove_faulty_data}},
-\code{\link{trim_data}}, \code{\link{assign_direction}}, \code{\link{concat_events}},
-}
-\author{
-LS
+#Not run
+#see help of function events_v1
+?events_v1()
 }

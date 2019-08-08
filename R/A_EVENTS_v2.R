@@ -55,8 +55,9 @@
 #'}
 #'
 #' }
-#' @note Please supply only one box at a time!
+#' @note Please supply only one box at a time! There is a wrapper function which can be used to fetch data across the two databases and across boxes: \link{eva}
 #' @author LS
+#' @seealso \link{eva}
 #' @export
 #' @examples
 #'##Not run
@@ -118,7 +119,7 @@
 #'setnames(stats, names(stats), c("dupl", "max_tr", "mean_tr", "prop_reliable", "prop_reliable_tr"))
 #'
 #'hist(stats[, prop_reliable])
-events_v2 = function(x, group_ins_and_outs = TRUE, FUN = "translate_validity_v2", tr_threshold = 5, broken_LB_threshold = 600, cluster_events_threshold = 2, max_distance = 14*60*60, cluster_fronts_threshold = 5, no_front = NULL, silent = FALSE)
+events_v2 = function(x, setTZ = "Etc/GMT-2", group_ins_and_outs = TRUE, FUN = "translate_validity_v2", tr_threshold = 5, broken_LB_threshold = 600, cluster_events_threshold = 2, max_distance = 16*60*60, cluster_fronts_threshold = 5, no_front = NULL, silent = FALSE)
 {
   x[, datetime_ := as.numeric(datetime_)]
   
@@ -129,6 +130,8 @@ events_v2 = function(x, group_ins_and_outs = TRUE, FUN = "translate_validity_v2"
   if(group_ins_and_outs == FALSE) {
       x[, startt := as.POSIXct(floor(startt), origin = "1970-01-01", tz = "Europe/Berlin")]
       x[, endt := as.POSIXct(floor(endt), origin = "1970-01-01", tz = "Europe/Berlin")]
+      x[, startt := force.tz(startt, new.tz = setTZ)]
+      x[, endt := force.tz(endt, new.tz = setTZ)]
       x[break_before == 0, tmp1 := "I"]
       x[break_before == 1, tmp1 := "O"]
       x[break_before == 0.5, tmp1 := "?"]
@@ -150,10 +153,18 @@ events_v2 = function(x, group_ins_and_outs = TRUE, FUN = "translate_validity_v2"
   x = combine_front_v2(x, cluster_fronts_threshold = cluster_fronts_threshold, no_front = no_front);  if(nrow(x) == 0) return()
 
   x = eval(call(FUN,x)); stats = c(stats, x[[2]]); class(stats) <- "SNBstats"; x = copy(x[[1]])
+  
+  x[, in_ := as.POSIXct(floor(in_), origin = "1970-01-01", tz = "Europe/Berlin")]
+  x[, out_ := as.POSIXct(floor(out_), origin = "1970-01-01", tz = "Europe/Berlin")]
+  x[, in_ := force.tz(in_, new.tz = setTZ)]
+  x[, out_ := force.tz(out_, new.tz = setTZ)]
+  
   class(x) <- c("SNBoutput", class(x))
   setattr(x, "stats", stats)
   
-  if(silent == FALSE) print(attr(x, "stats")) 
+  if(silent == FALSE) {print(paste0("Timezone: ", setTZ)); print(attr(x, "stats")) 
+  }
+  
   
   return(x)
 }
