@@ -49,7 +49,7 @@ fetch_ins_outs_v1 = function(x, time_threshold) {
   x[, bout_length := NULL]
   x[, bv := NULL]
   setkey(x, id, datetime_, r_pk)
-  
+  if(nrow(x) > 0) {
   
   #a. remove_data is a vector which defines which rows should be removed or kept. This vector is defined in the following piece of code. This part is meant to remove any data that is superfluous and is in there for reasons of efficiency.
   x = x[shift(LB, type = 'lead') == "12" | shift(LB, type = 'lag') == "12" |
@@ -71,6 +71,7 @@ fetch_ins_outs_v1 = function(x, time_threshold) {
   x[, delete := max(delete), by = event]
   x = x[delete == 0,]
   x[,  ':=' (delete = NULL, next_tr = NULL, prev_tr = NULL, tmp_event = NULL)]
+  }
   return(x)
 }
 
