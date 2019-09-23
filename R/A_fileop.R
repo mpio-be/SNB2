@@ -46,29 +46,6 @@ data_dirs <- function(p = getOption("path.to.raw_v2") ) {
 
 
 
-#' @title         List all data files
-#' @description   List all data files whose path contain basename2box() within getOption('boxes_v2') 
-#' @param p       path to raw data, default to getOption("path.to.raw_v2")
-#' @return        a data.table if there are new directories or otherwise NULL
-#' @author        MV
-#' @export
-#' @examples 
-#' \dontrun{
-#' require(SNB2)
-
-#' }
-data_files <- function(p = getOption("path.to.raw_v2")  ) {
-
-  x = data.table( path = list.files(p, full.name = TRUE, recursive = TRUE) )
-  x[, box := basename2box(path)]
-
-  x[ box %in%  getOption('boxes_v2')]
-
-
-  }
-
-
-
 #' @title       Read raw
 #' @description Read raw box txt file without any conversion and string splitting
 #' @param       filePath  file path to the box file
