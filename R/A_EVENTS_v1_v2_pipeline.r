@@ -43,7 +43,7 @@ eva = function(username, df, setTZ = "Etc/GMT-2",
     if(nrow(raw_x.v2) > 1) { x.v2 = events_v2(raw_x.v2, setTZ = setTZ, tr_threshold = tr_threshold_v2, cluster_events_threshold = cluster_events_threshold_v2, max_distance = max_distance_v2, cluster_fronts_threshold = cluster_fronts_threshold_v2, no_front = no_front_v2, silent = TRUE); if(!is.null(x.v2)) {x.v2[, type := "v2"]; x.v2[, path := NULL] }; L[[length(L)+1]] = x.v2  }
     
     if(length(L) == 0) return() else {
-      x = rbindlist(L); x[, box := i];return(x) 
+      x = rbindlist(L); x[, box := df[i, box]];return(x) 
   }
   stopCluster(cl)
   registerDoSEQ()

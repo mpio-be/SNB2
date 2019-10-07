@@ -56,21 +56,24 @@ fetch_ins_outs_v1 = function(x, time_threshold) {
             !is.na(transp) | !is.na(shift(transp, type = 'lead')) | !is.na(shift(transp, type = 'lag')) |
             LB == "12" | shift(datetime_, type = 'lead') != datetime_ | shift(datetime_, type = 'lag') != datetime_,]
   #b. mark events by time difference backup
-  x[, event := datetime_ - shift(datetime_, fill = datetime_[1])]
-  x[, event := ifelse(event >= max(time_threshold,2) | event < -3, 1, 0)]
-  x[, tmp_event := cumsum(event)]
-  x[, next_tr := 0]
-  x[, prev_tr := 0]
-  x[!is.na(transp), next_tr := ifelse(transp == shift(transp, fill = last(transp), type = 'lead'), 0, 1), by = tmp_event]
-  x[!is.na(transp), prev_tr := ifelse(transp == shift(transp, fill = transp[1], type = 'lag'), 0, -1), by = tmp_event]
-  x[, next_tr := ifelse(shift(next_tr, fill = 0) == 1, 1, 0)]
-  x[prev_tr == -1 | next_tr == 1, event := 1]
-  #mark the lines between transponders for deletion
-  x[, delete := ifelse(next_tr == 1, 1, 0)]
-  x[, event := cumsum(event)]
-  x[, delete := max(delete), by = event]
-  x = x[delete == 0,]
-  x[,  ':=' (delete = NULL, next_tr = NULL, prev_tr = NULL, tmp_event = NULL)]
+  
+  if(nrow(x) > 0) {
+    x[, event := datetime_ - shift(datetime_, fill = datetime_[1])]
+    x[, event := ifelse(event >= max(time_threshold,2) | event < -3, 1, 0)]
+    x[, tmp_event := cumsum(event)]
+    x[, next_tr := 0]
+    x[, prev_tr := 0]
+    x[!is.na(transp), next_tr := ifelse(transp == shift(transp, fill = last(transp), type = 'lead'), 0, 1), by = tmp_event]
+    x[!is.na(transp), prev_tr := ifelse(transp == shift(transp, fill = transp[1], type = 'lag'), 0, -1), by = tmp_event]
+    x[, next_tr := ifelse(shift(next_tr, fill = 0) == 1, 1, 0)]
+    x[prev_tr == -1 | next_tr == 1, event := 1]
+    #mark the lines between transponders for deletion
+    x[, delete := ifelse(next_tr == 1, 1, 0)]
+    x[, event := cumsum(event)]
+    x[, delete := max(delete), by = event]
+    x = x[delete == 0,]
+    x[,  ':=' (delete = NULL, next_tr = NULL, prev_tr = NULL, tmp_event = NULL)]
+    }
   }
   return(x)
 }
