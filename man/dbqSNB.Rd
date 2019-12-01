@@ -4,9 +4,13 @@
 \alias{dbqSNB}
 \title{query raw data, all b_ tables at once}
 \usage{
-dbqSNB(username, host = "scidb.mpio.orn.mpg.de",
-  q = "SELECT * FROM boxtables limit 1", db = getOption("snbDB_v2"),
-  .boxes = getOption("boxes_v2"))
+dbqSNB(
+  username,
+  host = "scidb.mpio.orn.mpg.de",
+  q = "SELECT * FROM boxtables limit 1",
+  db = getOption("snbDB_v2"),
+  .boxes = getOption("boxes_v2")
+)
 }
 \arguments{
 \item{username}{username}

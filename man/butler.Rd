@@ -4,8 +4,7 @@
 \alias{butler}
 \title{SNB butler}
 \usage{
-butler(user = "testuser", in.browser = FALSE,
-  HOST = "scidb.mpio.orn.mpg.de")
+butler(user = "testuser", in.browser = FALSE, HOST = "scidb.mpio.orn.mpg.de")
 }
 \arguments{
 \item{user}{local system and db user (passed to install_demo_SNB) .}

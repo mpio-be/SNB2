@@ -1,7 +1,7 @@
 Package: SNB2
 Type: Package
 Title: Smart Nest-box Data Management
-Version: 2018.5.6
+Version: 2019.0.1
 Author: Lotte Schlicht, Mihai Valcu
 Maintainer: Lotte Schlicht <lschlicht@orn.mpg.de>, Mihai Valcu <valcu@orn.mpg.de>
 Depends:
@@ -38,4 +38,4 @@ Encoding: UTF-8
 Description: Westerholz Smart Nest-box Data Management
 License: GPL-3
 LazyData: TRUE
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.0

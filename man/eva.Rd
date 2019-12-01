@@ -4,10 +4,18 @@
 \alias{eva}
 \title{Pipeline function to extract events}
 \usage{
-eva(username, df, setTZ = "Etc/GMT-2", time_threshold_v1 = 2,
-  max_distance_v1 = 16 * 60 * 60, tr_threshold_v2 = 5,
-  cluster_events_threshold_v2 = 2, max_distance_v2 = 16 * 60 * 60,
-  cluster_fronts_threshold_v2 = 5, no_front_v2 = NULL)
+eva(
+  username,
+  df,
+  setTZ = "Etc/GMT-2",
+  time_threshold_v1 = 2,
+  max_distance_v1 = 16 * 60 * 60,
+  tr_threshold_v2 = 5,
+  cluster_events_threshold_v2 = 2,
+  max_distance_v2 = 16 * 60 * 60,
+  cluster_fronts_threshold_v2 = 5,
+  no_front_v2 = NULL
+)
 }
 \arguments{
 \item{username}{the username that is supplied to dbcon for establishing the connection.}

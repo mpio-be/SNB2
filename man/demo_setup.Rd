@@ -4,9 +4,14 @@
 \alias{demo_setup}
 \title{Installs a demo system}
 \usage{
-demo_setup(user = "testuser", admin.user, host = "127.0.0.1",
+demo_setup(
+  user = "testuser",
+  admin.user,
+  host = "127.0.0.1",
   rawdata_root = paste(tempdir(), "SNB_demo_RAWDATA", sep = "/"),
-  db = "tests", install.test.db = TRUE)
+  db = "tests",
+  install.test.db = TRUE
+)
 }
 \arguments{
 \item{user}{user}

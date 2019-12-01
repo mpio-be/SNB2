@@ -4,8 +4,7 @@
 \alias{well_formated_directory}
 \title{Check the raw data directory}
 \usage{
-well_formated_directory(p = getOption("path.to.raw_v2"),
-  y = year(Sys.Date()))
+well_formated_directory(p = getOption("path.to.raw_v2"), y = year(Sys.Date()))
 }
 \arguments{
 \item{p}{path to raw data, default to getOption("path.to.raw")}

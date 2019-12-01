@@ -4,8 +4,11 @@
 \alias{diagnose_pull_v2}
 \title{Diagnose directory of one pull (i.e. a directory)}
 \usage{
-diagnose_pull_v2(date, outDirLocation = getOption("path.to.raw_v2"),
-  shiny = FALSE)
+diagnose_pull_v2(
+  date,
+  outDirLocation = getOption("path.to.raw_v2"),
+  shiny = FALSE
+)
 }
 \arguments{
 \item{date}{a character vector formated as 'yyyy.mm.dd' (same as the directory date holding the raw data)}

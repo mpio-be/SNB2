@@ -4,9 +4,15 @@
 \alias{events_v1}
 \title{Fetch events data for SNB version _v1}
 \usage{
-events_v1(x, setTZ = "Etc/GMT-2", group_ins_and_outs = TRUE,
-  FUN = "translate_validity_v1", time_threshold = 2,
-  max_distance = 16 * 60 * 60, silent = FALSE)
+events_v1(
+  x,
+  setTZ = "Etc/GMT-2",
+  group_ins_and_outs = TRUE,
+  FUN = "translate_validity_v1",
+  time_threshold = 2,
+  max_distance = 16 * 60 * 60,
+  silent = FALSE
+)
 }
 \arguments{
 \item{x}{a data.table, the "raw" data, as provided for instance by the function dbq()}
