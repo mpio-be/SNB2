@@ -21,7 +21,6 @@ Imports:
     doParallel,   
     shiny,
     shinytoastr,
-    shinydashboard
     shinydashboard,
     fasttime
 Suggests:
