@@ -4,8 +4,12 @@
 \alias{fetch_ins_outs_v2}
 \title{Split data into different pieces of activity}
 \usage{
-fetch_ins_outs_v2(x, tr_threshold = 5, broken_LB_threshold = 600,
-  cluster_events_threshold = 1)
+fetch_ins_outs_v2(
+  x,
+  tr_threshold = 5,
+  broken_LB_threshold = 600,
+  cluster_events_threshold = 1
+)
 }
 \arguments{
 \item{x}{A data.table as supplied by \link{fetch_data_v2}.}

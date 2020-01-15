@@ -4,11 +4,19 @@
 \alias{events_v2}
 \title{Pipeline function to extract events}
 \usage{
-events_v2(x, setTZ = "Etc/GMT-2", group_ins_and_outs = TRUE,
-  FUN = "translate_validity_v2", tr_threshold = 5,
-  broken_LB_threshold = 600, cluster_events_threshold = 2,
-  max_distance = 16 * 60 * 60, cluster_fronts_threshold = 5,
-  no_front = NULL, silent = FALSE)
+events_v2(
+  x,
+  setTZ = "Etc/GMT-2",
+  group_ins_and_outs = TRUE,
+  FUN = "translate_validity_v2",
+  tr_threshold = 5,
+  broken_LB_threshold = 600,
+  cluster_events_threshold = 2,
+  max_distance = 16 * 60 * 60,
+  cluster_fronts_threshold = 5,
+  no_front = NULL,
+  silent = FALSE
+)
 }
 \arguments{
 \item{x}{A data.table with raw data as provided by the function \link{fetch_data_v2}}

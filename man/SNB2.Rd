@@ -4,7 +4,6 @@
 \name{SNB2}
 \alias{SNB2}
 \alias{.onLoad}
-\alias{SNB2-package}
 \title{Smart Box Data management}
 \usage{
 .onLoad(libname, pkgname)
