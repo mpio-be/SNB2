@@ -121,7 +121,7 @@
 #'hist(stats[, prop_reliable])
 events_v2 = function(x, setTZ = "Etc/GMT-2", group_ins_and_outs = TRUE, FUN = "translate_validity_v2", tr_threshold = 5, broken_LB_threshold = 600, cluster_events_threshold = 2, max_distance = 16*60*60, cluster_fronts_threshold = 5, no_front = NULL, silent = FALSE)
 {
-  x[, datetime_ := as.numeric(datetime_)]
+  x[, datetime_ := as.numeric(fastPOSIXct(datetime_))]
   
   x = fetch_ins_outs_v2(x, tr_threshold = tr_threshold, broken_LB_threshold = broken_LB_threshold, cluster_events_threshold = cluster_events_threshold); if (nrow(x) == 0)   return()
 

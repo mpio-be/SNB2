@@ -39,6 +39,7 @@ NULL
 	options(boxes_v2          =  1:277 )
   options(digits.secs       = 3)
 
+  if(Sys.timezone() != 'Europe/Berlin') print(paste0("Your timezone is ", Sys.timezone(), ". To set to the database timezone, use Sys.setenv(TZ='Germany/Berlin')."))
 	}
 
 

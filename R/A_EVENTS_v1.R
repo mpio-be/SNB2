@@ -44,7 +44,7 @@
 #' 
 
 events_v1 = function(x, setTZ = "Etc/GMT-2", group_ins_and_outs = TRUE, FUN = "translate_validity_v1", time_threshold = 2, max_distance = 16*60*60, silent = FALSE) {
-  x[, datetime_ := as.numeric(datetime_)]
+  x[, datetime_ := as.numeric(fastPOSIXct(datetime_))]
   x = fetch_ins_outs_v1(x, time_threshold = time_threshold); if (nrow(x) == 0)   return()
   
   x = assign_direction_v1(x); if (nrow(x) == 0) return()

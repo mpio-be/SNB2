@@ -22,6 +22,8 @@ Imports:
     shiny,
     shinytoastr,
     shinydashboard
+    shinydashboard,
+    fasttime
 Suggests:
     fasttime,
     ggplot2,

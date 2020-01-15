@@ -34,6 +34,7 @@ eva = function(username, df, setTZ = "Etc/GMT-2",
   
   d = foreach(i = 1:nrow(df)) %dopar% {
     require(SNB2)
+    require(fasttime)
     con = dbcon(username)
     raw_x.v1 = dbq(con, paste0("SELECT * FROM SNBatWESTERHOLZ.", int2b(df[i, box]), " where datetime_ > '", df[i,from], "' and datetime_ < '", df[i,to], "'"))
     raw_x.v2 = dbq(con, paste0("SELECT * FROM SNBatWESTERHOLZ_v2.", int2b(df[i, box]), " where datetime_ > '", df[i,from], "' and datetime_ < '", df[i,to], "'"))
