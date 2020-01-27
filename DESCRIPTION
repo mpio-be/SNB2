@@ -24,7 +24,6 @@ Imports:
     shinydashboard,
     fasttime
 Suggests:
-    fasttime,
     ggplot2,
     openxlsx,
     knitr,

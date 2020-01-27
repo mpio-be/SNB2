@@ -121,15 +121,15 @@
 #'hist(stats[, prop_reliable])
 events_v2 = function(x, setTZ = "Etc/GMT-2", group_ins_and_outs = TRUE, FUN = "translate_validity_v2", tr_threshold = 5, broken_LB_threshold = 600, cluster_events_threshold = 2, max_distance = 16*60*60, cluster_fronts_threshold = 5, no_front = NULL, silent = FALSE)
 {
-  x[, datetime_ := as.numeric(fastPOSIXct(datetime_))]
+  x[, datetime_ := as.numeric(as.POSIXct(datetime_, tz = "Europe/Berlin"))]
   
   x = fetch_ins_outs_v2(x, tr_threshold = tr_threshold, broken_LB_threshold = broken_LB_threshold, cluster_events_threshold = cluster_events_threshold); if (nrow(x) == 0)   return()
 
   x = assign_direction_v2(x); stats = x[[2]];  x = copy(x[[1]]);  if (nrow(x) == 0) return()
 
   if(group_ins_and_outs == FALSE) {
-      x[, startt := as.POSIXct(floor(startt), origin = "1970-01-01", tz = "Europe/Berlin")]
-      x[, endt := as.POSIXct(floor(endt), origin = "1970-01-01", tz = "Europe/Berlin")]
+      x[, startt := as.POSIXct(floor(startt), origin = "1970-01-01", tz = "GMT")]
+      x[, endt := as.POSIXct(floor(endt), origin = "1970-01-01", tz = "GMT")]
       x[, startt := force.tz(startt, new.tz = setTZ)]
       x[, endt := force.tz(endt, new.tz = setTZ)]
       x[break_before == 0, tmp1 := "I"]

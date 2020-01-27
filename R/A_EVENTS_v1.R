@@ -44,14 +44,14 @@
 #' 
 
 events_v1 = function(x, setTZ = "Etc/GMT-2", group_ins_and_outs = TRUE, FUN = "translate_validity_v1", time_threshold = 2, max_distance = 16*60*60, silent = FALSE) {
-  x[, datetime_ := as.numeric(fastPOSIXct(datetime_))]
+  x[, datetime_ := as.numeric(fastPOSIXct(datetime_, tz = "GMT"))]
   x = fetch_ins_outs_v1(x, time_threshold = time_threshold); if (nrow(x) == 0)   return()
   
   x = assign_direction_v1(x); if (nrow(x) == 0) return()
   
   if(group_ins_and_outs == FALSE) {
-    x[, startt := as.POSIXct(floor(startt), origin = "1970-01-01", tz = "Etc/GMT-2")]
-    x[, endt := as.POSIXct(floor(endt), origin = "1970-01-01", tz = "Etc/GMT-2")]
+    x[, startt := as.POSIXct(floor(startt), origin = "1970-01-01", tz = "GMT")]
+    x[, endt := as.POSIXct(floor(endt), origin = "1970-01-01", tz = "GMT")]
     x[, startt := force.tz(startt, new.tz = setTZ)]
     x[, endt := force.tz(endt, new.tz = setTZ)]
     x[break_before == 0, tmp1 := "I"]
@@ -79,8 +79,8 @@ events_v1 = function(x, setTZ = "Etc/GMT-2", group_ins_and_outs = TRUE, FUN = "t
   x = unique(x, by = names(x)[which(!(names(x) %in% c("in_r_pk", "out_r_pk", "id")))])
   x = unique(x, by = names(x)[which(names(x) != "id")])
   
-  x[, in_ := as.POSIXct(floor(in_), origin = "1970-01-01", tz = "Europe/Berlin")]
-  x[, out_ := as.POSIXct(floor(out_), origin = "1970-01-01", tz = "Europe/Berlin")]
+  x[, in_ := as.POSIXct(floor(in_), origin = "1970-01-01", tz = "GMT")]
+  x[, out_ := as.POSIXct(floor(out_), origin = "1970-01-01", tz = "GMT")]
   x[, in_ := force.tz(in_, new.tz = setTZ)]
   x[, out_ := force.tz(out_, new.tz = setTZ)]
   
