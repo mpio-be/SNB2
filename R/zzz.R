@@ -1,6 +1,14 @@
 
 
-#' @import methods tools DBI data.table foreach doFuture shinydashboard  shiny shinytoastr
+#' @import methods tools DBI data.table  fasttime anytime sdb stringr magrittr
+#' 
+#' @import  foreach doFuture doParallel 
+#' 
+#' @import  shiny shinydashboard   shinytoastr
+
+#' @import   shinydashboard   shinytoastr
+
+
 NULL
 
 #' @title 			  Smart Box Data management

@@ -6,23 +6,23 @@ Author: Lotte Schlicht, Mihai Valcu
 Maintainer: Lotte Schlicht <lschlicht@orn.mpg.de>, Mihai Valcu <valcu@orn.mpg.de>
 Depends:
     R (>= 3.0.0),
-    utils,
-    DBI,
-    tools,
-    sdb,
-    stringr,
-    magrittr,
-    anytime,
-    doFuture
+    utils
 Imports:
+    tools,
     methods,
     foreach,
+    doFuture,
     data.table,
     doParallel,   
     shiny,
     shinytoastr,
     shinydashboard,
-    fasttime
+    fasttime,
+    DBI,
+    sdb,
+    stringr,
+    magrittr,
+    anytime
 Suggests:
     ggplot2,
     openxlsx,
