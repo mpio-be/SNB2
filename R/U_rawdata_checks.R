@@ -76,8 +76,8 @@ diagnose_raw_txt_v2 <- function(filePath) {
 #'                         getOption('path.to.raw_v2')
 #' 
 #' @return       a data.table
-#' @importFrom parallel makePSOCKcluster detectCores stopCluster
-#' @importFrom doParallel registerDoParallel 
+#' @importFrom   parallel makePSOCKcluster detectCores stopCluster
+#' @importFrom   doParallel registerDoParallel 
 #' @export
 #' @author       MV
 #' @examples
@@ -127,10 +127,14 @@ diagnose_pull_v2 <- function(date, savepath, outDirLocation = getOption('path.to
 
     return(o)
 
-    if(!missing(savepath))
-        fwrite(o, paste0(savepath,'/latest_SNB_diagnose.csv')) 
+    if(!missing(savepath)) {
+        x = paste0(savepath,'/latest_SNB_diagnose.csv')
+        message('saving to ', x)
+        fwrite(o, x) 
+    
+    }
 
-
+    o
 
 
   }
