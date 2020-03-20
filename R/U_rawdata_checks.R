@@ -70,8 +70,7 @@ diagnose_raw_txt_v2 <- function(filePath) {
 #' @description  Output diagnostics of a directory containing raw box files
 #' @param   date           a character vector formated as 'yyyy.mm.dd' 
 #'                         (same as the directory date holding the raw data)
-#' @param   savepath       when given, the  output path (saved as 
-#'                         savepath/latest_SNB_diagnose.csv).
+#' @param   filenam       default to latest_SNB_diagnose.csv.
 #' @param   outDirLocation the location of the raw data; the default is 
 #'                         getOption('path.to.raw_v2')
 #' 
@@ -86,7 +85,7 @@ diagnose_raw_txt_v2 <- function(filePath) {
 #' x = diagnose_pull_v2()
 #' }
 
-diagnose_pull_v2 <- function(date, savepath, outDirLocation = getOption('path.to.raw_v2') ) {
+diagnose_pull_v2 <- function(date, filenam='latest_SNB_diagnose.csv', outDirLocation = getOption('path.to.raw_v2') ) {
 
     if(missing(date)) {
         x = paste0(outDirLocation, year(Sys.time()) , sep = '/') 
@@ -125,16 +124,11 @@ diagnose_pull_v2 <- function(date, savepath, outDirLocation = getOption('path.to
 
     o[, date := date]
 
-    return(o)
 
-    if(!missing(savepath)) {
-        x = paste0(savepath,'/latest_SNB_diagnose.csv')
-        message('saving to ', x)
-        fwrite(o, x) 
-    
-    }
+        
+    data.table::fwrite(o, filenam) 
 
-    o
+
 
 
   }
