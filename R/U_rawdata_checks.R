@@ -78,17 +78,23 @@ diagnose_raw_txt_v2 <- function(filePath) {
 #' @examples
 #' \dontrun{
 #' options(host = 'scidb.mpio.orn.mpg.de')  
-#' x = diagnose_pull_v2(date = "2018.04.03")
+#' x = diagnose_pull_v2()
 #' }
 
-diagnose_pull_v2 <- function(date, outDirLocation = getOption('path.to.raw_v2'), shiny = FALSE) {
+diagnose_pull_v2 <- function(date, outDirLocation = getOption('path.to.raw_v2') ) {
 
-	if(shiny) msg = toastr_success else msg = function(x, ...) message(x, ...)
+	if(mising(date)) {
+		x = paste0(outDirLocation, year(Sys.time()) , sep = '/') 
+		x = system( paste0('ls -td -- ',x, '/* | head -n 1'), intern = TRUE )
+		date = basename(x)
+		message('using latest date found: ', date)
+	}
+
 	path = paste0(outDirLocation, paste(year(char2date(date)), date, sep = '/') )
 
 	cl = makePSOCKcluster(detectCores()); registerDoParallel(cl); on.exit( stopCluster(cl) )
 
-	msg( paste('Running diagnostics on raw data (v2) for', date) , progressBar = TRUE, timeOut = 30000)
+	message( paste('Running diagnostics on raw data (v2) for', date) , progressBar = TRUE, timeOut = 30000)
 
 	ff = list.files(path, full.names = TRUE, recursive = TRUE, pattern = 'BOX\\d{4}.TXT|BOX\\d{4}.txt')
 
@@ -101,7 +107,7 @@ diagnose_pull_v2 <- function(date, outDirLocation = getOption('path.to.raw_v2'),
 	setorder(x, box)
 	o = rbindlist(o, fill = TRUE)
 	o = merge(x, o, by = 'box', all.x = TRUE)
-	o[is.na(empty_file), empty_file := 'possible corrupted file!!']
+	o[is.na(empty_file), empty_file := 'possibly a corrupted file!!']
 	o[, this_pull := 'yes']
 
 	b = data.table(box =  getOption('boxes_v2') )
@@ -113,8 +119,6 @@ diagnose_pull_v2 <- function(date, outDirLocation = getOption('path.to.raw_v2'),
 	setorder(o, box)
 
 	o
-
-
 
   }
 
