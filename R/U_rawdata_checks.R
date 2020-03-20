@@ -83,7 +83,7 @@ diagnose_raw_txt_v2 <- function(filePath) {
 
 diagnose_pull_v2 <- function(date, outDirLocation = getOption('path.to.raw_v2') ) {
 
-	if(mising(date)) {
+	if(missing(date)) {
 		x = paste0(outDirLocation, year(Sys.time()) , sep = '/') 
 		x = system( paste0('ls -td -- ',x, '/* | head -n 1'), intern = TRUE )
 		date = basename(x)
