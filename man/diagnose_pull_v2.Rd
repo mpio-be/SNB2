@@ -6,14 +6,18 @@
 \usage{
 diagnose_pull_v2(
   date,
-  outDirLocation = getOption("path.to.raw_v2"),
-  shiny = FALSE
+  filenam = "latest_SNB_diagnose.csv",
+  outDirLocation = getOption("path.to.raw_v2")
 )
 }
 \arguments{
-\item{date}{a character vector formated as 'yyyy.mm.dd' (same as the directory date holding the raw data)}
+\item{date}{a character vector formated as 'yyyy.mm.dd' 
+(same as the directory date holding the raw data)}
 
-\item{outDirLocation}{the location of the raw data; the default is getOption('path.to.raw_v2')}
+\item{filenam}{default to latest_SNB_diagnose.csv.}
+
+\item{outDirLocation}{the location of the raw data; the default is 
+getOption('path.to.raw_v2')}
 }
 \value{
 a data.table
@@ -24,7 +28,7 @@ Output diagnostics of a directory containing raw box files
 \examples{
 \dontrun{
 options(host = 'scidb.mpio.orn.mpg.de')  
-x = diagnose_pull_v2(date = "2018.04.03")
+x = diagnose_pull_v2()
 }
 }
 \author{

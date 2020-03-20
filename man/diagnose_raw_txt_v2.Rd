@@ -17,7 +17,7 @@ Output diagnostics of a raw box file
 \dontrun{
 options(host = 'scidb.mpio.orn.mpg.de') 
 filePath = "/ds/raw_data_kemp/FIELD/Westerholz/SNB/RAWDATA_v2/2018/2018.04.03/1/BOX0001.TXT"
-			 x = diagnose_raw_txt_v2(filePath); x; x
+          x = diagnose_raw_txt_v2(filePath); x; x
 }
 }
 \author{
