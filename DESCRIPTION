@@ -19,7 +19,6 @@ Imports:
     shinydashboard,
     fasttime,
     DBI,
-    sdb,
     stringr,
     magrittr,
     anytime
