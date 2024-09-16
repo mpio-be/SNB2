@@ -31,8 +31,6 @@ Suggests:
     zoo,
     jsonlite,
     maptools
-Remotes:
-    mpio-be/sdb  
 VignetteBuilder: knitr
 Encoding: UTF-8
 Description: Westerholz Smart Nest-box Data Management
