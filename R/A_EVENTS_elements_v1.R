@@ -12,7 +12,7 @@
 #'
 #' @author LS
 #' @export
-#' @examples see function events
+#' @examples #see function events
 #' @seealso \code{\link{events}}, \code{\link{remove_faulty_data}}, \code{\link{trim_data}},
 #' \code{\link{fetch_ins_outs}}, \code{\link{assign_direction}}, \code{\link{concat_events}},
 #'
@@ -36,7 +36,7 @@ fetch_data_v1 = function(con, box = NA, from = NA, to = NA) {#supply from and to
 #' ?events_v1()
 
 fetch_ins_outs_v1 = function(x, time_threshold) {
-  
+  make_names_local(x)
   #make sure all columns can be interpreted
   x = x[!is.na(datetime_),]
   x = x[!is.na(LB),]
@@ -94,6 +94,7 @@ fetch_ins_outs_v1 = function(x, time_threshold) {
 #' ?events_v1()
 
 assign_direction_v1 = function(x) {
+  make_names_local(x)
   x[LB == "00", ":=" (break_before_tmp = as.character(NA), break_after_tmp = as.character(NA))]
   x[LB != "00", break_before_tmp := first(LB), by = event]
   x[LB != "00", break_after_tmp := last(LB), by = event]
@@ -144,14 +145,14 @@ assign_direction_v1 = function(x) {
 #'
 #' @author LS
 #' @export
-#' @examples see function events
+#' @examples #see function events
 #' @seealso \code{\link{events}}, \code{\link{fetch_data}}, \code{\link{remove_faulty_data}},
 #' \code{\link{trim_data}}, \code{\link{fetch_ins_outs}}, \code{\link{assign_direction}},
 #'
 #'
 
 concat_events_v1 = function(x, max_distance) {
-  
+  make_names_local(x)
   x[is.na(transp), transp := '']
   x[, event := as.numeric(cumsum(ifelse(
     (break_before+shift(break_after,1,0.5) >= 1) | (startt - shift(startt, 1, startt[1])) > max_distance,  1, 0))), by = 'transp']
@@ -207,6 +208,7 @@ concat_events_v1 = function(x, max_distance) {
 
 #' @export
 translate_validity_v1 = function(x) {
+  make_names_local(x)
   x[, direction_detail := validity]
   #make everything IN-OUT that isn't FRONT
   x[, direction := 'IN-OUT']

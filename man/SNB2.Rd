@@ -2,6 +2,7 @@
 % Please edit documentation in R/zzz.R
 \docType{package}
 \name{SNB2}
+\alias{-package}
 \alias{SNB2}
 \alias{.onLoad}
 \title{Smart Box Data management}

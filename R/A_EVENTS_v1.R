@@ -31,19 +31,24 @@
 #' @seealso \link{eva}
 #' @export
 #' @examples 
-#' #Note that although the raw data differ stubstantially, the functions events_v1 and events_v2 can be used similarly.
+#' #Note that although the raw data differ stubstantially, the functions events_v1 and events_v2 
+#' #can be used similarly.
 #' #The help is therefore kept short here, see ?events_v2 for further examples.
-#' con = dbcon('YOUR_USERNAME')
-#' x_raw = dbq(con, paste0("SELECT * FROM SNBatWESTERHOLZ.b033 WHERE datetime_ >= '2016-05-01 00:00:00' AND datetime_ <= '2016-05-31 12:00:00'"))
+#' con = dbcon() #or other connection to database
+#' x_raw = dbq(con, paste0("SELECT * FROM SNBatWESTERHOLZ.b033 
+#' WHERE datetime_ >= '2016-05-01 00:00:00' AND datetime_ <= '2016-05-31 12:00:00'"))
 #' x_raw[, box := 33]
-#' x = events_v1(x_raw, group_ins_and_outs = TRUE, FUN = "translate_validity_v1", time_threshold = 2, max_distance = 16*60*60, silent = FALSE)
+#' x = events_v1(x_raw, group_ins_and_outs = TRUE, FUN = "translate_validity_v1", 
+#'          time_threshold = 2, max_distance = 16*60*60, silent = FALSE)
 #' plot(x)
 #' 
 #' #fetch the individual pieces of activity
-#' x = events_v1(x_raw, group_ins_and_outs = FALSE, FUN = "translate_validity_v1", time_threshold = 2, max_distance = 16*60*60, silent = FALSE)
+#' x = events_v1(x_raw, group_ins_and_outs = FALSE, FUN = "translate_validity_v1", 
+#'          time_threshold = 2, max_distance = 16*60*60, silent = FALSE)
 #' 
 
 events_v1 = function(x, setTZ = "Etc/GMT-2", group_ins_and_outs = TRUE, FUN = "translate_validity_v1", time_threshold = 2, max_distance = 16*60*60, silent = FALSE) {
+  make_names_local(x)
   x[, datetime_ := as.numeric(fastPOSIXct(datetime_, tz = "GMT"))]
   x = fetch_ins_outs_v1(x, time_threshold = time_threshold); if (nrow(x) == 0)   return()
   

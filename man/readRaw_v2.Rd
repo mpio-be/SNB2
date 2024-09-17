@@ -17,7 +17,8 @@ Read raw box txt file without any conversion and string splitting
 }
 \examples{
 \dontrun{
-a = readRaw_v2(filePath = "/ds/raw_data_kemp/FIELD/Westerholz/breeding_2016_snb_heaven/07062016/122/BOX0122.TXT")
+a = readRaw_v2(filePath = 
+        "/ds/raw_data_kemp/FIELD/Westerholz/breeding_2016_snb_heaven/07062016/122/BOX0122.TXT")
 }
 }
 \author{

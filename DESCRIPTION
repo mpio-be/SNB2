@@ -1,12 +1,14 @@
 Package: SNB2
 Type: Package
 Title: Smart Nest-box Data Management
-Version: 2020.0.1
+Version: 2024.0.1
 Author: Lotte Schlicht, Mihai Valcu
 Maintainer: Lotte Schlicht <lschlicht@orn.mpg.de>, Mihai Valcu <valcu@orn.mpg.de>
 Depends:
     R (>= 3.0.0),
-    utils
+    utils,
+    data.table,
+    dbo
 Imports:
     tools,
     methods,
@@ -19,6 +21,7 @@ Imports:
     shinydashboard,
     fasttime,
     DBI,
+    dbo,
     stringr,
     magrittr,
     anytime
@@ -35,4 +38,4 @@ Encoding: UTF-8
 Description: Westerholz Smart Nest-box Data Management
 License: GPL-3
 LazyData: TRUE
-RoxygenNote: 7.1.0
+RoxygenNote: 7.3.2

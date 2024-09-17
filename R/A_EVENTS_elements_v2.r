@@ -32,6 +32,7 @@ fetch_data_v2 = function (con, box = NA, from = NA, to = NA) {
 #' ?events_v2()
 
 fetch_ins_outs_v2 = function (x, tr_threshold = 5, broken_LB_threshold = 600, cluster_events_threshold = 1) {
+  make_names_local(x)
   x = subset(x, !is.na(datetime_))
   
   #sort data by datetime_
@@ -114,6 +115,9 @@ fetch_ins_outs_v2 = function (x, tr_threshold = 5, broken_LB_threshold = 600, cl
 #' #see help of function events_v2
 #' ?events_v2()
 assign_direction_v2 = function(x, hardware_threshold = 0.05) {
+  
+  make_names_local(x)
+  
   #remove any event that has neither transponder nor both light barriers (so to say: BACK and FRONT without transponder)
   x[, remove := ifelse(length(unique(sensor)) > 1, 0, 1), by = event]
   x = x[remove == 0,]
@@ -198,6 +202,7 @@ assign_direction_v2 = function(x, hardware_threshold = 0.05) {
 #' #see help of function events_v2
 #' ?events_v2()
 concat_events_v2 = function(x, max_distance = 14*60*60) {
+  make_names_local(x)
   # aim:
   # combine actions that belong together as one behavioural process
   # examples:
@@ -285,6 +290,8 @@ concat_events_v2 = function(x, max_distance = 14*60*60) {
 #' #see help of function events_v2
 #' ?events_v2()
 combine_front_v2 = function(x, cluster_fronts_threshold = 5, no_front = NULL){
+  make_names_local(x)
+  
   # aim: assign transponders to FRONTS without transponder number
   # change NA transp to ''
   if(is.null(no_front)) { tmp = toupper(unique(x[,validity])); no_front = c(tmp[grep("I", tmp)], "?/?|?/?") }
@@ -333,6 +340,7 @@ combine_front_v2 = function(x, cluster_fronts_threshold = 5, no_front = NULL){
 #' #see help of function events_v2
 #' ?events_v2()
 translate_validity_v2 = function(x) {
+  make_names_local(x)
   x[, direction_detail := validity]
   #make everything IN-OUT that isn't FRONT
   x[, direction := 'IN-OUT']

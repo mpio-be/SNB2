@@ -28,7 +28,7 @@ events per se.
 Rule definitions are marked in the code with a "###RULE###".
 }
 \examples{
-see function events
+#see function events
 }
 \seealso{
 \code{\link{events}}, \code{\link{fetch_data}}, \code{\link{remove_faulty_data}},

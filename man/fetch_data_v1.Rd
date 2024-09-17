@@ -21,7 +21,7 @@ or can be a date and time (in the format "YYYY-MM-DD HH:MM:SS")}
 This function fetches the raw data from the database using either datetime_ or r_pk as a reference column.
 }
 \examples{
-see function events
+#see function events
 }
 \seealso{
 \code{\link{events}}, \code{\link{remove_faulty_data}}, \code{\link{trim_data}},

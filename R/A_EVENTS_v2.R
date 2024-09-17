@@ -13,8 +13,8 @@
 #' @param cluster_fronts_threshold Optional argument passed to function \link{combine_fronts_v2}. Time in seconds within which "FRONT" events of the same transponder will be grouped together.
 #' @param no_front NULL or character(). Optional argument passed to function \link{combine_fronts_v2}. Defines which directions are assumed to be a "FRONT" when events are grouped by the function \link{combine_front_v2}. Defaults to NULL, which means that everything where no pass through the nestbox opening was registered is scored as a "FRONT".
 #' @param silent Should the stats about the data quality be printed or not? Defaults to TRUE.
-#' @return \itemize{\item{If group_ins_and_outs = TRUE: }
-#' {data.table of SNB events with 10 columns. Use plot(this_datatable) to immediately plot this data. Use attr(this_datatable, "stats") to fetch information on the data quality (use print() for readability).} \itemize{
+#' @return \itemize{\item{If group_ins_and_outs = TRUE: 
+#' data.table of SNB events with 10 columns. Use plot(this_datatable) to immediately plot this data. Use attr(this_datatable, "stats") to fetch information on the data quality (use print() for readability).} \itemize{
 #'   \item{box: } box number
 #'   \item{transp: } transponder connected to the event
 #'   \item{in_: } datetime of the start of the activity
@@ -55,19 +55,21 @@
 #'}
 #'
 #' }
-#' @note Please supply only one box at a time! There is a wrapper function which can be used to fetch data across the two databases and across boxes: \link{eva}
+#' @note Please supply only one box at a time! There is a wrapper function which can be used to 
+#' fetch data across the two databases and across boxes: \link{eva}
 #' @author LS
 #' @seealso \link{eva}
 #' @export
 #' @examples
 #'##Not run
 #'#establish connection
-#'con = dbcon('YOUR_USER_NAME')
+#' con = dbcon() #or other connection to database
 #'
 #'#fetch raw data for a single box
 #'#note that this function should ALWAYS only be run on data from a single box!
-#'raw_x = dbq(con, 'SELECT * FROM SNBatWESTERHOLZ_v2.b001 where datetime_ > "2019-05-01" and datetime_ < "2019-05-31"')
-#'raw_x[, box := 1] #there is no need to supply the box number, but you may need it lateron...
+#'raw_x = dbq(con, 'SELECT * FROM SNBatWESTERHOLZ_v2.b001 
+#'   WHERE datetime_ > "2019-05-01" and datetime_ < "2019-05-31"')
+#'raw_x[, box := 1] #there is no need to supply the box number, but you may need it lateron.
 #'
 #'#Calculate when individuals were at the box (e.g. "IN-OUT")
 #'x = events_v2(raw_x)
@@ -82,7 +84,8 @@
 #'X = list()
 #'for(i in c(3, 5, 206, 210)){
 #'  print(i)
-#'  raw_x = dbq(con, paste0('SELECT * FROM SNBatWESTERHOLZ_v2.', int2b(i), ' where datetime_ > "2019-05-01" and datetime_ < "2019-05-31"'))
+#'  raw_x = dbq(con, paste0('SELECT * FROM SNBatWESTERHOLZ_v2.', int2b(i), 
+#'                ' where datetime_ > "2019-05-01" and datetime_ < "2019-05-31"'))
 #'  x = events_v2(raw_x, silent = TRUE)
 #'  x[, box := i]
 #'  X[[length(X)+1]] <- x
@@ -100,27 +103,32 @@
 #'#use different parameter settings to adjust daa to your needs
 #'a = Sys.time()
 #'library(doParallel)
-#'cl = makePSOCKcluster(50) # 50 cores
+#'cl = makePSOCKcluster(2) # 50 cores
 #'registerDoParallel(cl)
 #'
 #'d = foreach(i = 1:277) %dopar% {
 #'  require(SNB2)
-#'  con = dbcon('lschlicht')
-#'  raw_x = dbq(con, paste0('SELECT * FROM SNBatWESTERHOLZ_v2.', int2b(i), ' where datetime_ > "2019-05-01" and datetime_ < "2019-05-31"'))
+#' con = dbcon() #or other connection to database
+#'  raw_x = dbq(con, paste0('SELECT * FROM SNBatWESTERHOLZ_v2.', int2b(i), 
+#'            ' where datetime_ > "2019-05-01" and datetime_ < "2019-05-31"'))
 #'  closeCon(con)
-#'  x = events_v2(raw_x, silent = TRUE, tr_threshold = 2, cluster_events_threshold = 2, max_distance = 16*60*60, cluster_fronts_threshold = 5)
+#'  x = events_v2(raw_x, silent = TRUE, tr_threshold = 2, cluster_events_threshold = 2, 
+#'            max_distance = 16*60*60, cluster_fronts_threshold = 5)
 #'  x[, box := i]
 #'}
 #'stopCluster(cl)
 #'registerDoSEQ()
+#'closeAllConnections()
 #'Sys.time()-a
 #'
 #'stats = as.data.table(do.call(rbind,lapply(d, FUN = function(x) attr(x, "stats"))))
-#'setnames(stats, names(stats), c("dupl", "max_tr", "mean_tr", "prop_reliable", "prop_reliable_tr"))
+#'setnames(stats, names(stats), c("dupl", "max_tr", "mean_tr", 
+#'          "prop_reliable", "prop_reliable_tr"))
 #'
 #'hist(stats[, prop_reliable])
 events_v2 = function(x, setTZ = "Etc/GMT-2", group_ins_and_outs = TRUE, FUN = "translate_validity_v2", tr_threshold = 5, broken_LB_threshold = 600, cluster_events_threshold = 2, max_distance = 16*60*60, cluster_fronts_threshold = 5, no_front = NULL, silent = FALSE)
-{
+  {
+  make_names_local(x)
   x[, datetime_ := as.numeric(as.POSIXct(datetime_, tz = "Europe/Berlin"))]
   
   x = fetch_ins_outs_v2(x, tr_threshold = tr_threshold, broken_LB_threshold = broken_LB_threshold, cluster_events_threshold = cluster_events_threshold); if (nrow(x) == 0)   return()

@@ -41,7 +41,8 @@ tetr <- function(condb ) {
 #' dbqSNB('snbAdmin', host = "scidb.mpio.orn.mpg.de", 'SELECT * FROM boxtables limit 1')
 #'
 #' # Last entry
-#' dbqSNB('snbAdmin', host = "scidb.mpio.orn.mpg.de", 'SELECT * FROM boxtables ORDER BY r_pk desc limit 1')
+#' dbqSNB('snbAdmin', host = "scidb.mpio.orn.mpg.de", 
+#'         'SELECT * FROM boxtables ORDER BY r_pk desc limit 1')
 #'
 #' # SELECT last n days
 #' x = dbqSNB('snbAdmin', host = "scidb.mpio.orn.mpg.de",

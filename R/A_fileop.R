@@ -54,7 +54,8 @@ data_dirs <- function(p = getOption("path.to.raw_v2") ) {
 #' @export
 #' @examples
 #' \dontrun{
-#' a = readRaw_v2(filePath = "/ds/raw_data_kemp/FIELD/Westerholz/breeding_2016_snb_heaven/07062016/122/BOX0122.TXT")
+#' a = readRaw_v2(filePath = 
+#'         "/ds/raw_data_kemp/FIELD/Westerholz/breeding_2016_snb_heaven/07062016/122/BOX0122.TXT")
 #' }
 readRaw_v2 <- function(filePath)  {
     data.table(V = readLines(filePath, skipNul = TRUE) )

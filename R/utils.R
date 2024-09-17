@@ -222,3 +222,13 @@ force.tz = function(x, new.tz, diff.tz = NULL) {
   attr(x, "tzone") <- new.tz
   x
 }
+
+
+
+#' @title make names of data.table objects local in order to suppress warnings during package compilation.
+#' @param x A data table
+#' @details use in the beginning of every function that calls a data.table object and its columns.
+#' @export
+make_names_local = function(data) {
+      invisible(lapply(names(data), FUN = function(x) { assign(x, NULL, envir = .GlobalEnv)}))
+}

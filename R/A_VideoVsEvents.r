@@ -24,33 +24,38 @@
 #'@examples
 #'##not run
 #'#create connection
-#'con = dbcon('YOUR_USER_NAME')
+#'require(dbo)
+#' con = dbcon() #or other connection to database
 #'
 #'#Set the variables you want to check
 #'check = SNBvsVid_v2(con, timescale = 2, max_distance = 30)
 #'
 #'check[[1]]
-#'#--> the max. difference between SNB and video data is less than 1 minute.
+#'#the max. difference between SNB and video data is less than 1 minute.
 #'
 #'check[[2]]/nrow(check[[6]])
-#'#--> proportion of transponders missed based on definition (see section "Value")
+#'#proportion of transponders missed based on definition (see section "Value")
 #'
 #'#Plot method by unit of time
 #'plot(check[[7]], ParentsOnly = FALSE) #All SNB data
 #'plot(check[[7]], ParentsOnly = TRUE)  #Only SNB data with the parental transponder
-#'#Note that for each box and date the upper row of points represents SNB activity without corresponding video activity, the bottom row of points represents Video activity without corresponding SNB activity and the middle row represents data that match. Activity within 1 unit of time  to activity scored via the other method is still marked green.
+#' #Note that for each box and date the upper row of points represents SNB activity 
+#' #without corresponding video activity, the bottom row of points represents Video activity 
+#' #without corresponding SNB activity and the middle row represents data that match. 
+#' #Activity within 1 unit of time  to activity scored via the other method is still marked green.
 #'
 #'#table of consistency of SNB vs. video data per unit of time
 #'table(check[[7]][, list(videoIn, snbIn)])
 #'
 #'#table of consistency of SNB vs. video data, if a mismatch by 1 unit of time is "ok"
-#'table(check[[7]][,COL]) #"green" = ok, "blue" = event in video, but not SNB data, "red" = event in SNB not video data
+#'table(check[[7]][,COL]) #"green" = ok, "blue" = event in video, but not SNB data, "red" = event 
+#'  #in SNB not video data
 #'
 #'#table which (detailed) SNB directions are merged with which directions in the video data
-#'table(check[[4]][,list(snb_action_detail, vid_action)])
+#'  #table(check[[4]][,list(snb_action_detail, vid_action)])
 #'
 #'#table how detailed SNB directions are translated into non-detailed directions
-#'table(check[[4]][,list(snb_action_detail, snb_action)])
+#'  #table(check[[4]][,list(snb_action_detail, snb_action)])
 
 SNBvsVid_v2 = function(con, timescale, ...) {
   data("VideoObs", "VideoBoxTimes", "VideoParents")
@@ -78,6 +83,7 @@ videoEvaluation_v2 = function(...) {
     
     SNBdata <- rbindlist(lapply(split(SNBdata, SNBdata[, box]), FUN = function(x) events_v2(x, ...)))
     SNBdata <- merge(SNBdata,Parents,by="box")
+    make_names_local(SNBdata)
     SNBdata[,date_:=as.IDate(in_)]
     SNBdata[,snb_row_id:=1:nrow(SNBdata)]
     setkey(SNBdata,box,in_)

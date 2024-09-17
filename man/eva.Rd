@@ -5,7 +5,6 @@
 \title{Pipeline function to extract events}
 \usage{
 eva(
-  username,
   df,
   setTZ = "Etc/GMT-2",
   time_threshold_v1 = 2,
@@ -14,12 +13,11 @@ eva(
   cluster_events_threshold_v2 = 2,
   max_distance_v2 = 16 * 60 * 60,
   cluster_fronts_threshold_v2 = 5,
-  no_front_v2 = NULL
+  no_front_v2 = NULL,
+  N_cores = 50
 )
 }
 \arguments{
-\item{username}{the username that is supplied to dbcon for establishing the connection.}
-
 \item{df}{a data.table that contains three columns about which data should be fetched: the box numbers, and the corresponding from and to (column names: box, from, to). See examples.}
 
 \item{time_threshold_v1}{time_threshold argument for function \link{events_v1}}
@@ -35,6 +33,8 @@ eva(
 \item{cluster_fronts_threshold_v2}{arguments for function \link{events_v2}}
 
 \item{no_front_v2}{no_front argument for function \link{events_v2}}
+
+\item{con}{the connection to the database.}
 }
 \description{
 Fetches the raw data using a connection to the database based on dbcon, then calculates when an individual was assumably at the nest box. Runs across the databases SNBatWESTERHOLZ and SNBatWESTERHOLZ_v2. Uses parallel computing.
@@ -43,14 +43,19 @@ Fetches the raw data using a connection to the database based on dbcon, then cal
 Note that currently you need to have saved your credentials via save_credentials in order to run the function.
 }
 \examples{
-df = data.table(box = 1, from = "2016-05-01 00:00:00", to = "2019-06-30 00:00:00")
-hooray = eva(YOUR_USER_NAME_as_specified_in_saveCredentials, df, time_threshold_v1 = 10, tr_threshold_v2 = 100)
+df = data.table(box = 1, from = "2019-05-01 00:00:00", to = "2019-06-30 00:00:00")
+hooray = eva(df, 
+      time_threshold_v1 = 10, tr_threshold_v2 = 100, N_cores = 2)
 hooray
 plot(hooray)
-plot(subset(hooray, !is.na(transp) & box == 1 & in_ > "2019-03-15" & in_ < "2019-04-05"))
+plot(subset(hooray, !is.na(transp) & box == 1 & in_ > "2019-05-15" & in_ < "2019-05-25"))
 #Note that you can access the colours and counts of individual transponders by using
 tr = plot(hooray)
 tr
+\dontshow{
+## R CMD check: make sure any open connections are closed afterward
+closeAllConnections()
+}
 }
 \author{
 LS
